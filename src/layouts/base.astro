@@ -1,5 +1,13 @@
 ---
+export interface Props {
+  title: string;
+}
+
 import "@fontsource/inter";
+const { title } = Astro.props;
+const desc = "Welcome to the portfolio site of Soham Dasgupta";
+const imageAlt = "Profile image of Soham Dasgupta";
+const socialImageURL = new URL("/profile.webp", Astro.url);
 ---
 
 <html
@@ -9,15 +17,25 @@ import "@fontsource/inter";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:image" content="/profile.webp" />
-    <meta property="og:image:secure_url" content="/profile.webp" />
+    <meta property="og:title" content={`${title} | Soham's Portfolio Site`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:secure_url" content={socialImageURL} />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="640" />
     <meta property="og:image:height" content="640" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thesobercoder" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <link rel="icon" type="image/webp" href="/profile.webp" />
     <meta name="generator" content={Astro.generator} />
-    <title>Soham's Portfolio Site</title>
+    <title>{`${title} | Soham's Portfolio Site`}</title>
   </head>
 
   <body class="grid place-items-center h-screen w-screen content-center">
