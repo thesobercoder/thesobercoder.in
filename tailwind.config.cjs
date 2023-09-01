@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const accent = "text";
-const linkColor = "lavender";
+const linkColor = "blue";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
