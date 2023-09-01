@@ -32,9 +32,9 @@ const socialImageURL = new URL("/profile.webp", Astro.url);
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={socialImageURL} />
     <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="generator" content={Astro.generator} />
 
     <link rel="icon" type="image/webp" href="/profile.webp" />
-    <meta name="generator" content={Astro.generator} />
     <title>{`${title} | Soham's Portfolio Site`}</title>
   </head>
 
