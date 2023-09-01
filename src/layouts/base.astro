@@ -2,7 +2,7 @@
 import "@fontsource/inter";
 ---
 
-<html class="frappe bg-base text-text" lang="en">
+<html class="bg-base text-text latte dark:frappe" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,16 +12,12 @@ import "@fontsource/inter";
     <meta property="og:image:width" content="640" />
     <meta property="og:image:height" content="640" />
 
-    <link rel="icon" type="image/webp" href="/Profile.webp" />
+    <link rel="icon" type="image/webp" href="/profile.webp" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro + TailwindCSS</title>
+    <title>Soham's Portfolio Site</title>
   </head>
 
-  <body>
-    <div class="grid place-items-center h-screen content-center">
-      <div class="prose prose-2xl">
-        <slot />
-      </div>
-    </div>
+  <body class="grid place-items-center h-screen w-screen content-center">
+    <slot />
   </body>
 </html>
