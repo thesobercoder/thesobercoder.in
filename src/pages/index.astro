@@ -40,6 +40,40 @@ let skills = [
     items: "MySQL, PostgreSQL, MongoDB, etc.",
   },
 ];
+
+let certifications = [
+  {
+    title: "Certified Kubernetes Administrator",
+    issuer: "The Linux Foundation",
+    date: "January 2022",
+    link: "https://www.yourcertificationlink.com",
+  },
+  {
+    title: "AWS Certified Solutions Architect",
+    issuer: "Amazon Web Services (AWS)",
+    date: "December 2021",
+    link: "https://www.yourcertificationlink.com",
+  },
+  {
+    title: "AWS Certified Solutions Architect",
+    issuer: "Amazon Web Services (AWS)",
+    date: "December 2021",
+    link: "https://www.yourcertificationlink.com",
+  },
+  {
+    title: "AWS Certified Solutions Architect",
+    issuer: "Amazon Web Services (AWS)",
+    date: "December 2021",
+    link: "https://www.yourcertificationlink.com",
+  },
+  {
+    title: "AWS Certified Solutions Architect",
+    issuer: "Amazon Web Services (AWS)",
+    date: "December 2021",
+    link: "https://www.yourcertificationlink.com",
+  },
+  // Add more certifications as needed
+];
 ---
 
 <Shell title="Home">
@@ -60,12 +94,12 @@ let skills = [
   <!-- Skills Section -->
   <section class="py-20">
     <h2 class="text-4xl font-bold text-center">My Skills</h2>
-    <div class="flex flex-wrap justify-center mt-8 space-y-0 gap-4">
+    <div class="flex flex-wrap justify-center mt-8 space-y-0 gap-2">
       {
         skills.map((skill) => (
           <div class="mx-2 p-8 bg-surface0 text-text rounded-lg">
             <h3 class="text-2xl font-bold">{skill.category}</h3>
-            <p>{skill.items}</p>
+            <p class="text-subtext0">{skill.items}</p>
           </div>
         ))
       }
@@ -93,7 +127,7 @@ let skills = [
                   index % 2 === 0
                     ? "col-start-1 col-end-5 mr-auto"
                     : "col-start-6 col-end-10 ml-auto"
-                }  bg-base p-4 rounded-xl my-4`}
+                }  bg-base p-8 rounded-xl my-4`}
               >
                 <h3 class="font-semibold text-lg mb-1">{experience.title}</h3>
                 <h4 class="text-subtext0 mb-1">{experience.company}</h4>
@@ -117,11 +151,22 @@ let skills = [
     </div>
   </section>
 
-  <!-- Social -->
-  <section class="py-20 bg-mantle">
-    <h2 class="text-4xl font-bold text-center">Social</h2>
-    <p class="text-xl mt-8 text-center mt-4">
-      You can reach me at your-email@example.com
-    </p>
+  <!-- Certifications Section -->
+  <section class="py-20 bg-mantle flex flex-col justify-center items-center">
+    <h2 class="text-4xl font-bold text-center">My Certifications</h2>
+    <div class="mt-8 grid grid-cols-1 grid-cols-2 gap-6">
+      {
+        certifications.map((certification) => (
+          <div class="p-8 bg-surface0 text-text rounded-lg">
+            <h3 class="text-2xl font-bold">{certification.title}</h3>
+            <p class="text-subtext0">{certification.issuer}</p>
+            <p class="text-subtext0">{certification.date}</p>
+            <a class="text-subtext0" href={certification.link} target="_blank">
+              View Certification
+            </a>
+          </div>
+        ))
+      }
+    </div>
   </section>
 </Shell>
