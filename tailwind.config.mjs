@@ -16,17 +16,17 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
-        "gradient-keyframe": {
+        "banner-keyframes": {
           "0%": { "background-position": "0 50%" },
           "50%": { "background-position": "100% 50%" },
           "100%": { "background-position": "0 50%" },
         },
       },
       animation: {
-        "gradient-animation": "gradient-keyframe 36s ease infinite",
+        banner: "banner-keyframes 36s ease infinite",
       },
       backgroundImage: (theme) => ({
-        "gradient-animation": `linear-gradient(300deg, ${theme(
+        banner: `linear-gradient(300deg, ${theme(
           "colors.red.DEFAULT",
         )}, ${theme("colors.peach.DEFAULT")},${theme(
           "colors.yellow.DEFAULT",

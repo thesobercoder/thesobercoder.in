@@ -14,6 +14,12 @@ let experiences = [
     duration: "Jan 2018 - Dec 2019",
     description: "Worked on XYZ project and learned ABC skills.",
   },
+  {
+    title: "Junior Developer",
+    company: "Company B",
+    duration: "Jan 2018 - Dec 2019",
+    description: "Worked on XYZ project and learned ABC skills.",
+  },
   // Add more experiences here...
 ];
 ---
@@ -21,7 +27,7 @@ let experiences = [
 <Shell title="Home">
   <!-- Hero Section -->
   <section
-    class="bg-gradient-animation bg-360 animate-gradient-animation text-surface0 text-center py-20"
+    class="bg-banner bg-360 animate-banner text-surface0 text-center py-20"
   >
     <h1 class="text-5xl font-bold">Hello, I'm Soham Dasgupta</h1>
     <p class="text-2xl mt-4">A passionate developer specialized in XYZ</p>
@@ -35,7 +41,7 @@ let experiences = [
   <!-- Skills Section -->
   <section class="py-20 bg-mantle">
     <h2 class="text-3xl font-bold text-center">My Skills</h2>
-    <div class="flex flex-wrap justify-center mt-8 space-y-4 md:space-y-0">
+    <div class="flex flex-wrap justify-center mt-8 space-y-4 space-y-0">
       <div class="mx-2 p-4 bg-surface0 text-text shadow-lg rounded-lg">
         <h3 class="text-2xl font-bold">Frontend</h3>
         <p>HTML, CSS, JavaScript, React, Vue, etc.</p>
@@ -51,95 +57,47 @@ let experiences = [
     </div>
   </section>
 
-  <!-- Work Section -->
+  <!-- Experience Section -->
   <section class="py-20 bg-surface0">
     <h2 class="text-3xl font-bold text-center">My Experience</h2>
     <div class="w-full mt-8 flex items-center">
-      <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2">
-        <!-- left -->
-        <div class="flex flex-row-reverse md:contents">
-          <div
-            class="bg-base col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md"
-          >
-            <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-            <p class="leading-tight text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              quaerat?
-            </p>
-          </div>
-          <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-            <div class="h-full w-6 flex items-center justify-center">
-              <div class="h-full w-1 bg-text pointer-events-none"></div>
-            </div>
-            <div
-              class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text shadow"
-            >
-            </div>
-          </div>
-        </div>
-        <!-- right -->
-        <div class="flex md:contents">
-          <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-            <div class="h-full w-6 flex items-center justify-center">
-              <div class="h-full w-1 bg-text pointer-events-none"></div>
-            </div>
-            <div
-              class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text shadow"
-            >
-            </div>
-          </div>
-          <div
-            class="bg-base col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md"
-          >
-            <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-            <p class="leading-tight text-justify">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae,
-              facilis.
-            </p>
-          </div>
-        </div>
-        <!-- left -->
-        <div class="flex flex-row-reverse md:contents">
-          <div
-            class="bg-base col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md"
-          >
-            <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-            <p class="leading-tight text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              quaerat?
-            </p>
-          </div>
-          <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-            <div class="h-full w-6 flex items-center justify-center">
-              <div class="h-full w-1 bg-text pointer-events-none"></div>
-            </div>
-            <div
-              class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text shadow"
-            >
-            </div>
-          </div>
-        </div>
-        <!-- right -->
-        <div class="flex md:contents">
-          <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-            <div class="h-full w-6 flex items-center justify-center">
-              <div class="h-full w-1 bg-text pointer-events-none"></div>
-            </div>
-            <div
-              class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text shadow"
-            >
-            </div>
-          </div>
-          <div
-            class="bg-base col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md"
-          >
-            <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-            <p class="leading-tight text-justify">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae,
-              facilis.
-            </p>
-          </div>
-        </div>
+      <div class="flex flex-col grid grid-cols-9 mx-auto p-2">
+        {
+          experiences.map((experience, index) => (
+            <>
+              {index % 2 === 1 && (
+                <div class="col-start-5 col-end-6 mr-10 mx-auto relative">
+                  <div class="h-full w-6 flex items-center justify-center">
+                    <div class="h-full w-1 bg-overlay1 pointer-events-none" />
+                  </div>
+                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text" />
+                </div>
+              )}
+              <div
+                class={`${
+                  index % 2 === 0
+                    ? "col-start-1 col-end-5 mr-auto"
+                    : "col-start-6 col-end-10 ml-auto"
+                }  bg-base p-4 rounded-xl my-4`}
+              >
+                <h3 class="font-semibold text-lg mb-1">{experience.title}</h3>
+                <h4 class="text-subtext0 mb-1">{experience.company}</h4>
+                <h5 class="text-subtext0 mb-1">{experience.duration}</h5>
+                <p class="leading-tight text-justify text-subtext0">
+                  {experience.description}
+                </p>
+              </div>
+              {index % 2 === 0 && (
+                <div class="col-start-5 col-end-6 mr-10 mx-auto relative">
+                  <div class="h-full w-6 flex items-center justify-center">
+                    <div class="h-full w-1 bg-overlay1 pointer-events-none" />
+                  </div>
+                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text" />
+                </div>
+              )}
+            </>
+          ))
+        }
       </div>
     </div>
   </section>
