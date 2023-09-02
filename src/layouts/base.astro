@@ -1,17 +1,20 @@
 ---
+import "@fontsource/inter";
+
 export interface Props {
   title: string;
 }
 
-import "@fontsource/inter";
 const { title } = Astro.props;
 const desc = "Welcome to the portfolio site of Soham Dasgupta";
 const imageAlt = "Profile image of Soham Dasgupta";
 const socialImageURL = new URL("/profile.webp", Astro.url);
+
+import Header from "@components/header.astro";
 ---
 
 <html
-  class="bg-gradient-to-b from-surface0 to-base text-text latte dark:frappe"
+  class="bg-gradient-to-b from-mantle to-base text-text latte dark:mocha"
   lang="en"
 >
   <head>
@@ -38,7 +41,8 @@ const socialImageURL = new URL("/profile.webp", Astro.url);
     <title>{`${title} | Soham's Portfolio Site`}</title>
   </head>
 
-  <body class="grid place-items-center h-screen w-screen content-center">
+  <body class="flex flex-col h-screen w-screen">
+    <Header />
     <slot />
   </body>
 </html>

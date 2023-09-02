@@ -1,15 +1,14 @@
 ---
-import Base from "@layouts/blog.astro";
+import Shell from "@layouts/shell.astro";
 ---
 
-<Base title="Home">
-  <h1>Soham</h1>
-  <p>
-    This flag is only allowed when --noEmit or --emitDeclarationOnly is enabled,
-    since these import paths would not be resolvable at runtime in JavaScript
-    output files. The expectation here is that your resolver (e.g. your bundler,
-    a runtime, or some other tool) is going to make these imports between .ts
-    files work.
-  </p>
-  <a href="/markdown-page">Markdown is also supported...</a>
-</Base>
+<Shell title="Home">
+  <div class="w-full text-center">
+    <h4 class="text-2xl md:text-4xl lg:text--6xl text-mauve">Hi, I'm Soham</h4>
+    <h1
+      class="text-5xl/[1.1] font-semibold md:text-6xl/[1.1] lg:text-7xl/[1.1]"
+    >
+      Welcome to my site
+    </h1>
+  </div>
+</Shell>

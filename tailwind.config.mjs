@@ -57,5 +57,20 @@ module.exports = {
       }),
     },
   },
-  plugins: [catppuccin, typography],
+  plugins: [
+    catppuccin,
+    typography,
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".gradient-text": {
+          background:
+            "linear-gradient(45deg, var(--ctp-mantle), var(--ctp-lavender))",
+          "background-clip": "text",
+          "-webkit-background-clip": "text",
+          color: "transparent",
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 };
