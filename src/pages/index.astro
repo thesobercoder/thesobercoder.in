@@ -3,15 +3,15 @@ import Shell from "@layouts/shell.astro";
 
 let experiences = [
   {
-    title: "Software Engineer",
-    company: "Company A",
-    duration: "Jan 2020 - Present",
+    title: "Director, Software Engineering",
+    company: "LeaseAccelerator",
+    duration: "May 2023 - Present",
     description: "Developed XYZ features using ABC technology.",
   },
   {
-    title: "Junior Developer",
-    company: "Company B",
-    duration: "Jan 2018 - Dec 2019",
+    title: "Software Engineering Manager",
+    company: "Deloitte",
+    duration: "Apr 2017 - May 2023",
     description: "Worked on XYZ project and learned ABC skills.",
   },
   {
@@ -20,7 +20,25 @@ let experiences = [
     duration: "Jan 2018 - Dec 2019",
     description: "Worked on XYZ project and learned ABC skills.",
   },
-  // Add more experiences here...
+];
+
+let skills = [
+  {
+    category: "Frontend",
+    items: "HTML, CSS, JavaScript, React, Vue, etc.",
+  },
+  {
+    category: "Backend",
+    items: "Node.js, Express, Django, etc.",
+  },
+  {
+    category: "Database",
+    items: "MySQL, PostgreSQL, MongoDB, etc.",
+  },
+  {
+    category: "Cloud",
+    items: "MySQL, PostgreSQL, MongoDB, etc.",
+  },
 ];
 ---
 
@@ -39,21 +57,17 @@ let experiences = [
   </section>
 
   <!-- Skills Section -->
-  <section class="py-20 bg-mantle">
+  <section class="py-20">
     <h2 class="text-3xl font-bold text-center">My Skills</h2>
-    <div class="flex flex-wrap justify-center mt-8 space-y-4 space-y-0">
-      <div class="mx-2 p-4 bg-surface0 text-text shadow-lg rounded-lg">
-        <h3 class="text-2xl font-bold">Frontend</h3>
-        <p>HTML, CSS, JavaScript, React, Vue, etc.</p>
-      </div>
-      <div class="mx-2 p-4 bg-surface0 text-text shadow-lg rounded-lg">
-        <h3 class="text-2xl font-bold">Backend</h3>
-        <p>Node.js, Express, Django, etc.</p>
-      </div>
-      <div class="mx-2 p-4 bg-surface0 text-text shadow-lg rounded-lg">
-        <h3 class="text-2xl font-bold">Database</h3>
-        <p>MySQL, PostgreSQL, MongoDB, etc.</p>
-      </div>
+    <div class="flex flex-wrap justify-center mt-8 space-y-0 gap-4">
+      {
+        skills.map((skill) => (
+          <div class="mx-2 p-8 bg-surface0 text-text rounded-lg">
+            <h3 class="text-2xl font-bold">{skill.category}</h3>
+            <p>{skill.items}</p>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -70,7 +84,7 @@ let experiences = [
                   <div class="h-full w-6 flex items-center justify-center">
                     <div class="h-full w-1 bg-overlay1 pointer-events-none" />
                   </div>
-                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text" />
+                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-mauve" />
                 </div>
               )}
               <div
@@ -92,7 +106,7 @@ let experiences = [
                   <div class="h-full w-6 flex items-center justify-center">
                     <div class="h-full w-1 bg-overlay1 pointer-events-none" />
                   </div>
-                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-text" />
+                  <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-mauve" />
                 </div>
               )}
             </>
@@ -102,9 +116,9 @@ let experiences = [
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Social -->
   <section class="py-20 bg-mantle">
-    <h2 class="text-3xl font-bold text-center">Contact Me</h2>
+    <h2 class="text-3xl font-bold text-center">Social</h2>
     <p class="text-xl mt-8 text-center mt-4">
       You can reach me at your-email@example.com
     </p>
