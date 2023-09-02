@@ -13,10 +13,7 @@ const socialImageURL = new URL("/profile.webp", Astro.url);
 import Header from "@components/header.astro";
 ---
 
-<html
-  class="bg-gradient-to-b from-mantle to-base text-text latte dark:mocha"
-  lang="en"
->
+<html class="bg-base text-text latte dark:mocha" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,7 +38,7 @@ import Header from "@components/header.astro";
     <title>{`${title} | Soham's Portfolio Site`}</title>
   </head>
 
-  <body class="flex flex-col h-screen w-screen">
+  <body class="flex flex-col">
     <Header />
     <slot />
   </body>

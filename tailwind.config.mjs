@@ -9,10 +9,33 @@ const linkColor = "blue";
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "media",
+  mode: "jit",
   theme: {
     extend: {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      },
+      keyframes: {
+        "gradient-keyframe": {
+          "0%": { "background-position": "0 50%" },
+          "50%": { "background-position": "100% 50%" },
+          "100%": { "background-position": "0 50%" },
+        },
+      },
+      animation: {
+        "gradient-animation": "gradient-keyframe 36s ease infinite",
+      },
+      backgroundImage: (theme) => ({
+        "gradient-animation": `linear-gradient(300deg, ${theme(
+          "colors.red.DEFAULT",
+        )}, ${theme("colors.peach.DEFAULT")},${theme(
+          "colors.yellow.DEFAULT",
+        )}, ${theme("colors.green.DEFAULT")}, ${theme(
+          "colors.blue.DEFAULT",
+        )}, ${theme("colors.mauve.DEFAULT")})`,
+      }),
+      backgroundSize: {
+        360: "360% 360%",
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -57,20 +80,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    catppuccin,
-    typography,
-    function ({ addUtilities }) {
-      const newUtilities = {
-        ".gradient-text": {
-          background:
-            "linear-gradient(45deg, var(--ctp-mantle), var(--ctp-lavender))",
-          "background-clip": "text",
-          "-webkit-background-clip": "text",
-          color: "transparent",
-        },
-      };
-      addUtilities(newUtilities);
-    },
-  ],
+  plugins: [catppuccin, typography],
 };
