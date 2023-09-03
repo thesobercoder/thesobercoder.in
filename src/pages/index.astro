@@ -100,10 +100,10 @@ let certifications = [
   <!-- Skills Section -->
   <section class="py-20">
     <h2 class="text-4xl font-bold text-center">My Skills</h2>
-    <div class="flex flex-wrap justify-center mt-8 space-y-0 gap-2">
+    <div class="flex flex-wrap justify-center mt-8 gap-2">
       {
         skills.map((skill) => (
-          <div class="mx-2 p-8 bg-surface0 text-text rounded-lg">
+          <div class="mx-2 p-8 bg-surface0 w-80 text-text rounded-lg">
             <h3 class="text-2xl font-bold">{skill.category}</h3>
             <p class="text-subtext0">{skill.items}</p>
           </div>
@@ -157,10 +157,10 @@ let certifications = [
   <!-- Certifications Section -->
   <section class="py-20 bg-mantle flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Certifications</h2>
-    <div class="mt-8 grid grid-cols-3 gap-6">
+    <div class="mt-8 grid grid-cols-3 gap-20 text-center">
       {
         certifications.map((certification) => (
-          <div class="text-text flex flex-col items-center">
+          <div class="text-text flex flex-col items-center w-80">
             <span set:html={certification.logo} />
             <h3 class="font-bold text-lg mt-2">{certification.title}</h3>
             <a
