@@ -43,39 +43,34 @@ let skills = [
 
 let certifications = [
   {
-    title: "Certified Kubernetes Administrator",
-    issuer: "The Linux Foundation",
-    date: "January 2022",
-    link: "https://www.yourcertificationlink.com",
-    logo: "https://www.microsoft.com/favicon.ico?v2", // Add this line
+    title: "Exam 480: Programming in HTML5 with JavaScript and CSS3",
+    issuer: "Microsoft",
+    link: "https://www.credly.com/badges/d483fb39-c9d5-4ea3-8417-6d3540368365",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"/></svg>`,
   },
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services (AWS)",
-    date: "December 2021",
-    link: "https://www.yourcertificationlink.com",
-    logo: "https://www.microsoft.com/favicon.ico?v2", // Add this line
+    title: "Exam 486: Developing ASP.NET MVC Web Applications",
+    issuer: "Microsoft",
+    link: "https://www.credly.com/badges/1bf39776-b4ff-4847-9172-a1055cb2c332",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"/></svg>`,
   },
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services (AWS)",
-    date: "December 2021",
-    link: "https://www.yourcertificationlink.com",
-    logo: "https://www.microsoft.com/favicon.ico?v2", // Add this line
+    title: "MCSA: Web Applications - Certified 2018",
+    issuer: "Microsoft",
+    link: "https://www.credly.com/badges/53bb8578-9e58-496f-92da-1534628fe3aa",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"/></svg>`,
   },
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services (AWS)",
-    date: "December 2021",
-    link: "https://www.yourcertificationlink.com",
-    logo: "https://www.microsoft.com/favicon.ico?v2", // Add this line
+    title: "MCSD: App Builder — Certified 2018",
+    issuer: "Microsoft",
+    link: "https://www.credly.com/badges/39b8d1b7-8d82-47d0-8f48-24de872a087a",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"/></svg>`,
   },
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services (AWS)",
-    date: "December 2021",
-    link: "https://www.yourcertificationlink.com",
-    logo: "https://www.microsoft.com/favicon.ico?v2", // Add this line
+    title: "Exam 483: Programming in C#",
+    issuer: "Microsoft",
+    link: "https://www.credly.com/badges/7e2ad23d-6cac-4748-83e9-d4c7fee7a83c",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512"><path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"/></svg>`,
   },
   // Add more certifications as needed
 ];
@@ -159,22 +154,26 @@ let certifications = [
   <!-- Certifications Section -->
   <section class="py-20 bg-mantle flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Certifications</h2>
-    <div class="mt-8 grid grid-cols-5 gap-6">
+    <div class="mt-8 grid grid-cols-3 gap-6">
       {
         certifications.map((certification) => (
           <div class="text-text flex flex-col items-center">
-            <img
-              class="w-16 h-16 rounded-full"
-              src={certification.logo}
-              alt={certification.title}
-            />
+            <span set:html={certification.logo} />
             <h3 class="font-bold text-lg mt-2">{certification.title}</h3>
             <a
-              class="text-subtext0 mt-1"
+              class="text-subtext0 mt-1 flex gap-2 items-center"
               href={certification.link}
               target="_blank"
             >
               View Certification
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="currentColor"
+                viewBox="0 0 512 512"
+              >
+                <path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z" />
+              </svg>
             </a>
           </div>
         ))
