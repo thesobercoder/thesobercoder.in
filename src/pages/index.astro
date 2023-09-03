@@ -15,9 +15,15 @@ let experiences = [
     description: "Worked on XYZ project and learned ABC skills.",
   },
   {
+    title: "Development Lead",
+    company: "EffiaSoft",
+    duration: "Mar 2014 - Mar 2017",
+    description: "Worked on XYZ project and learned ABC skills.",
+  },
+  {
     title: "Junior Developer",
-    company: "Company B",
-    duration: "Jan 2018 - Dec 2019",
+    company: "La Exactlly Software",
+    duration: "Nov 2009 - Mar 2014",
     description: "Worked on XYZ project and learned ABC skills.",
   },
 ];
@@ -127,14 +133,11 @@ let certifications = [
                   index % 2 === 0
                     ? "col-start-1 col-end-5 mr-auto"
                     : "col-start-6 col-end-10 ml-auto"
-                }  bg-base p-8 rounded-xl my-4`}
+                }  bg-base p-8 rounded-xl my-4 w-96`}
               >
                 <h3 class="font-semibold text-lg mb-1">{experience.title}</h3>
                 <h4 class="text-subtext0 mb-1">{experience.company}</h4>
                 <h5 class="text-subtext0 mb-1">{experience.duration}</h5>
-                <p class="leading-tight text-justify text-subtext0">
-                  {experience.description}
-                </p>
               </div>
               {index % 2 === 0 && (
                 <div class="col-start-5 col-end-6 mr-10 mx-auto relative">
