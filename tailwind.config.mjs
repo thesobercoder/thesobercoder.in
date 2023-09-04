@@ -16,14 +16,14 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
-        "banner-keyframes": {
+        "banner-keyframe": {
           "0%": { "background-position": "0 50%" },
           "50%": { "background-position": "100% 50%" },
           "100%": { "background-position": "0 50%" },
         },
       },
       animation: {
-        banner: "banner-keyframes 36s ease infinite",
+        banner: "banner-keyframe 36s ease infinite",
       },
       backgroundImage: (theme) => ({
         banner: `linear-gradient(300deg, ${theme(
