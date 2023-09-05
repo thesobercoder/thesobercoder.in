@@ -18,6 +18,7 @@ import Footer from "@components/footer.astro";
 <html class="bg-base text-text latte dark:mocha" lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="description" content={`${title} | Soham's Portfolio Site`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content={`${title} | Soham's Portfolio Site`} />
     <meta property="og:type" content="website" />
@@ -38,6 +39,15 @@ import Footer from "@components/footer.astro";
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/webp" href="/profile.webp" />
     <title>{`${title} | Soham's Portfolio Site`}</title>
+
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
 
   <body class="flex flex-col">
