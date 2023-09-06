@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Blog from "@layouts/blog.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blog");
+
+  const paths = blogs.map((page) => {
+    const [...slug] = page.slug.split("/");
+    return { params: { slug: slug.join("/") || undefined }, props: page };
+  });
+
+  return paths;
+}
+const page = Astro.props;
+const formattedDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(page.data.date);
+const { Content } = await page.render();
+---
+
+<Blog>
+  <h1>{page.data.title}</h1>
+  <p class="text-sm">Soham Dasgupta | {formattedDate}</p>
+  <Content />
+</Blog>

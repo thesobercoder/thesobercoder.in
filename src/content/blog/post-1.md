@@ -1,9 +1,10 @@
 ---
 title: "Markdown + Tailwind"
-layout: "@layouts/blog.astro"
+slug: "markdown-tailwind"
+date: 2023-09-06
 ---
 
-# This is a test.
+## This is a test.
 
 Wow this is really cool.
 
