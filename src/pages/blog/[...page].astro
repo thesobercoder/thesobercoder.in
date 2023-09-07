@@ -1,8 +1,25 @@
 ---
-import { getCollection } from "astro:content";
-import Blog from "@layouts/blog.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Blog from "@/layouts/blog.astro";
 
-export async function getStaticPaths({ paginate }) {
+interface Props {
+  page: {
+    data: CollectionEntry<"blog">[];
+    url: {
+      prev: string | undefined;
+      next: string | undefined;
+    };
+  };
+}
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: (
+    data: CollectionEntry<"blog">[],
+    options: { pageSize: number },
+  ) => CollectionEntry<"blog">[];
+}): Promise<CollectionEntry<"blog">[]> {
   const posts = await getCollection("blog");
   posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return paginate(posts, { pageSize: 10 });
