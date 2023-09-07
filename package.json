@@ -8,11 +8,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "sync": "astro sync",
-    "astro": "astro",
+    "check": "astro check",
     "fmt": "prettier '**/*' -wu",
-    "clean": "rimraf ./dist/"
+    "clean": "rimraf ./dist/ ./.astro/"
   },
   "dependencies": {
+    "@astrojs/check": "^0.2.0",
     "@astrojs/mdx": "^1.0.0",
     "@astrojs/tailwind": "^5.0.0",
     "@catppuccin/tailwindcss": "^0.1.6",
@@ -27,7 +28,8 @@
     "postcss": "^8.4.28",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "prettier": "^3.0.3",
