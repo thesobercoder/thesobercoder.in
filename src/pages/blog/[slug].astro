@@ -4,13 +4,10 @@ import Blog from "@layouts/blog.astro";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blog");
-
-  const paths = blogs.map((page) => {
-    const [...slug] = page.slug.split("/");
-    return { params: { slug: slug.join("/") || undefined }, props: page };
-  });
-
-  return paths;
+  return blogs.map((data) => ({
+    params: { slug: data.slug },
+    props: { data },
+  }));
 }
 const page = Astro.props;
 const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -18,7 +15,7 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
 }).format(page.data.date);
-const { Content } = await page.render();
+const { Content } = await page.data.render();
 ---
 
 <Blog>
