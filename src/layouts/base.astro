@@ -36,6 +36,10 @@ import Footer from "@/components/footer.astro";
     <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={imageAlt} />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' vitals.vercel-insights.com"
+    />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/webp" href="/profile.webp" />
     <title>{`${title} | Soham's Portfolio Site`}</title>
