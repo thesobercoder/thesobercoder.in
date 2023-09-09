@@ -1,9 +1,14 @@
 ---
-import Shell from "@/layouts/blog.astro";
+import Shell from "@/layouts/shell.astro";
 ---
 
 <Shell title="Resume">
-  <div class="bg-surface0 rounded-lg p-8">
-    <slot />
+  <!-- Hero Section -->
+  <section class="bg-banner bg-360 animate-banner text-base text-center h-40">
+  </section>
+  <div class="md:max-w-6xl prose py-20 mx-6 md:mx-auto">
+    <div class="bg-surface0 rounded-lg p-8">
+      <slot />
+    </div>
   </div>
 </Shell>
