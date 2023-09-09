@@ -37,14 +37,14 @@ import Footer from "@/components/footer.astro";
     <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={imageAlt} />
     <meta name="generator" content={Astro.generator} />
-    {
+    <!-- {
       import.meta.env.PROD && (
         <meta
           http-equiv="Content-Security-Policy"
           content="default-src 'self' vitals.vercel-analytics.com"
         />
       )
-    }
+    } -->
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/webp" href="/profile.webp" />
     <title>{pageTitle}</title>
