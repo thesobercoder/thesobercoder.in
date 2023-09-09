@@ -30,7 +30,7 @@ const { page } = Astro.props;
 
 <Blog>
   <h1>Blog</h1>
-  <ul class="grid grid-cols-3 not-prose gap-4">
+  <ul class="grid grid-cols-1 md:grid-cols-3 not-prose gap-4">
     {
       page.data.map((blog) => (
         <li class="bg-surface0 rounded-lg shadow-md p-4 list-none">
