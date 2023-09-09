@@ -1,5 +1,5 @@
 ---
-layout: "@/layouts/resume.astro"
+layout: "@/layouts/profile.astro"
 ---
 
 # <div align="center">Soham Dasgupta</div>
