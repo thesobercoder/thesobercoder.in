@@ -1,6 +1,7 @@
 ---
 import Shell from "@/layouts/shell.astro";
 import data from "@/data/profile.json";
+import clsx from "clsx";
 
 const { experiences, skills, certifications } = data;
 ---
@@ -54,11 +55,10 @@ const { experiences, skills, certifications } = data;
                 </div>
               )}
               <div
-                class={`${
-                  index % 2 === 0
-                    ? "col-start-1 col-end-5 mr-auto"
-                    : "col-start-6 col-end-10 ml-auto"
-                } bg-base p-8 rounded-xl my-4 w-96 group`}
+                class={clsx("bg-base p-8 rounded-xl my-4 w-96 group", {
+                  "col-start-1 col-end-5 mr-auto": index % 2 === 0,
+                  "col-start-6 col-end-10 ml-auto": index % 2 !== 0,
+                })}
               >
                 <h3 class="font-semibold text-lg mb-1 group-hover:text-mauve">
                   {experience.title}
