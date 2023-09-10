@@ -1,5 +1,5 @@
 ---
-import profile from "@/data/profile.json";
+import { socials } from "@/data/site.json";
 ---
 
 <footer class="py-20 pb-8 flex flex-col items-center">
@@ -27,7 +27,7 @@ import profile from "@/data/profile.json";
   <!-- Social -->
   <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
     {
-      profile.socials.map((link) => (
+      socials.map((link) => (
         <a
           href={link.url}
           rel="noopener noreferrer nofollow"
