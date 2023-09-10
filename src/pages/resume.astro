@@ -8,20 +8,22 @@ const { experiences, skills, recognitions, headlines, name } = data;
 <Page title="Resume">
   <div class="not-prose bg-surface0 p-8 rounded-lg">
     <!-- Header Section -->
-    <section class="flex flex-col items-center mb-8">
+    <section class="flex flex-col items-center text-center mb-8">
       <h1 class="text-4xl font-bold">{name}</h1>
-      <div class="mt-2 flex divide-x divide-solid gap-2 w-fit text-subtext0">
-        {headlines.map((h) => <p class="pl-2">{h}</p>)}
+      <div
+        class="mt-2 flex flex-col md:flex-row md:divide-x divide-solid md:gap-2 w-fit text-subtext0"
+      >
+        {headlines.map((h) => <p class="md:pl-2">{h}</p>)}
       </div>
     </section>
 
     <!-- Skills Section -->
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-2">Skills</h2>
-      <ul class="list-disc pl-5 mt-4">
+      <ul class="list-disc md:pl-5 mt-4">
         {
           skills.map((skill) => (
-            <li class="flex gap-2">
+            <li class="flex flex-col md:flex-row gap-2">
               <span class="text-lg">{skill.category}:</span>
               <span>{skill.items}</span>
             </li>
@@ -36,11 +38,11 @@ const { experiences, skills, recognitions, headlines, name } = data;
       {
         experiences.map((experience) => (
           <div class="mb-8">
-            <div class="flex gap-2 divide-x divide-solid">
+            <div class="flex flex-col md:flex-row md:gap-2 md:divide-x divide-solid">
               <h3 class="font-bold">{experience.title}</h3>
-              <p class="pl-2">{experience.company}</p>
-              <p class="pl-2 italic text-subtext0">{experience.location}</p>
-              <p class="pl-2">{experience.duration}</p>
+              <p class="md:pl-2">{experience.company}</p>
+              <p class="md:pl-2 italic text-subtext0">{experience.location}</p>
+              <p class="md:pl-2">{experience.duration}</p>
             </div>
             <ul class="list-disc pl-5 mt-4">
               {experience.description.map((desc) => (
