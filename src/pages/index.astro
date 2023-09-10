@@ -1,6 +1,13 @@
 ---
 import Shell from "@/layouts/shell.astro";
-import { experiences, skills, certifications } from "@/data/site.json";
+import {
+  experiences,
+  skills,
+  certifications,
+  name,
+  imageAlt,
+  headline,
+} from "@/data/site.json";
 ---
 
 <Shell title="Home">
@@ -8,15 +15,14 @@ import { experiences, skills, certifications } from "@/data/site.json";
   <section
     class="bg-banner bg-360 animate-banner text-base text-center py-20 px-4"
   >
-    <h1 class="text-5xl font-bold">Soham Dasgupta</h1>
-    <p class="text-xl mt-4">
-      Technology Leader | Enterprise Architect | Full-Stack Developer |
-      Open-Source Enthusiast
+    <h1 class="text-5xl font-bold">{name}</h1>
+    <p class="text-lg mt-4">
+      {headline}
     </p>
     <img
       class="mx-auto rounded-full h-48 w-48 mt-8 border-4 border-surface0"
       src="/profile.webp"
-      alt="Soham Dasgupta"
+      alt={imageAlt}
     />
   </section>
 

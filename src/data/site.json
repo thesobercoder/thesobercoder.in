@@ -3,12 +3,7 @@
   "siteTitle": "Soham's Portfolio Site",
   "siteDescription": "Welcome to the portfolio site of Soham Dasgupta",
   "imageAlt": "Profile image of Soham Dasgupta",
-  "headlines": [
-    "Technology Leader",
-    "Enterprise Architect",
-    "Full-Stack Developer",
-    "Open-Source Enthusiast"
-  ],
+  "headline": "Technology Leader | Enterprise Architect | Full-Stack Developer | Open-Source Enthusiast",
   "socials": [
     {
       "platform": "Twitter",

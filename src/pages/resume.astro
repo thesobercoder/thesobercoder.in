@@ -4,7 +4,7 @@ import {
   experiences,
   skills,
   recognitions,
-  headlines,
+  headline,
   name,
 } from "@/data/site.json";
 ---
@@ -14,11 +14,9 @@ import {
     <!-- Header Section -->
     <section class="flex flex-col items-center text-center mb-8">
       <h1 class="text-4xl font-bold">{name}</h1>
-      <div
-        class="mt-2 flex flex-col md:flex-row md:divide-x divide-solid md:gap-2 w-fit text-subtext0"
-      >
-        {headlines.map((h) => <p class="md:pl-2">{h}</p>)}
-      </div>
+      <p class="text-lg text-subtext0 mt-4">
+        {headline}
+      </p>
     </section>
 
     <!-- Skills Section -->
