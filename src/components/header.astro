@@ -1,6 +1,10 @@
 ---
 import clsx from "clsx";
 const { pathname } = Astro.url;
+
+function normalizePathname(path: string) {
+  return path.endsWith("/") ? path.slice(0, -1) : path;
+}
 ---
 
 <nav class="flex font-bold text-xl gap-8 md:gap-16 py-8 p-4 md:px-24">
@@ -18,18 +22,22 @@ const { pathname } = Astro.url;
   </a> -->
   <a
     aria-label="Home page"
-    class={clsx("hover:text-mauve", { "text-mauve": pathname === "/" })}
+    class={clsx("hover:text-mauve", {
+      "text-mauve": normalizePathname(pathname) === "/",
+    })}
     href="/">Home</a
   >
   <a
     aria-label="Resume page"
-    class={clsx("hover:text-mauve", { "text-mauve": pathname === "/resume" })}
+    class={clsx("hover:text-mauve", {
+      "text-mauve": normalizePathname(pathname) === "/resume",
+    })}
     href="/resume">Resume</a
   >
   <a
     aria-label="Blog page"
     class={clsx("hover:text-mauve", {
-      "text-mauve": pathname.startsWith("/blog"),
+      "text-mauve": normalizePathname(pathname) === "/blog",
     })}
     href="/blog">Blog</a
   >
