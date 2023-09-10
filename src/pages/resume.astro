@@ -10,7 +10,7 @@ import {
 ---
 
 <Page title="Resume">
-  <div class="not-prose bg-surface0 p-8 rounded-lg">
+  <div class="not-prose bg-surface0 p-8 rounded-lg print:text-sm">
     <!-- Header Section -->
     <section class="flex flex-col items-center text-center mb-8">
       <h1 class="text-4xl font-bold">{name}</h1>
@@ -26,7 +26,7 @@ import {
         {
           skills.map((skill) => (
             <li>
-              <div class="flex flex-col md:flex-row md:gap-2">
+              <div class="flex flex-col print:flex-row print:gap-2 md:flex-row md:gap-2">
                 <span class="font-bold">{skill.category}:</span>
                 <span>{skill.items}</span>
               </div>
@@ -42,11 +42,13 @@ import {
       {
         experiences.map((experience) => (
           <div class="mb-8">
-            <div class="flex flex-col md:flex-row md:gap-2 md:divide-x divide-solid">
+            <div class="flex flex-col md:flex-row md:gap-2 md:divide-x divide-solid print:flex-row print:gap-2 print:divide-x">
               <h3 class="font-bold">{experience.title}</h3>
-              <p class="md:pl-2">{experience.company}</p>
-              <p class="md:pl-2 italic text-subtext0">{experience.location}</p>
-              <p class="md:pl-2">{experience.duration}</p>
+              <p class="print:pl-2 md:pl-2">{experience.company}</p>
+              <p class="print:pl-2 md:pl-2 italic text-subtext0">
+                {experience.location}
+              </p>
+              <p class="print:pl-2 md:pl-2">{experience.duration}</p>
             </div>
             <ul class="list-disc pl-5 mt-4">
               {experience.description.map((desc) => (
