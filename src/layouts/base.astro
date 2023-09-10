@@ -16,7 +16,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pageTitle = `${title} | ${siteTitle}`;
 ---
 
-<html class="bg-base text-text latte dark:mocha" lang="en">
+<html class="bg-base text-text print:bg-white latte dark:mocha" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="description" content={pageTitle} />
