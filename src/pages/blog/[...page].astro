@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import Blog from "@/layouts/blog.astro";
+import Blog from "@/layouts/page.astro";
 
 interface Props {
   page: {
@@ -28,7 +28,7 @@ export async function getStaticPaths({
 const { page } = Astro.props;
 ---
 
-<Blog>
+<Blog title="Blog">
   <h1>Blog</h1>
   <ul class="grid grid-cols-1 md:grid-cols-3 not-prose gap-4">
     {

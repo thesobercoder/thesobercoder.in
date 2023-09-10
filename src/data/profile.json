@@ -1,4 +1,11 @@
 {
+  "name": "Soham Dasgupta",
+  "headlines": [
+    "Technology Leader",
+    "Enterprise Architect",
+    "Full-Stack Developer",
+    "Open-Source Enthusiast"
+  ],
   "socials": [
     {
       "platform": "Twitter",
@@ -154,26 +161,31 @@
   "recognitions": [
     {
       "title": "Outstanding Performance Award",
+      "awardedBy": "",
       "description": "For designing distributed background worker and improving user experience and app performance.",
       "date": "12/2022"
     },
     {
       "title": "Outstanding Performance Award",
+      "awardedBy": "",
       "description": "In recognition of exceptional work in successfully delivering a critical release on time.",
       "date": "12/2021"
     },
     {
       "title": "Spot Award",
+      "awardedBy": "",
       "description": "For exceptional mentoring of campus recruits who went on to win the innovation project on 5G/6G.",
       "date": "05/2019"
     },
     {
       "title": "Spot Award",
+      "awardedBy": "",
       "description": "In recognition of exceptional work in launching and leading USI engineering operations.",
       "date": "04/2017"
     },
     {
       "title": "Performer of the Month",
+      "awardedBy": "",
       "description": "For outstanding contributions in successfully delivering a critical CRM project for a large corporation.",
       "date": "02/2014"
     }

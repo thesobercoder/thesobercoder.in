@@ -1,0 +1,72 @@
+---
+import Page from "@/layouts/page.astro";
+import data from "@/data/profile.json";
+
+const { experiences, skills, recognitions, headlines, name } = data;
+---
+
+<Page title="Resume">
+  <div class="not-prose bg-surface0 p-8 rounded-lg">
+    <!-- Header Section -->
+    <section class="flex flex-col items-center mb-8">
+      <h1 class="text-4xl font-bold">{name}</h1>
+      <div class="mt-2 flex divide-x divide-solid gap-2 w-fit">
+        {headlines.map((h) => <p class="pl-2">{h}</p>)}
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-2">Skills</h2>
+      <ul class="list-disc pl-5 mt-4">
+        {
+          skills.map((skill) => (
+            <li class="flex gap-2">
+              <span class="text-lg">{skill.category}:</span>
+              <span>{skill.items}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-2">Experience</h2>
+      {
+        experiences.map((experience) => (
+          <div class="mb-8">
+            <div class="flex gap-2 divide-x divide-solid">
+              <h3 class="font-bold">{experience.title}</h3>
+              <p class="pl-2">{experience.company}</p>
+              <p class="pl-2 italic">{experience.location}</p>
+              <p class="pl-2">{experience.duration}</p>
+            </div>
+            <ul class="list-disc pl-5 mt-4">
+              {experience.description.map((desc) => (
+                <li>{desc}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- Recognition Section -->
+    <section>
+      <h2 class="text-2xl font-bold mb-2">Recognition</h2>
+      {
+        recognitions.map((recognition) => (
+          <div class="mt-4">
+            <div class="flex justify-between">
+              <h3 class="text-lg font-bold">{recognition.title}</h3>
+              <p class="text-sm">{recognition.date}</p>
+            </div>
+            <p>{recognition.awardedBy}</p>
+            <p>{recognition.description}</p>
+          </div>
+        ))
+      }
+    </section>
+  </div>
+</Page>

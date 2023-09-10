@@ -1,5 +1,7 @@
 ---
 import "@fontsource/inter";
+import Header from "@/components/header.astro";
+import Footer from "@/components/footer.astro";
 
 interface Props {
   title: string;
@@ -11,9 +13,6 @@ const imageAlt = "Profile image of Soham Dasgupta";
 const ogImageURL = new URL("/profile.webp", Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pageTitle = `${title} | Soham's Portfolio Site`;
-
-import Header from "@/components/header.astro";
-import Footer from "@/components/footer.astro";
 ---
 
 <html class="bg-base text-text latte dark:mocha" lang="en">
