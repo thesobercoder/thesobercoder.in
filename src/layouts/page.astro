@@ -10,7 +10,9 @@ const { title } = Astro.props;
 
 <Shell title={title}>
   <!-- Hero Section -->
-  <section class="bg-banner bg-360 animate-banner text-base text-center h-40">
+  <section
+    class="bg-banner bg-360 animate-banner text-base text-center h-40 print:hidden"
+  >
   </section>
   <div
     class="prose max-w-prose md:max-w-2xl lg:max-w-4xl xl:max-w-6xl py-20 mx-8 md:mx-auto"
