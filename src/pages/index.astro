@@ -60,7 +60,7 @@ import {
               rel="noopener noreferrer nofollow"
               target="_blank"
               aria-label="View Project"
-              class="lg:place-self-end text-center text-subtext0 rounded-lg bg-mantle w-32 p-3 gap-2 hover:text-mauve"
+              class="place-self-center text-center text-subtext0 rounded-lg bg-mantle w-32 p-3 gap-2 hover:text-mauve"
             >
               View
             </a>
@@ -74,13 +74,13 @@ import {
   <section class="py-20 bg-surface0 flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Experience</h2>
     <div
-      class="mt-8 mx-6 xl:w-1/2 space-y-8 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px xl:before:mx-auto xl:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-overlay2 before:to-transparent"
+      class="mt-8 mx-6 xl:w-1/2 space-y-8 relative before:absolute before:inset-0 before:ml-[0.75rem] before:-translate-x-px xl:before:mx-auto xl:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-overlay2 before:to-transparent"
     >
       {
         experiences.map((experience) => (
           <div class="relative flex items-center justify-between xl:justify-normal xl:odd:flex-row-reverse group">
-            <div class="flex w-8 h-8 rounded-full bg-overlay2 xl:order-1 xl:group-odd:-translate-x-1/2 xl:group-even:translate-x-1/2" />
-            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-2rem)] bg-base p-8 rounded-lg">
+            <div class="flex w-6 h-6 rounded-full bg-overlay2 xl:order-1 xl:group-odd:-translate-x-1/2 xl:group-even:translate-x-1/2" />
+            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] bg-base p-8 rounded-lg">
               <div class="font-bold text-lg mb-1">{experience.title}</div>
               <time class="font-caveat font-medium text-blue">
                 {experience.company}
@@ -99,30 +99,22 @@ import {
     <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-20 text-center">
       {
         certifications.map((certification) => (
-          <div class="flex flex-col items-center w-80">
+          <div class="flex flex-col items-center w-80 rounded-lg bg-surface0 p-8">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-12 w-12 text-subtext0"
+              class="h-12 w-12"
               fill="currentColor"
               viewBox="0 0 384 512"
             >
               <path d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
             </svg>
-            <h3 class="font-bold text-lg mb-1 mt-2">{certification.title}</h3>
+            <h3 class="font-bold text-lg mb-4 mt-2">{certification.title}</h3>
             <a
-              class="text-subtext0 flex gap-2 items-center hover:text-mauve"
+              class="place-self-center text-center text-subtext0 rounded-lg bg-mantle w-32 p-3 gap-2 hover:text-mauve"
               href={certification.link}
               target="_blank"
             >
-              View Certification
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 group-hover:text-mauve"
-                fill="currentColor"
-                viewBox="0 0 512 512"
-              >
-                <path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z" />
-              </svg>
+              View
             </a>
           </div>
         ))
