@@ -187,5 +187,12 @@
       "description": "For outstanding contributions in successfully delivering a critical CRM project for a large corporation.",
       "date": "02/2014"
     }
+  ],
+  "projects": [
+    {
+      "name": "Polygon",
+      "desc": "A Mac Rectangle inspired window manager for Windows 10/11 powered by AutoHotkey.",
+      "url": "https://github.com/thesobercoder/polygon"
+    }
   ]
 }
