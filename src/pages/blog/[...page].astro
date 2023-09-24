@@ -33,18 +33,17 @@ const { page } = Astro.props;
   <ul class="grid grid-cols-1 md:grid-cols-3 not-prose gap-4">
     {
       page.data.map((blog) => (
-        <li class="bg-surface0 rounded-lg shadow-md p-4 list-none">
+        <li class="list-none">
           <a
             href={`blog/${blog.slug}`}
-            class="underline hover:text-mauve font-semibold"
+            class="bg-surface0 rounded-lg leading-6 p-6 block group transition ease-in-out duration-300 hover:bg-surface1"
+            aria-label={blog.data.title}
           >
-            {blog.data.title}
+            <span class="transition ease-in-out duration-300 group-hover:text-mauve font-semibold text-xl">
+              {blog.data.title}
+            </span>
+            <p class="text-lg text-subtext0 mt-4">{blog.data.description}</p>
           </a>
-          <p class="text-subtext0 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            auctor, nunc id aliquam ultrices, nisl nunc tincidunt nunc, id
-            lacinia nunc nunc id nunc.
-          </p>
         </li>
       ))
     }
