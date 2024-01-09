@@ -18,7 +18,9 @@ const { pathname } = Astro.url;
     class={clsx("hover:text-mauve", {
       "text-mauve": pathname.startsWith("/resume"),
     })}
-    href="/resume">Resume</a
+    target="_blank"
+    rel="noopener"
+    href="/resume.pdf">Resume</a
   >
   <a
     aria-label="Blog page"
