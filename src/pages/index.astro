@@ -80,12 +80,14 @@ import {
         experiences.map((experience) => (
           <div class="relative flex items-center justify-between xl:justify-normal xl:odd:flex-row-reverse group">
             <div class="flex w-6 h-6 rounded-full bg-overlay2 xl:order-1 xl:group-odd:-translate-x-1/2 xl:group-even:translate-x-1/2" />
-            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] bg-base p-8 rounded-lg">
-              <div class="font-bold text-lg mb-1">{experience.title}</div>
-              <time class="font-caveat font-medium text-blue">
-                {experience.company}
-              </time>
-              <div class="text-subtext0 text-sm">{experience.duration}</div>
+            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] h-40 flex items-center bg-base p-8 rounded-lg">
+              <section>
+                <div class="font-bold text-lg mb-1">{experience.title}</div>
+                <time class="font-caveat font-medium text-blue">
+                  {experience.company}
+                </time>
+                <div class="text-subtext0 text-sm">{experience.duration}</div>
+              </section>
             </div>
           </div>
         ))

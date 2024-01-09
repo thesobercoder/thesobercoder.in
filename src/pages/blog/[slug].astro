@@ -25,7 +25,9 @@ const { Content } = await entry.render();
 ---
 
 <Blog title={post.title}>
+  <section class="prose prose-xl mx-auto">
   <h1>{post.title}</h1>
   <p class="text-subtext0 text-lg">{formattedDate}</p>
   <Content />
+</section>
 </Blog>
