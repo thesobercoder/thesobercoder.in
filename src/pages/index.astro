@@ -13,18 +13,18 @@ import {
 
 <Shell title="Home">
   <!-- Hero Section -->
-  <section
-    class="bg-banner bg-360 animate-banner text-base text-center py-20 px-4"
-  >
-    <h1 class="text-5xl font-bold">{name}</h1>
+  <section class="text-center px-4">
+    <div class="relative mx-auto h-48 w-48 group">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-mauve to-pink rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-200 animate-tilt"
+      >
+      </div>
+      <img class="rounded-full relative" src="/profile.webp" alt={imageAlt} />
+    </div>
+    <h1 class="text-5xl font-bold mt-10">{name}</h1>
     <p class="text-lg mt-4">
       {headline}
     </p>
-    <img
-      class="mx-auto rounded-full h-48 w-48 mt-8 border-4 border-surface0"
-      src="/profile.webp"
-      alt={imageAlt}
-    />
   </section>
 
   <!-- Skills Section -->
