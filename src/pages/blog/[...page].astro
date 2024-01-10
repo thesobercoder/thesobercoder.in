@@ -29,35 +29,34 @@ const { page } = Astro.props;
 ---
 
 <Blog title="Blog">
-  <div class="flex flex-col gap-6">
-    {
-      page.data.map((blog) => (
-        <>
-          <article class="text-text">
-            <div class="space-y-2 not-prose">
-              <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]">
-                {blog.data.title}
-              </h1>
-              <p class="text-subtext0">
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }).format(blog.data.date)}
-              </p>
-            </div>
-            <p>{blog.data.description}</p>
-            <a
-              class="text-mauve hover:underline mt-4 inline-block"
-              href={`blog/${blog.slug}`}
-            >
-              Read More
-            </a>
-          </article>
-        </>
-      ))
-    }
-  </div>
+  {
+    page.data.map((blog) => (
+      <>
+        <article class="text-text">
+          <div class="space-y-2 not-prose">
+            <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]">
+              {blog.data.title}
+            </h1>
+            <p class="text-subtext0">
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }).format(blog.data.date)}
+            </p>
+          </div>
+          <p>{blog.data.description}</p>
+          <a
+            class="text-mauve hover:underline mt-4 inline-block"
+            href={`blog/${blog.slug}`}
+          >
+            Read More
+          </a>
+        </article>
+      </>
+    ))
+  }
+
   <div class="flex justify-between">
     {
       page.url.prev ? (
@@ -74,9 +73,7 @@ const { page } = Astro.props;
           </svg>{" "}
           Recent posts
         </a>
-      ) : (
-        <div />
-      )
+      ) : null
     }
     {
       page.url.next ? (
@@ -93,9 +90,7 @@ const { page } = Astro.props;
             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
           </svg>
         </a>
-      ) : (
-        <div />
-      )
+      ) : null
     }
   </div>
 </Blog>
