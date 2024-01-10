@@ -9,6 +9,8 @@ export default defineConfig({
   site: "https://www.thesobercoder.in",
   integrations: [tailwind(), sitemap(), robotsTxt()],
   adapter: vercel({
-    analytics: true,
+    webAnalytics: {
+      enabled: true,
+    },
   }),
 });
