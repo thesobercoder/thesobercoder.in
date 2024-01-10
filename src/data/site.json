@@ -41,60 +41,25 @@
       "title": "Director, Software Engineering",
       "company": "LeaseAccelerator",
       "duration": "May 2023 - Present",
-      "location": "Kolkata, India",
-      "description": [
-        "Spearheaded the strategic direction and technical roadmap and architecture for LeaseAccelerator's flagship SaaS lease lifecycle products, driving innovation and ensuring alignment with business goals.",
-        "Drove the adoption of modern frontend and backend technologies, leveraging AWS Lamda, Next.js, React, TypeScript, Monorepo, and other cutting-edge tools to modernize brownfield or build greenfield products.",
-        "Collaborated with key stakeholders, including product management and executive leadership, to align technology strategy with business objectives and ensure successful product launches.",
-        "Oversaw and mentored cross-functional teams of software engineers, architects, and product managers, fostering a collaborative and high-performance culture while ensuring successful delivery of projects."
-      ]
+      "location": "Kolkata, India"
     },
     {
       "title": "Software Engineering Manager",
       "company": "Deloitte",
       "duration": "Apr 2017 - May 2023",
-      "location": "Kolkata, India",
-      "description": [
-        "Spearheaded the roadmap and development of an enterprise lease accounting application used by 100+ Fortune 500 companies with 20% YOY revenue growth, using C#, VB.NET, ASP.NET, MSSQL, and jQuery.",
-        "Implemented a distributed background worker for executing high-compute jobs using C#, MSSQL, Service Broker that serves thousands of time-critical report generation requests monthly.",
-        "Engineered an enterprise reporting system generating 200+ FASB and IFRS compliant lease accounting reports.",
-        "Orchestrated the integration of CI/CD pipelines, implemented pull request/branch/code review policies, conducted code reviews, and executed load/stress and unit/integration testing.",
-        "Developed an internal tool which reduced accounting accuracy testing time by over 70%.",
-        "Coauthored a microservice backend (codenamed: Fabric) and a micro-frontend framework (codenamed: Textile) using C#, .NET, gRPC, Go, Docker, Kubernetes, Helm, MSSQL, RabbitMQ, React, single-spa, JavaScript and TypeScript to enable downstream product teams to build client-facing applications.",
-        "Orchestrated the successful migration from SVN to Git as the primary source control system and transitioned the backlog and story management system to Azure DevOps, resulting in improved team collaboration and adoption of agile practices.",
-        "Served as a SME responsible for reviewing architecture for over 30+ products across the US Advisory practice and offering optimization and modernization recommendations, while also identifying areas that need immediate and long-term improvements.",
-        "Conducted technical and functional training sessions and team-building activities to foster a positive and growing environment within teams.",
-        "Restructured the behavioral and technical interview process to ensure the selection of top talent and increased offer conversion ratio by conducting post-offer connects with candidates."
-      ]
+      "location": "Kolkata, India"
     },
     {
       "title": "Development Lead",
       "company": "EffiaSoft",
       "duration": "Mar 2014 - Mar 2017",
-      "location": "Hyderabad, India",
-      "description": [
-        "Engineered a REST API with 20+ endpoints for a Point-of-sale (POS) application for MSME businesses, with more than 3000 customers using C#, ASP.NET Web API, ADO.NET, MSSQL.",
-        "Modernized the code architecture of a multi-tenant enterprise ERP application using C#, ASP.NET, ADO.NET, and MSSQL, achieving a 25% increase in overall application performance and scalability.",
-        "Architected the data-sync with resume capability for the multi-branch Android/Windows Point-of-sale (POS) app with the REST API backend, ensuring data consistency and prevention of data loss/corruption, during periods of interruption.",
-        "Developed an internal tool that allowed bulk import and export of transaction and master data via Excel files.",
-        "Contributed to the development of an enterprise CRM application used by a large shipping corporation using C#, ASP.NET WebForms, and MSSQL.",
-        "Aligned business goals and technical implementation by collaborating with product managers and stakeholders to identify and prioritize requirements.",
-        "Introduced comprehensive industry-standard code review guidelines to ensure that the team conforms to writing clean and maintainable code.",
-        "Conducted technical interviews to evaluate candidates' skills, experience, and cultural fit, ensuring the selection of top talent."
-      ]
+      "location": "Hyderabad, India"
     },
     {
       "title": "Junior Developer",
       "company": "La Exactlly Software",
       "duration": "Nov 2009 - Mar 2014",
-      "location": "Kolkata, India",
-      "description": [
-        "Developed an enterprise payroll application used by large organizations having 5000+ employees using VB.NET, WinForms, MSSQL, DevExpress.",
-        "Reduced over 70% of overall salary calculation time by rewriting the dynamic formula-based payroll calculation engine of an enterprise Payroll application using VB.NET, WinForms, DevExpress, and MSSQL.",
-        "Developed salary slip and accounting reports for an enterprise Payroll application using MSSQL, VB.NET, ADO.NET, DevExpress XtraReport.",
-        "Implemented new features for the accounting and inventory module of an enterprise ERP application using VB.NET, WinForms, ADO.NET, MSSQL.",
-        "Performed performance tuning of various accounting, inventory and payroll reports to reduce report generation time."
-      ]
+      "location": "Kolkata, India"
     }
   ],
   "skills": [
