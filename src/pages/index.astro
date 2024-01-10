@@ -19,7 +19,11 @@ import {
         class="absolute inset-0 bg-gradient-to-br from-lavender to-mauve rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-200 animate-tilt"
       >
       </div>
-      <img class="rounded-full relative" src="/profile.webp" alt={imageAlt} />
+      <img
+        class="rounded-full border border-surface2 relative"
+        src="/profile.webp"
+        alt={imageAlt}
+      />
     </div>
     <h1 class="text-5xl font-bold mt-10">{name}</h1>
     <p class="text-lg mt-4">
@@ -45,7 +49,7 @@ import {
   </section>
 
   <!-- Projects Section -->
-  <section class="py-20 bg-mantle">
+  <section class="py-20">
     <h2 class="text-4xl font-bold text-center">My Projects</h2>
     <div
       class="grid md:grid-cols-2 xl:grid-cols-4 justify-center mx-8 lg:w-fit lg:mx-auto gap-6 mt-8"
@@ -71,7 +75,7 @@ import {
   </section>
 
   <!-- Experience Section -->
-  <section class="py-20 bg-surface0 flex flex-col justify-center items-center">
+  <section class="py-20 flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Experience</h2>
     <div
       class="mt-8 mx-6 xl:w-1/2 space-y-8 relative before:absolute before:inset-0 before:ml-[0.75rem] before:-translate-x-px xl:before:mx-auto xl:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-overlay2 before:to-transparent"
@@ -80,7 +84,7 @@ import {
         experiences.map((experience) => (
           <div class="relative flex items-center justify-between xl:justify-normal xl:odd:flex-row-reverse group">
             <div class="flex w-6 h-6 rounded-full bg-overlay2 xl:order-1 xl:group-odd:-translate-x-1/2 xl:group-even:translate-x-1/2" />
-            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] h-40 flex items-center bg-base p-8 rounded-lg">
+            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] h-40 flex items-center bg-surface0 p-8 rounded-lg">
               <section>
                 <div class="font-bold text-lg mb-1">{experience.title}</div>
                 <time class="font-caveat font-medium text-blue">
@@ -96,7 +100,7 @@ import {
   </section>
 
   <!-- Certifications Section -->
-  <section class="py-20 bg-mantle flex flex-col justify-center items-center">
+  <section class="py-20 flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Certifications</h2>
     <div
       class="grid md:grid-cols-2 xl:grid-cols-4 justify-center mx-8 lg:w-fit lg:mx-auto gap-6 mt-8"

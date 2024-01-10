@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import Blog from "@/layouts/page.astro";
+import Blog from "@/layouts/blog.astro";
 import type { BlogSchema } from "@/content/config";
 
 interface Props {
@@ -25,9 +25,23 @@ const { Content } = await entry.render();
 ---
 
 <Blog title={post.title}>
-  <section class="prose prose-xl mx-auto">
-  <h1>{post.title}</h1>
-  <p class="text-subtext0 text-lg">{formattedDate}</p>
-  <Content />
-</section>
+  <article class="text-text">
+    <div class="space-y-2 not-prose">
+      <h1
+        class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]"
+      >
+        {post.title}
+      </h1>
+      <p class="text-subtext0">
+        {
+          new Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }).format(post.date)
+        }
+      </p>
+    </div>
+    <Content />
+  </article>
 </Blog>
