@@ -1,6 +1,6 @@
 ---
 title: "Unleash the Beast Within: Tweak Your VS Code Like a Pro (Without Sacrificing Your Sanity)"
-description: "Forget staring at VS Code's settings menu like a deer caught in the headlights of JavaScripts."
+description: 'Forget staring at VS Code''s settings menu like a deer caught in the headlights of JavaScripts. This ain''t no "tweak-til-you-weep" guide. We''re talking turbocharged coding, streamlined workflows, and enough efficiency to make your boss do a double-take. Yep, we''re about to turn you into a coding ninja, all thanks to the magic of meticulously optimized settings.'
 slug: "vscode-settings"
 date: 2023-09-24
 ---
