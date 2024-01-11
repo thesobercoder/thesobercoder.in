@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import Blog from "@/layouts/page.astro";
+import Blog from "@/layouts/blog.astro";
 
 interface Props {
   page: {
@@ -29,25 +29,38 @@ const { page } = Astro.props;
 ---
 
 <Blog title="Blog">
-  <h1>Blog</h1>
-  <ul class="grid grid-cols-1 md:grid-cols-3 not-prose gap-4">
-    {
-      page.data.map((blog) => (
-        <li class="list-none">
-          <a
-            href={`blog/${blog.slug}`}
-            class="bg-surface0 rounded-lg leading-tight p-6 block group transition ease-in-out duration-300 hover:bg-surface1"
-            aria-label={blog.data.title}
-          >
-            <span class="transition ease-in-out duration-300 group-hover:text-mauve font-semibold text-xl">
+  {
+    page.data.map((blog) => (
+      <>
+        <article class="text-text [&:not(:first-child)]:mt-10">
+          <div class="space-y-2 not-prose">
+            <h1
+              transition:name={`blog-title-${blog.slug}`}
+              class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]"
+            >
               {blog.data.title}
-            </span>
-            <p class="text-lg text-subtext0 mt-4">{blog.data.description}</p>
+            </h1>
+            <p transition:name={`blog-date-${blog.slug}`} class="text-subtext0">
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }).format(blog.data.date)}
+            </p>
+          </div>
+          <p transition:name={`blog-content-${blog.slug}`}>
+            {blog.data.description}
+          </p>
+          <a
+            class="transition text-mauve hover:underline mt-4 inline-block"
+            href={`blog/${blog.slug}`}
+          >
+            Read More
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        </article>
+      </>
+    ))
+  }
 
   <div class="flex justify-between">
     {
@@ -65,9 +78,7 @@ const { page } = Astro.props;
           </svg>{" "}
           Recent posts
         </a>
-      ) : (
-        <div />
-      )
+      ) : null
     }
     {
       page.url.next ? (
@@ -84,9 +95,7 @@ const { page } = Astro.props;
             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
           </svg>
         </a>
-      ) : (
-        <div />
-      )
+      ) : null
     }
   </div>
 </Blog>

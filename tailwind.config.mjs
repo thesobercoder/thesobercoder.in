@@ -1,6 +1,6 @@
-import defaultTheme from "tailwindcss/defaultTheme";
 import catppuccin from "@catppuccin/tailwindcss";
 import typography from "@tailwindcss/typography";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const accent = "text";
 const linkColor = "blue";
@@ -9,7 +9,6 @@ const linkColor = "blue";
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "media",
-  mode: "jit",
   theme: {
     extend: {
       fontFamily: {
@@ -21,9 +20,24 @@ module.exports = {
           "50%": { "background-position": "100% 50%" },
           "100%": { "background-position": "0 50%" },
         },
+        tilt: {
+          "0%, 100%": {
+            transform: "translate(0,0)",
+          },
+          "25%": {
+            transform: "translate(5px,5px)",
+          },
+          "50%": {
+            transform: "translate(0px,5px)",
+          },
+          "75%": {
+            transform: "translate(-5px,5px)",
+          },
+        },
       },
       animation: {
         banner: "banner-keyframe 36s ease infinite",
+        tilt: "tilt 10s infinite linear",
       },
       backgroundImage: (theme) => ({
         banner: `linear-gradient(300deg, ${theme(

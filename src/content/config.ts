@@ -9,6 +9,7 @@ const blogSchema = z.object({
 const blogCollection = defineCollection({ schema: blogSchema });
 
 export type BlogSchema = z.infer<typeof blogSchema>;
+
 export const collections = {
   blog: blogCollection,
 };

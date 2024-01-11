@@ -1,30 +1,48 @@
 ---
 import clsx from "clsx";
+import { socials } from "@/data/site.json";
+
 const { pathname } = Astro.url;
 ---
 
-<nav
-  class="flex font-bold text-xl gap-8 md:gap-16 py-8 px-10 lg:px-20 print:hidden"
->
-  <a
-    aria-label="Home page"
-    class={clsx("hover:text-mauve", {
-      "text-mauve": pathname === "/",
-    })}
-    href="/">Home</a
-  >
-  <a
-    aria-label="Resume page"
-    class={clsx("hover:text-mauve", {
-      "text-mauve": pathname.startsWith("/resume"),
-    })}
-    href="/resume">Resume</a
-  >
-  <a
-    aria-label="Blog page"
-    class={clsx("hover:text-mauve", {
-      "text-mauve": pathname.startsWith("/blog"),
-    })}
-    href="/blog">Blog</a
-  >
-</nav>
+<header class="flex justify-between py-8 mx-10">
+  <nav class="flex font-bold text-xl gap-10 print:hidden">
+    <a
+      aria-label="Home page"
+      class={clsx("transition hover:text-mauve", {
+        "text-mauve": pathname === "/",
+      })}
+      href="/">Home</a
+    >
+    <a
+      aria-label="Blog page"
+      class={clsx("transition hover:text-mauve", {
+        "text-mauve": pathname.startsWith("/blog"),
+      })}
+      href="/blog">Blog</a
+    >
+  </nav>
+  <div class="hidden md:flex gap-6">
+    {
+      socials.map((link) => (
+        <a
+          href={link.url}
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+          aria-label={link.platform}
+          class="transition align-center flex items-center justify-center font-normal outline-none focus:outline-none hover:text-mauve"
+        >
+          <svg
+            class="h-6 w-6"
+            aria-hidden="true"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={link.viewBox}
+          >
+            <path d={link.iconPath} />
+          </svg>
+        </a>
+      ))
+    }
+  </div>
+</header>
