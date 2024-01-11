@@ -50,9 +50,9 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
   </section>
 
   <!-- Skills Section -->
-  <section class="py-20">
+  <section class="py-12">
     <h2 class="text-4xl font-bold text-center">My Skills</h2>
-    <div class="flex flex-wrap justify-center mx-32 gap-6 mt-8">
+    <div class="flex flex-wrap justify-center mx-4 md:mx-32 gap-6 mt-8">
       {
         skills.map((skill) => (
           <>
@@ -68,7 +68,7 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
   </section>
 
   <!-- Projects Section -->
-  <section class="py-20">
+  <section class="py-12">
     <h2 class="text-4xl font-bold text-center">My Projects</h2>
     <div
       class="grid md:grid-cols-2 xl:grid-cols-4 justify-center mx-8 lg:w-fit lg:mx-auto gap-6 mt-8"
@@ -94,23 +94,22 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
   </section>
 
   <!-- Experience Section -->
-  <section class="py-20 flex flex-col justify-center items-center">
+  <section class="py-12 flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Experience</h2>
     <div
-      class="mt-8 mx-6 xl:w-1/2 space-y-8 relative before:absolute before:inset-0 before:ml-[0.75rem] before:-translate-x-px xl:before:mx-auto xl:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-overlay2 before:to-transparent"
+      class="mt-8 mx-8 relative before:absolute before:inset-0 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-overlay2 before:to-transparent"
     >
       {
         experiences.map((experience) => (
-          <div class="relative flex items-center justify-between xl:justify-normal xl:odd:flex-row-reverse group">
-            <div class="flex w-6 h-6 rounded-full bg-overlay2 xl:order-1 xl:group-odd:-translate-x-1/2 xl:group-even:translate-x-1/2" />
-            <div class="w-[calc(100%-4rem)] xl:w-[calc(50%-1.5rem)] h-40 flex items-center bg-surface0 p-8 rounded-lg">
-              <section>
-                <div class="font-bold text-lg">{experience.title}</div>
-                <time class="font-medium text-blue mb-1">
-                  {experience.company}
-                </time>
-                <div class="text-sm">{experience.duration}</div>
-              </section>
+          <div class="transform transition cursor-pointer ml-10 relative flex items-center px-10 py-8 bg-surface0 rounded-lg mb-10 flex-row space-y-0 min-h-40">
+            <i class="w-5 h-5 bg-overlay2 absolute -left-10 transform -translate-x-2/4 rounded-full z-10 mt-0" />
+            <i class="w-10 h-1 bg-overlay2 absolute -left-10 z-0" />
+            <div class="flex-auto">
+              <h1 class="text-xl font-bold">{experience.title}</h1>
+              <h1 class="text-blue">
+                {experience.company}
+              </h1>
+              <h3>{experience.duration}</h3>
             </div>
           </div>
         ))
@@ -119,7 +118,7 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
   </section>
 
   <!-- Certifications Section -->
-  <section class="py-20 flex flex-col justify-center items-center">
+  <section class="py-12 flex flex-col justify-center items-center">
     <h2 class="text-4xl font-bold text-center">My Certifications</h2>
     <div
       class="grid md:grid-cols-2 xl:grid-cols-4 justify-center mx-8 lg:w-fit lg:mx-auto gap-6 mt-8"
