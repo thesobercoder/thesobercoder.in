@@ -23,11 +23,12 @@ const { Content } = await entry.render();
   <article class="text-text">
     <div class="space-y-2 not-prose">
       <h1
+        transition:name={`blog-title-${entry.slug}`}
         class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]"
       >
         {post.title}
       </h1>
-      <p class="text-subtext0">
+      <p transition:name={`blog-date-${entry.slug}`} class="text-subtext0">
         {
           new Intl.DateTimeFormat("en-US", {
             year: "numeric",
@@ -37,6 +38,6 @@ const { Content } = await entry.render();
         }
       </p>
     </div>
-    <Content />
+    <Content transition:name={`blog-content-${entry.slug}`} />
   </article>
 </Blog>

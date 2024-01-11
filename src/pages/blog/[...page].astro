@@ -32,12 +32,15 @@ const { page } = Astro.props;
   {
     page.data.map((blog) => (
       <>
-        <article class="text-text">
+        <article class="text-text [&:not(:first-child)]:mt-10">
           <div class="space-y-2 not-prose">
-            <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]">
+            <h1
+              transition:name={`blog-title-${blog.slug}`}
+              class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]"
+            >
               {blog.data.title}
             </h1>
-            <p class="text-subtext0">
+            <p transition:name={`blog-date-${blog.slug}`} class="text-subtext0">
               {new Intl.DateTimeFormat("en-US", {
                 year: "numeric",
                 month: "long",
@@ -45,7 +48,9 @@ const { page } = Astro.props;
               }).format(blog.data.date)}
             </p>
           </div>
-          <p>{blog.data.description}</p>
+          <p transition:name={`blog-content-${blog.slug}`}>
+            {blog.data.description}
+          </p>
           <a
             class="transition text-mauve hover:underline mt-4 inline-block"
             href={`blog/${blog.slug}`}

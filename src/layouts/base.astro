@@ -3,6 +3,7 @@ import "@fontsource/inter";
 import Header from "@/components/header.astro";
 import Footer from "@/components/footer.astro";
 import { siteTitle, siteDescription } from "@/data/site.json";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -21,6 +22,7 @@ const pageTitle = `${title} | ${siteTitle}`;
   lang="en"
 >
   <head>
+    <ViewTransitions />
     <meta charset="utf-8" />
     <meta name="description" content={pageTitle} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
