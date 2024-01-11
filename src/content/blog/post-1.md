@@ -1,5 +1,5 @@
 ---
-title: "Unleash the Code Beast Within: Tweak Your VS Code Like a Pro (Without Sacrificing Your Sanity)"
+title: "Unleash the Beast Within: Tweak Your VS Code Like a Pro (Without Sacrificing Your Sanity)"
 description: "Forget staring at VS Code's settings menu like a deer caught in the headlights of JavaScripts."
 slug: "vscode-settings"
 date: 2023-09-24

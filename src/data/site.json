@@ -65,19 +65,94 @@
   "skills": [
     {
       "category": "Frontend",
-      "items": "HTML, CSS, JavaScript, React, Vue, etc."
+      "items": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Astro",
+        "jQuery"
+      ]
     },
     {
       "category": "Backend",
-      "items": "Node.js, Express, Django, etc."
+      "items": [
+        "C#",
+        "VB.NET",
+        ".NET",
+        "ASP.NET",
+        "REST",
+        "GraphQL",
+        "OIDC",
+        "JWT",
+        "SAML",
+        "gRPC",
+        "Node",
+        "Bun",
+        "Deno"
+      ]
     },
     {
       "category": "Database",
-      "items": "MySQL, PostgreSQL, MongoDB, etc."
+      "items": [
+        "Microsoft SQL Server",
+        "SQL Service Broker",
+        "SQLite, RabbitMQ"
+      ]
+    },
+    {
+      "category": "AI",
+      "items": [
+        "OpenAI Assistants API",
+        "GPT-4 Turbo",
+        "GPT-4",
+        "GPT-3.5 Turbo",
+        "LangChain JS",
+        "Prompt Engineering"
+      ]
+    },
+    {
+      "category": "SCM",
+      "items": [
+        "Git",
+        "Azure Repos",
+        "GitHub",
+        "Bitbucket",
+        "Azure Boards",
+        "Wrike",
+        "JIRA",
+        "Azure Pipelines",
+        "GitHub Actions"
+      ]
     },
     {
       "category": "Cloud",
-      "items": "MySQL, PostgreSQL, MongoDB, etc."
+      "items": [
+        "AWS Lambda",
+        "Amazon SES",
+        "Amazon RDS",
+        "AWS Cognito",
+        "AWS CloudWatch",
+        "AWS CDK",
+        "SST",
+        "Docker",
+        "Kubernetes",
+        "Helm"
+      ]
+    },
+    {
+      "category": "AppSec",
+      "items": ["Sonar Cloud", "WhiteSource", "Fortify"]
+    },
+    {
+      "category": "Engineering",
+      "items": [
+        "Microservices",
+        "Distributed Systems",
+        "Event-Driven Architecture"
+      ]
     }
   ],
   "certifications": [
