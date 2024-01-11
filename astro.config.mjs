@@ -13,4 +13,9 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  markdown: {
+    shikiConfig: {
+      theme: "dark-plus", // Replace 'nord' with your desired theme
+    },
+  },
 });
