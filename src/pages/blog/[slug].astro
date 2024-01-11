@@ -16,11 +16,6 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const post: BlogSchema = entry.data;
-const formattedDate = new Intl.DateTimeFormat("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-}).format(post.date);
 const { Content } = await entry.render();
 ---
 
