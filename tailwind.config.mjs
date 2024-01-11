@@ -1,6 +1,6 @@
-import defaultTheme from "tailwindcss/defaultTheme";
 import catppuccin from "@catppuccin/tailwindcss";
 import typography from "@tailwindcss/typography";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const accent = "text";
 const linkColor = "blue";
