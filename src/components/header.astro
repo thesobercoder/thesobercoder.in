@@ -9,14 +9,14 @@ const { pathname } = Astro.url;
   <nav class="flex font-bold text-xl gap-10 print:hidden">
     <a
       aria-label="Home page"
-      class={clsx("hover:text-mauve", {
+      class={clsx("transition hover:text-mauve", {
         "text-mauve": pathname === "/",
       })}
       href="/">Home</a
     >
     <a
       aria-label="Blog page"
-      class={clsx("hover:text-mauve", {
+      class={clsx("transition hover:text-mauve", {
         "text-mauve": pathname.startsWith("/blog"),
       })}
       href="/blog">Blog</a
@@ -30,7 +30,7 @@ const { pathname } = Astro.url;
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="align-center flex items-center justify-center font-normal outline-none focus:outline-none hover:text-mauve"
+          class="transition align-center flex items-center justify-center font-normal outline-none focus:outline-none hover:text-mauve"
         >
           <svg
             class="h-6 w-6"

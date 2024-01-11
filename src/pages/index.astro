@@ -13,14 +13,16 @@ import {
 
 <Shell title="Home">
   <!-- Hero Section -->
-  <section class="text-center px-4">
+  <section
+    class="flex flex-col text-center items-center px-4 py-20 mb-6 bg-mantle bg-360 animate-banner"
+  >
     <div class="relative mx-auto h-48 w-48 group">
       <div
-        class="absolute inset-0 bg-gradient-to-br from-lavender to-mauve rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-200 animate-tilt"
+        class="absolute inset-0 bg-gradient-to-br from-lavender to-mauve rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-200 animate-tilt"
       >
       </div>
       <img
-        class="rounded-full border border-surface2 relative"
+        class="rounded-full border-4 border-text relative"
         src="/profile.webp"
         alt={imageAlt}
       />
@@ -29,6 +31,20 @@ import {
     <p class="text-lg mt-4">
       {headline}
     </p>
+    <div class="flex flex-col md:flex-row mt-6 gap-4">
+      <a
+        href="/resume.pdf"
+        aria-label="Resume"
+        class="transition px-6 py-4 font-semibold border-4 border-text rounded-full hover:text-base hover:bg-text text-center w-48"
+        >Resume</a
+      >
+      <a
+        href="mailto:soham@thesobercoder.in"
+        aria-label="Resume"
+        class="transition px-6 py-4 font-semibold border-4 border-text rounded-full bg-text text-base hover:text-text hover:bg-base text-center w-48"
+        >Let's Connect</a
+      >
+    </div>
   </section>
 
   <!-- Skills Section -->
