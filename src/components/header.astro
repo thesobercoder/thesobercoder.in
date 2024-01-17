@@ -5,8 +5,8 @@ import { socials } from "@/data/site.json";
 const { pathname } = Astro.url;
 ---
 
-<header class="flex justify-between py-8 mx-10">
-  <nav class="flex font-bold text-xl gap-10 print:hidden">
+<header class="mx-10 flex justify-between py-8">
+  <nav class="flex gap-10 text-xl font-bold print:hidden">
     <a
       aria-label="Home page"
       class={clsx("transition hover:text-mauve", {
@@ -22,7 +22,7 @@ const { pathname } = Astro.url;
       href="/blog">Blog</a
     >
   </nav>
-  <div class="hidden md:flex gap-6">
+  <div class="hidden gap-6 md:flex">
     {
       socials.map((link) => (
         <a
@@ -30,7 +30,7 @@ const { pathname } = Astro.url;
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="transition align-center flex items-center justify-center font-normal outline-none focus:outline-none hover:text-mauve"
+          class="align-center flex items-center justify-center font-normal outline-none transition hover:text-mauve focus:outline-none"
         >
           <svg
             class="h-6 w-6"

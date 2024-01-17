@@ -33,7 +33,7 @@ const { page } = Astro.props;
     page.data.map((blog) => (
       <>
         <article class="text-text [&:not(:first-child)]:mt-10">
-          <div class="space-y-2 not-prose">
+          <div class="not-prose space-y-2">
             <h1
               transition:name={`blog-title-${blog.slug}`}
               class="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]"
@@ -52,7 +52,7 @@ const { page } = Astro.props;
             {blog.data.description}
           </p>
           <a
-            class="transition text-mauve hover:underline mt-4 inline-block"
+            class="mt-4 inline-block text-mauve transition hover:underline"
             href={`blog/${blog.slug}`}
           >
             Read More
@@ -65,7 +65,7 @@ const { page } = Astro.props;
   <div class="flex justify-between">
     {
       page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
+        <a href={page.url.prev} class="btn btn-ghost mx-5 my-10">
           {" "}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -82,7 +82,7 @@ const { page } = Astro.props;
     }
     {
       page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+        <a href={page.url.next} class="btn btn-ghost mx-5 my-10">
           Older Posts{" "}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"

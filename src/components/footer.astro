@@ -2,7 +2,7 @@
 import { socials } from "@/data/site.json";
 ---
 
-<footer class="bg-crust py-10 gap-6 flex flex-col items-center print:hidden">
+<footer class="flex flex-col items-center gap-6 bg-crust py-10 print:hidden">
   <!-- Social -->
   <div class="flex flex-wrap items-center justify-center gap-2">
     {
@@ -12,7 +12,7 @@ import { socials } from "@/data/site.json";
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="transition align-center mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-text text-base font-normal shadow-lg outline-none focus:outline-none hover:bg-mauve"
+          class="align-center mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-text text-base font-normal shadow-lg outline-none transition hover:bg-mauve focus:outline-none"
         >
           <svg
             class="h-4 w-4"
