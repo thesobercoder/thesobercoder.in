@@ -18,7 +18,7 @@ const pageTitle = `${title} | ${siteTitle}`;
 ---
 
 <html
-  class="bg-gradient-to-b from-mantle to-base text-text print:bg-white latte dark:frappe"
+  class="latte bg-gradient-to-b from-mantle to-base text-text dark:frappe print:bg-white"
   lang="en"
 >
   <head>
@@ -73,7 +73,7 @@ const pageTitle = `${title} | ${siteTitle}`;
     </style>
   </head>
 
-  <body class="flex flex-col min-w-screen min-h-screen">
+  <body class="min-w-screen flex min-h-screen flex-col">
     <Header />
     <slot />
     <Footer />
