@@ -9,7 +9,7 @@
     </span>
   </div>
   <button
-    class="inline-flex items-center justify-center gap-1 rounded-lg border border-surface2 px-2.5 py-1 text-sm font-medium text-text transition hover:bg-text hover:text-base hover:text-sm"
+    class="inline-flex h-7 w-20 items-center justify-center gap-0.5 rounded-lg border border-surface2 px-2.5 text-xs font-medium text-text transition hover:bg-text hover:text-base hover:text-xs disabled:pointer-events-none disabled:opacity-50"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,3 +29,40 @@
 <pre
   tabindex="0"
   class="mt-0 overflow-x-auto break-normal rounded-t-none border-x border-b border-surface2 bg-[#232634] text-left"><slot /></pre>
+<script>
+  document.querySelector("button")?.addEventListener("click", (event) => {
+    // Get all elements with the class "line"
+    const codeBlocks = document.querySelectorAll("span.line");
+
+    // Create an empty array to store the formatted code lines
+    const formattedCodeLines: string[] = [];
+
+    // Loop through each code block
+    codeBlocks.forEach((codeBlock) => {
+      // Add the formatted line to the array
+      formattedCodeLines.push(codeBlock.textContent || "");
+    });
+
+    // Join the formatted code lines into a single string
+    const formattedCode = formattedCodeLines.join("\n");
+
+    // Copy the formatted code to the clipboard
+    navigator.clipboard.writeText(formattedCode || "");
+
+    // Get the button from the event object
+    const btn = event.target as HTMLButtonElement;
+
+    // Get the button inner HTML
+    const inner = btn.innerHTML;
+
+    // Set the button properties when clicked
+    btn.innerHTML = inner.replace("Copy", "Copied");
+    btn.disabled = true;
+
+    // Reset the button properties after 3 seconds
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = inner;
+    }, 3000);
+  });
+</script>
