@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Blog from "@/layouts/blog.astro";
 import type { BlogSchema } from "@/content/config";
-import CodeBlock from "@/components/code-block.astro";
+import { CodeBlock } from "@/components/code-block";
 
 interface Props {
   entry: CollectionEntry<"blog">;
