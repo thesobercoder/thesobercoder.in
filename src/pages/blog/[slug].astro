@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Blog from "@/layouts/blog.astro";
 import type { BlogSchema } from "@/content/config";
+import CodeBlock from "@/components/code-block.astro";
 
 interface Props {
   entry: CollectionEntry<"blog">;
@@ -38,6 +39,9 @@ const { Content } = await entry.render();
         }
       </p>
     </div>
-    <Content transition:name={`blog-content-${entry.slug}`} />
+    <Content
+      components={{ pre: CodeBlock }}
+      transition:name={`blog-content-${entry.slug}`}
+    />
   </article>
 </Blog>
