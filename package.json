@@ -11,7 +11,7 @@
     "check": "astro check",
     "astro": "astro",
     "fmt": "prettier --ignore-path .prettierignore '**/*' -wu",
-    "clean": "rimraf ./.vercel/ ./.astro/"
+    "clean": "rimraf ./.vercel/ ./.astro/ ./dist/"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
