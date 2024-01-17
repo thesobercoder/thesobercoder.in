@@ -2,9 +2,18 @@ import { $, Slot, component$, useSignal } from "@builder.io/qwik";
 
 export const CodeBlock = component$(() => {
   const copied = useSignal(false);
+  const codeRef = useSignal<HTMLElement>();
 
-  const clickHandler = $(() => {
+  const clickHandler = $(async () => {
     copied.value = true;
+
+    const formattedCode = Array.from(
+      codeRef.value?.querySelectorAll("span.line") ?? [],
+    )
+      .map((e) => e.textContent || "")
+      .join("\n");
+
+    await navigator.clipboard.writeText(formattedCode || "");
 
     setTimeout(() => {
       copied.value = false;
@@ -44,7 +53,10 @@ export const CodeBlock = component$(() => {
           {copied.value ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre class="mt-0 overflow-x-auto break-normal rounded-t-none border-x border-b border-surface2 bg-[#232634] text-left">
+      <pre
+        ref={codeRef}
+        class="mt-0 overflow-x-auto break-normal rounded-t-none border-x border-b border-surface2 bg-[#232634] text-left"
+      >
         <Slot />
       </pre>
     </>
