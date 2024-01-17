@@ -8,7 +8,7 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.thesobercoder.in",
-  integrations: [tailwind(), sitemap(), robotsTxt(), mdx()],
+  integrations: [mdx(), tailwind(), sitemap(), robotsTxt()],
   adapter: vercel({
     webAnalytics: {
       enabled: true,
@@ -16,7 +16,7 @@ export default defineConfig({
   }),
   markdown: {
     shikiConfig: {
-      theme: "nord",
+      theme: "dracula",
     },
   },
 });
