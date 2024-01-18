@@ -10,8 +10,6 @@ import {
   headline,
   socials,
 } from "@/data/site.json";
-import ProfileImage from "@/assets/profile.webp";
-import { Image } from "astro:assets";
 
 const email = socials.filter((x) => x.platform === "Email")[0];
 const resume = socials.filter((x) => x.platform === "Resume")[0];
@@ -27,7 +25,7 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
       </div>
       <img
         class="relative rounded-full border-4 border-text"
-        src="/public/profile.web"
+        src="/profile.webp"
         alt={imageAlt}
       />
     </div>
