@@ -15,6 +15,11 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
+    includeFiles: [
+      "./public/favicon.ico",
+      "./public/resume.pdf",
+      "./public/profile.webp",
+    ],
   }),
   markdown: {
     shikiConfig: {
