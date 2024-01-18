@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import qwikdev from "@qwikdev/astro";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
@@ -10,7 +10,6 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
-  output: "server",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
