@@ -12,7 +12,7 @@ interface Props {
 
 const { title } = Astro.props;
 const imageAlt = "Profile image of Soham Dasgupta";
-const ogImageURL = ProfileImage.src;
+const ogImageURL = new URL("/public/profile.web", Astro.url);
 const sitemapURL = new URL("/sitemap-index.xml", Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pageTitle = `${title} | ${siteTitle}`;
