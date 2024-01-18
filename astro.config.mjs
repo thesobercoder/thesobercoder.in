@@ -10,15 +10,8 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
-    includeFiles: [
-      "./public/profile.webp",
-      "./public/resume.pdf",
-      "./public/favicon.ico",
-    ],
-    imageService: true,
-    devImageService: "squoosh",
     webAnalytics: {
       enabled: true,
     },
