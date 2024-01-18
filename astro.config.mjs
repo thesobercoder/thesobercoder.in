@@ -12,6 +12,11 @@ export default defineConfig({
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "hybrid",
   adapter: vercel({
+    includeFiles: [
+      "./public/profile.webp",
+      "./public/resume.pdf",
+      "./public/favicon.ico",
+    ],
     imageService: true,
     devImageService: "squoosh",
     webAnalytics: {
