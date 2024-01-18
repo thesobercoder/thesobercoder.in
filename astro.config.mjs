@@ -12,14 +12,11 @@ export default defineConfig({
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "hybrid",
   adapter: vercel({
+    imageService: true,
+    devImageService: "squoosh",
     webAnalytics: {
       enabled: true,
     },
-    includeFiles: [
-      "./public/favicon.ico",
-      "./public/resume.pdf",
-      "./public/profile.webp",
-    ],
   }),
   markdown: {
     shikiConfig: {
