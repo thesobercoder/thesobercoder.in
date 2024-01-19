@@ -1,5 +1,6 @@
 import catppuccin from "@catppuccin/tailwindcss";
 import typography from "@tailwindcss/typography";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const accent = "text";
 const linkColor = "blue";
@@ -11,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         "banner-keyframe": {
