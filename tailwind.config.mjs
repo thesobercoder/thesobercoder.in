@@ -10,6 +10,9 @@ module.exports = {
   darkMode: "media",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
       keyframes: {
         "banner-keyframe": {
           "0%": { "background-position": "0 50%" },
