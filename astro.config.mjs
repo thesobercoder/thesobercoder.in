@@ -8,7 +8,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.thesobercoder.in",
+  site: import.meta.env.PUBLIC_VERCEL_URL || "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
   adapter: vercel({
