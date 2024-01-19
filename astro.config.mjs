@@ -7,11 +7,17 @@ import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
-const { VERCEL_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { PUBLIC_VERCEL_URL, PUBLIC_VERCEL_ENV } = loadEnv(
+  process.env.NODE_ENV,
+  process.cwd(),
+  "",
+);
 
 // https://astro.build/config
 export default defineConfig({
-  site: VERCEL_URL || "https://www.thesobercoder.in",
+  site:
+    `${PUBLIC_VERCEL_ENV === "local" ? "http" : "https"}://${PUBLIC_VERCEL_URL}` ||
+    "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
   adapter: vercel({
