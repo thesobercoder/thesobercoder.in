@@ -79,7 +79,7 @@ const pageTitle = `${title} | ${siteTitle}`;
           preload: false,
           display: "swap",
           fallback: "sans-serif",
-          selector: ".font-inter",
+          cssVariable: "font-inter",
           googleFontsURL:
             "https://fonts.googleapis.com/css2?family=Inter&display=swap",
         },
@@ -87,7 +87,7 @@ const pageTitle = `${title} | ${siteTitle}`;
     />
   </head>
 
-  <body class="min-w-screen font-inter flex min-h-screen flex-col">
+  <body class="min-w-screen flex min-h-screen flex-col">
     <Header />
     <slot />
     <Footer />
