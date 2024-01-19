@@ -1,5 +1,5 @@
 ---
-import "@fontsource/inter";
+import { AstroFont } from "astro-font";
 import Header from "@/components/header.astro";
 import Footer from "@/components/footer.astro";
 import { siteTitle, siteDescription } from "@/data/site.json";
@@ -71,6 +71,20 @@ const pageTitle = `${title} | ${siteTitle}`;
         }
       }
     </style>
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Inter",
+          preload: false,
+          display: "swap",
+          fallback: "sans-serif",
+          cssVariable: "font-inter",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Inter&display=swap",
+        },
+      ]}
+    />
   </head>
 
   <body class="min-w-screen flex min-h-screen flex-col">
