@@ -10,7 +10,6 @@ module.exports = {
   darkMode: "media",
   theme: {
     extend: {
-      fontFamily: {
       keyframes: {
         "banner-keyframe": {
           "0%": { "background-position": "0 50%" },
