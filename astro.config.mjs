@@ -13,10 +13,13 @@ const { PUBLIC_VERCEL_URL, PUBLIC_VERCEL_ENV } = loadEnv(
   "",
 );
 
+const vercelUrl = PUBLIC_VERCEL_URL ?? "localhost:4231";
+const vercelEnv = PUBLIC_VERCEL_ENV ?? "local";
+
 // https://astro.build/config
 export default defineConfig({
   site:
-    `${PUBLIC_VERCEL_ENV === "local" ? "http" : "https"}://${PUBLIC_VERCEL_URL}` ||
+    `${vercelEnv === "local" ? "http" : "https"}://${vercelUrl}` ||
     "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
