@@ -5,10 +5,13 @@ import vercel from "@astrojs/vercel/static";
 import qwikdev from "@qwikdev/astro";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
+
+const { VERCEL_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.PUBLIC_VERCEL_URL || "https://www.thesobercoder.in",
+  site: VERCEL_URL || "https://www.thesobercoder.in",
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
   adapter: vercel({
