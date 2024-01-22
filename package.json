@@ -22,7 +22,7 @@
     "@builder.io/qwik": "^1.4.0",
     "@catppuccin/tailwindcss": "^0.1.6",
     "@fontsource/inter": "^5.0.16",
-    "@qwikdev/astro": "^0.4.4",
+    "@qwikdev/astro": "^0.4.6",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.2.1",
     "astro-robots-txt": "^1.0.0",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "prettier": "^3.2.4",
-    "prettier-plugin-astro": "^0.12.3",
+    "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "rimraf": "^5.0.5",
