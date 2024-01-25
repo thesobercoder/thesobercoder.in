@@ -18,15 +18,15 @@ const vercelEnv = PUBLIC_VERCEL_ENV ?? "local";
 
 // https://astro.build/config
 export default defineConfig({
-  site:
-    `${vercelEnv === "local" ? "http" : "https"}://${vercelUrl}` ||
-    "https://www.thesobercoder.in",
+  site: `${vercelEnv === "local" ? "http" : "https"}://${vercelEnv === "Production" ? "https://www.thesobercoder.in" : vercelUrl}`,
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
+    imageService: true,
+    devImageService: "squoosh",
   }),
   markdown: {
     shikiConfig: {

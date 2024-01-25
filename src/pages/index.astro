@@ -10,6 +10,8 @@ import {
   headline,
   socials,
 } from "@/data/site.json";
+import { Image } from "astro:assets";
+import ProfilePic from "@/assets/profile.webp";
 
 const email = socials.filter((x) => x.platform === "Email")[0];
 const resume = socials.filter((x) => x.platform === "Resume")[0];
@@ -23,9 +25,9 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
         class="absolute inset-0 animate-tilt rounded-full bg-gradient-to-br from-lavender to-mauve opacity-75 blur-xl transition duration-200 group-hover:opacity-100"
       >
       </div>
-      <img
+      <Image
         class="relative rounded-full border-4 border-text"
-        src="/profile.webp"
+        src={ProfilePic}
         alt={imageAlt}
       />
     </div>
