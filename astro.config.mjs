@@ -26,7 +26,7 @@ export default defineConfig({
       enabled: true,
     },
     imageService: true,
-    devImageService: "squoosh",
+    devImageService: "sharp",
   }),
   markdown: {
     shikiConfig: {
