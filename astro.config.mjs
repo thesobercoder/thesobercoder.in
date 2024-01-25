@@ -18,7 +18,7 @@ const vercelEnv = PUBLIC_VERCEL_ENV ?? "local";
 
 // https://astro.build/config
 export default defineConfig({
-  site: `${vercelEnv === "local" ? "http" : "https"}://${vercelEnv === "Production" ? "https://www.thesobercoder.in" : vercelUrl}`,
+  site: `${vercelEnv === "local" ? "http" : "https"}://${vercelEnv === "production" ? "thesobercoder.in" : vercelUrl}`,
   integrations: [mdx(), tailwind(), sitemap(), robotsTxt(), qwikdev()],
   output: "static",
   adapter: vercel({
