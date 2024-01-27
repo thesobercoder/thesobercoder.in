@@ -29,9 +29,13 @@ module.exports = {
           "base-300": "#e6e9ef", // crust
           "base-content": "#4c4f69", // text
           info: "#209fb5", // sapphire
+          "info-content": "#eff1f5", // base
           success: "#40a02b", // green
+          "success-content": "#eff1f5", // base
           warning: "#df8e1d", // yellow
+          "warning-content": "#eff1f5", // base
           error: "#d20f39", // red
+          "error-content": "#eff1f5", // base
         },
         "catppuccin-frappe": {
           primary: "#8caaee", // blue
@@ -47,9 +51,13 @@ module.exports = {
           "base-300": "#232634", // crust
           "base-content": "#c6d0f5", // text
           info: "#85c1dc", // sapphire
+          "info-content": "#303446", // base
           success: "#a6d189", // green
+          "success-content": "#303446", // base
           warning: "#e5c890", // yellow
+          "warning-content": "#303446", // base
           error: "#e78284", // red
+          "error-content": "#303446", // base
         },
       },
       "dark",
