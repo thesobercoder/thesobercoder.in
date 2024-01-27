@@ -24,11 +24,14 @@ const { pathname } = Astro.url;
     }
   </nav>
   <div class="hidden gap-6 md:flex">
-    <label class="btn btn-ghost swap swap-rotate hover:text-secondary">
+    <label
+      class="btn btn-square btn-ghost swap swap-rotate hover:text-secondary"
+    >
       <input
         type="checkbox"
         class="theme-controller"
         value="catppuccin-latte"
+        aria-hidden="true"
       />
       <!-- moon icon -->
       <svg
@@ -58,7 +61,7 @@ const { pathname } = Astro.url;
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="btn btn-ghost hover:text-secondary"
+          class="btn btn-square btn-ghost hover:text-secondary"
         >
           <svg
             class="h-6 w-6 fill-current outline-none"
