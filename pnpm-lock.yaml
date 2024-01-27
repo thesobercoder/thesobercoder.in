@@ -23,9 +23,6 @@ dependencies:
   '@builder.io/qwik':
     specifier: ^1.4.2
     version: 1.4.2(undici@6.5.0)
-  '@catppuccin/tailwindcss':
-    specifier: ^0.1.6
-    version: 0.1.6(tailwindcss@3.4.1)
   '@fontsource/inter':
     specifier: ^5.0.16
     version: 5.0.16
@@ -516,14 +513,6 @@ packages:
       - stylus
       - sugarss
       - terser
-    dev: false
-
-  /@catppuccin/tailwindcss@0.1.6(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-V+Y0AwZ5SSyvOVAcDl7Ng30xy+m82OKnEJ+9+kcZZ7lRyXuZrAb2GScdq9XR3v+ggt8qiZ/G4TvaC9cJ88AAXA==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0'
-    dependencies:
-      tailwindcss: 3.4.1
     dev: false
 
   /@emmetio/abbreviation@2.3.3:
