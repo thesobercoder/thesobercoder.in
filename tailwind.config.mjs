@@ -60,7 +60,6 @@ module.exports = {
           "error-content": "#303446", // base
         },
       },
-      "dark",
     ],
   },
   plugins: [typography, daisyui],
