@@ -39,13 +39,13 @@ const resume = socials.filter((x) => x.platform === "Resume")[0];
       <a
         href={resume.url}
         aria-label={resume.platform}
-        class="w-48 rounded-full border-4 border-text px-6 py-4 text-center text-lg font-semibold transition hover:bg-text hover:text-base hover:text-lg"
+        class="btn btn-lg btn-secondary w-32"
         >{resume.platform}</a
       >
       <a
         href={email.url}
         aria-label={email.platform}
-        class="w-48 rounded-full border-4 border-text bg-text px-6 py-4 text-center text-base text-lg font-semibold transition hover:bg-base hover:text-text"
+        class="btn btn-lg btn-success w-32"
         >{email.platform}</a
       >
     </div>
