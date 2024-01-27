@@ -1,28 +1,30 @@
 ---
-import { socials } from "@/data/site.json";
+import { socials, menus } from "@/data/site.json";
 
 const { pathname } = Astro.url;
 ---
 
-<header class="mx-10 flex justify-between items-center py-8">
+<header class="mx-10 flex items-center justify-between py-8">
   <nav class="flex gap-10 text-xl font-bold print:hidden">
-    <a
-      aria-label="Home page"
-      class:list={["shrink transition hover:text-secondary rounded-xs rounded-sm focus:outline outline-2 outline-offset-8 outline-offset-base-100 outline-base-content", {
-        "text-secondary": pathname === "/",
-      }]}
-      href="/">Home</a
-    >
-    <a
-      aria-label="Blog page"
-      class:list={["transition hover:text-secondary rounded-xs rounded-sm focus:outline outline-2 outline-offset-8 outline-offset-base-100 outline-base-content", {
-        "text-secondary": pathname.startsWith("/blog"),
-      }]}
-      href="/blog">Blog</a
-    >
+    {
+      menus.map((menu) => (
+        <a
+          aria-label={menu.label}
+          class:list={[
+            "btn btn-ghost text-xl",
+            {
+              "text-secondary": pathname === menu.path,
+            },
+          ]}
+          href={menu.path}
+        >
+          {menu.label}
+        </a>
+      ))
+    }
   </nav>
   <div class="hidden gap-6 md:flex">
-    <label class="swap swap-rotate hover:text-secondary btn btn-ghost">
+    <label class="btn btn-ghost swap swap-rotate hover:text-secondary">
       <input
         type="checkbox"
         class="theme-controller"
@@ -59,7 +61,7 @@ const { pathname } = Astro.url;
           class="btn btn-ghost hover:text-secondary"
         >
           <svg
-            class="h-6 w-6 outline-none fill-current"
+            class="h-6 w-6 fill-current outline-none"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             viewBox={link.viewBox}
