@@ -1,31 +1,29 @@
 ---
-import clsx from "clsx";
 import { socials } from "@/data/site.json";
 
 const { pathname } = Astro.url;
 ---
 
-<header class="mx-10 flex justify-between py-8">
+<header class="mx-10 flex justify-between items-center py-8">
   <nav class="flex gap-10 text-xl font-bold print:hidden">
     <a
       aria-label="Home page"
-      class={clsx("transition hover:text-mauve", {
-        "text-mauve": pathname === "/",
-      })}
+      class:list={["shrink transition hover:text-secondary rounded-xs rounded-sm focus:outline outline-2 outline-offset-8 outline-offset-base-100 outline-base-content", {
+        "text-secondary": pathname === "/",
+      }]}
       href="/">Home</a
     >
     <a
       aria-label="Blog page"
-      class={clsx("transition hover:text-mauve", {
-        "text-mauve": pathname.startsWith("/blog"),
-      })}
+      class:list={["transition hover:text-secondary rounded-xs rounded-sm focus:outline outline-2 outline-offset-8 outline-offset-base-100 outline-base-content", {
+        "text-secondary": pathname.startsWith("/blog"),
+      }]}
       href="/blog">Blog</a
     >
   </nav>
   <div class="hidden gap-6 md:flex">
-    <label for="b7c8d2d3-d75f-49cd-8a2b-3543d6f43e18" class="swap swap-rotate">
+    <label class="swap swap-rotate hover:text-secondary btn btn-ghost">
       <input
-        id="b7c8d2d3-d75f-49cd-8a2b-3543d6f43e18"
         type="checkbox"
         class="theme-controller"
         value="catppuccin-latte"
@@ -33,6 +31,7 @@ const { pathname } = Astro.url;
       <!-- moon icon -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
         class="swap-on h-6 w-6 fill-current"
         viewBox="0 0 384 512"
         ><path
@@ -42,6 +41,7 @@ const { pathname } = Astro.url;
       <!-- sun icon -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
         class="swap-off h-6 h-6 fill-current"
         viewBox="0 0 512 512"
         ><path
@@ -56,12 +56,11 @@ const { pathname } = Astro.url;
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="align-center hover:text-mauve flex items-center justify-center font-normal outline-none transition focus:outline-none"
+          class="btn btn-ghost hover:text-secondary"
         >
           <svg
-            class="h-6 w-6"
+            class="h-6 w-6 outline-none fill-current"
             aria-hidden="true"
-            fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
             viewBox={link.viewBox}
           >
