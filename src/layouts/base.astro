@@ -2,7 +2,7 @@
 import { AstroFont } from "astro-font";
 import Header from "@/components/header.astro";
 import Footer from "@/components/footer.astro";
-import { siteTitle, siteDescription } from "@/data/site.json";
+import { siteTitle, siteDescription, imageAlt } from "@/data/site.json";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -10,7 +10,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const imageAlt = "Profile image of Soham Dasgupta";
 const ogImageURL = new URL("/profile.webp", Astro.url);
 const sitemapURL = new URL("/sitemap-index.xml", Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
