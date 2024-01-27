@@ -38,6 +38,7 @@ module.exports = {
           error: "#e78284", // red
         },
       },
+      "dark",
     ],
   },
   plugins: [typography, daisyui],
