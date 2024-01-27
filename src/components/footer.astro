@@ -2,9 +2,16 @@
 import { socials } from "@/data/site.json";
 ---
 
-<footer class="bg-crust flex flex-col items-center gap-6 py-10 print:hidden">
+<footer class="footer footer-center bg-base-300 py-16">
+  <!-- Message -->
+  <aside class="flex text-lg font-bold">
+    <span>Copyright ©</span>
+    <span>{new Date().getFullYear()}</span>
+    <a href="/" class="!no-underline">Soham Dasgupta</a>
+  </aside>
+
   <!-- Social -->
-  <div class="flex flex-wrap items-center justify-center gap-2">
+  <nav class="flex flex-wrap items-center justify-center gap-2">
     {
       socials.map((link) => (
         <a
@@ -12,7 +19,7 @@ import { socials } from "@/data/site.json";
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="align-center bg-text hover:bg-mauve mr-2 flex h-10 w-10 items-center justify-center rounded-full text-base font-normal shadow-lg outline-none transition focus:outline-none"
+          class="btn btn-circle btn-ghost"
         >
           <svg
             class="h-4 w-4"
@@ -26,14 +33,5 @@ import { socials } from "@/data/site.json";
         </a>
       ))
     }
-  </div>
-
-  <!-- Message -->
-  <div class="flex flex-wrap items-center justify-center">
-    <div class="text-text text-sm">
-      ©
-      {new Date().getFullYear()}
-      <a href="/" class="!no-underline"> Soham Dasgupta</a>
-    </div>
-  </div>
+  </nav>
 </footer>

@@ -51,10 +51,7 @@ const { page } = Astro.props;
           <p transition:name={`blog-content-${blog.slug}`}>
             {blog.data.description}
           </p>
-          <a
-            class="link link-secondary"
-            href={`blog/${blog.slug}`}
-          >
+          <a class="link link-secondary" href={`blog/${blog.slug}`}>
             Read More
           </a>
         </article>
