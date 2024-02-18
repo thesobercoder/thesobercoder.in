@@ -2,17 +2,24 @@
 import { socials } from "@/data/site.json";
 ---
 
-<footer class="flex flex-col items-center gap-6 bg-crust py-10 print:hidden">
+<footer class="footer footer-center gap-4 bg-base-300 py-10">
+  <!-- Message -->
+  <aside class="flex text-sm">
+    <span>Copyright ©</span>
+    <span>{new Date().getFullYear()}</span>
+    <span>Soham Dasgupta</span>
+  </aside>
+
   <!-- Social -->
-  <div class="flex flex-wrap items-center justify-center gap-2">
+  <nav class="menu menu-horizontal">
     {
       socials.map((link) => (
+        <li>
         <a
           href={link.url}
           rel="noopener noreferrer nofollow"
           target="_blank"
           aria-label={link.platform}
-          class="align-center mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-text text-base font-normal shadow-lg outline-none transition hover:bg-mauve focus:outline-none"
         >
           <svg
             class="h-4 w-4"
@@ -24,16 +31,8 @@ import { socials } from "@/data/site.json";
             <path d={link.iconPath} />
           </svg>
         </a>
+      </li>
       ))
     }
-  </div>
-
-  <!-- Message -->
-  <div class="flex flex-wrap items-center justify-center">
-    <div class="text-sm text-text">
-      ©
-      {new Date().getFullYear()}
-      <a href="/" class="!no-underline"> Soham Dasgupta</a>
-    </div>
-  </div>
+  </nav>
 </footer>

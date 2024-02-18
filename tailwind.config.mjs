@@ -1,98 +1,66 @@
-import catppuccin from "@catppuccin/tailwindcss";
 import typography from "@tailwindcss/typography";
+import daisyui from "daisyui";
 import defaultTheme from "tailwindcss/defaultTheme";
-
-const accent = "text";
-const linkColor = "blue";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-  darkMode: "media",
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
-      keyframes: {
-        "banner-keyframe": {
-          "0%": { "background-position": "0 50%" },
-          "50%": { "background-position": "100% 50%" },
-          "100%": { "background-position": "0 50%" },
-        },
-        tilt: {
-          "0%, 100%": {
-            transform: "translate(0,0)",
-          },
-          "25%": {
-            transform: "translate(5px,5px)",
-          },
-          "50%": {
-            transform: "translate(0px,5px)",
-          },
-          "75%": {
-            transform: "translate(-5px,5px)",
-          },
-        },
-      },
-      animation: {
-        banner: "banner-keyframe 36s ease infinite",
-        tilt: "tilt 10s infinite linear",
-      },
-      backgroundImage: (theme) => ({
-        banner: `linear-gradient(300deg, ${theme(
-          "colors.red.DEFAULT",
-        )}, ${theme("colors.peach.DEFAULT")},${theme(
-          "colors.yellow.DEFAULT",
-        )}, ${theme("colors.green.DEFAULT")}, ${theme(
-          "colors.blue.DEFAULT",
-        )}, ${theme("colors.mauve.DEFAULT")})`,
-      }),
-      backgroundSize: {
-        360: "360% 360%",
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            "--tw-prose-body": theme("colors.text.DEFAULT"),
-            "--tw-prose-headings": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-lead": theme("colors.text.DEFAULT"),
-            "--tw-prose-links": theme(`colors.${linkColor}.DEFAULT`),
-            "--tw-prose-bold": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-counters": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-bullets": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-hr": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-quotes": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-quote-borders": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-captions": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-code": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-pre-code": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-pre-bg": theme(`colors.base.DEFAULT`),
-            "--tw-prose-th-borders": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-td-borders": theme(`colors.${accent}.DEFAULT`),
-
-            "--tw-prose-invert-body": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-headings": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-lead": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-links": theme(`colors.${linkColor}.DEFAULT`),
-            "--tw-prose-invert-bold": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-counters": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-bullets": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-hr": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-quotes": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-quote-borders": theme(
-              `colors.${accent}.DEFAULT`,
-            ),
-            "--tw-prose-invert-captions": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-code": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-pre-code": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-pre-bg": theme(`colors.base.DEFAULT`),
-            "--tw-prose-invert-th-borders": theme(`colors.${accent}.DEFAULT`),
-            "--tw-prose-invert-td-borders": theme(`colors.${accent}.DEFAULT`),
-          },
-        },
-      }),
     },
   },
-  plugins: [catppuccin, typography],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          primary: "#1e66f5", // blue
+          "primary-content": "#eff1f5", // base
+          secondary: "#8839ef", // mauve
+          "secondary-content": "#eff1f5", // base
+          accent: "#179299", // teal
+          "accent-content": "#eff1f5", // base
+          neutral: "#ccd0da", // surface0
+          "neutral-content": "#4c4f69", // text
+          "base-100": "#eff1f5", // base
+          "base-200": "#e6e9ef", // mantle
+          "base-300": "#e6e9ef", // crust
+          "base-content": "#4c4f69", // text
+          info: "#209fb5", // sapphire
+          "info-content": "#eff1f5", // base
+          success: "#40a02b", // green
+          "success-content": "#eff1f5", // base
+          warning: "#df8e1d", // yellow
+          "warning-content": "#eff1f5", // base
+          error: "#d20f39", // red
+          "error-content": "#eff1f5", // base
+        },
+        dark: {
+          primary: "#8caaee", // blue
+          "primary-content": "#303446", // base
+          secondary: "#ca9ee6", // mauve
+          "secondary-content": "#303446", // base
+          accent: "#81c8be", // teal
+          "accent-content": "#303446", // base
+          neutral: "#414559", // surface0
+          "neutral-content": "#c6d0f5", // text
+          "base-100": "#303446", // base
+          "base-200": "#292c3c", // mantle
+          "base-300": "#232634", // crust
+          "base-content": "#c6d0f5", // text
+          info: "#85c1dc", // sapphire
+          "info-content": "#303446", // base
+          success: "#a6d189", // green
+          "success-content": "#303446", // base
+          warning: "#e5c890", // yellow
+          "warning-content": "#303446", // base
+          error: "#e78284", // red
+          "error-content": "#303446", // base
+        },
+      },
+    ],
+  },
+  plugins: [typography, daisyui],
 };
