@@ -15,7 +15,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        "catppuccin-latte": {
+        light: {
           primary: "#1e66f5", // blue
           "primary-content": "#eff1f5", // base
           secondary: "#8839ef", // mauve
@@ -37,7 +37,7 @@ module.exports = {
           error: "#d20f39", // red
           "error-content": "#eff1f5", // base
         },
-        "catppuccin-frappe": {
+        dark: {
           primary: "#8caaee", // blue
           "primary-content": "#303446", // base
           secondary: "#ca9ee6", // mauve
