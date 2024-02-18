@@ -15,23 +15,23 @@ import { socials } from "@/data/site.json";
     {
       socials.map((link) => (
         <li>
-        <a
-          href={link.url}
-          rel="noopener noreferrer nofollow"
-          target="_blank"
-          aria-label={link.platform}
-        >
-          <svg
-            class="h-4 w-4"
-            aria-hidden="true"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox={link.viewBox}
+          <a
+            href={link.url}
+            rel="noopener noreferrer nofollow"
+            target="_blank"
+            aria-label={link.platform}
           >
-            <path d={link.iconPath} />
-          </svg>
-        </a>
-      </li>
+            <svg
+              class="h-4 w-4"
+              aria-hidden="true"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox={link.viewBox}
+            >
+              <path d={link.iconPath} />
+            </svg>
+          </a>
+        </li>
       ))
     }
   </nav>
