@@ -46,8 +46,8 @@ export default function RootLayout({
           className={cn(
             "z-[-9999]",
             "top-[-50%]",
-            "opacity-20",
-            "[mask-image:radial-gradient(circle_at_center,white,transparent_100%)]"
+            "opacity-40",
+            "[mask-image:radial-gradient(circle_at_center,white,transparent_70%)]"
           )}
         />
         <ThemeProvider disableTransitionOnChange>{children}</ThemeProvider>
