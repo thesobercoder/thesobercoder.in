@@ -57,6 +57,10 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
       animation: {
         "shimmer-slide":
           "shimmer-slide var(--speed) ease-in-out infinite alternate",
