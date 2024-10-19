@@ -1,4 +1,4 @@
-import ShinyLink from "@/components/ui/shiny-link";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <div className="relative hero z-10">
-        <div className="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+        <div className="mx-auto max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
           <div className="lg:flex lg:justify-between lg:gap-4">
             <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
               <div className="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left">
@@ -20,32 +20,40 @@ export default function Home() {
                 <div>
                   <Link
                     href="/"
-                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 pb-1"
+                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1"
                   >
                     <h1>Soham Dasgupta</h1>
                   </Link>
-                  <h2 className="text-sm lg:text-lg font-medium text-neutral-400">
+                  <h2 className="text-sm lg:text-lg font-medium text-foreground/50">
                     Technology Leader & Enterprise Architect
                   </h2>
                   <div className="flex flex-row justify-center lg:justify-start gap-x-2 w-full mt-4">
-                    <ShinyLink
-                      rel="noreferrer noopener"
-                      target="_self"
-                      href="mailto:soham@thesobercoder.in"
-                      className="w-32 py-4 rounded-xl"
-                      aria-label="Email"
+                    <Button
+                      size="lg"
+                      className="w-24 rounded-xl opacity-80"
+                      asChild
                     >
-                      Email
-                    </ShinyLink>
-                    <ShinyLink
-                      rel="noreferrer noopener"
-                      target="_blank"
-                      href="/resume.pdf"
-                      className="w-32 py-4 rounded-xl"
-                      aria-label="Resume"
+                      <Link
+                        rel="noreferrer noopener"
+                        target="_self"
+                        href="mailto:soham@thesobercoder.in"
+                      >
+                        Email
+                      </Link>
+                    </Button>
+                    <Button
+                      size="lg"
+                      className="w-24 rounded-xl opacity-80"
+                      asChild
                     >
-                      Resume
-                    </ShinyLink>
+                      <Link
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href="/resume.pdf"
+                      >
+                        Resume
+                      </Link>
+                    </Button>
                   </div>
                   {/* {
                 SOCIALS.length && (
@@ -80,12 +88,12 @@ export default function Home() {
                 aria-label="About me"
               >
                 <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-neutral-200 lg:sr-only">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
                     About
                   </h2>
                 </div>
                 <div>
-                  <div className="mb-4 space-y-4 text-lg">
+                  <div className="mb-4 space-y-4 text-lg text-foreground/80">
                     <p>
                       I’m a technology leader with 15 years of experience in
                       software engineering and enterprise architecture. I am
@@ -108,7 +116,7 @@ export default function Home() {
                 aria-label="Work experience"
               >
                 <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-neutral-200 lg:sr-only">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
                     Experience
                   </h2>
                 </div>
@@ -122,7 +130,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer className="flex flex-col items-center w-full pb-4 text-xs">
+      <footer className="sticky bottom-0 flex flex-col items-center w-full pb-4 text-xs">
         <span> {new Date().getFullYear()} All rights reserved.</span>
       </footer>
     </>

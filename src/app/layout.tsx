@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen relative`}
       >
         <Particles
           className="absolute inset-0 opacity-20 z-[-9998]"
@@ -46,9 +46,8 @@ export default function RootLayout({
           strokeDasharray={"4 2"}
           className={cn(
             "z-[-9999]",
-            "top-[-50%]",
             "opacity-30",
-            "[mask-image:radial-gradient(circle_at_center,white,transparent_70%)]"
+            "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]"
           )}
         />
         <ThemeProvider disableTransitionOnChange>{children}</ThemeProvider>
