@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { SOCIALS } from "@/data/socials";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,15 +25,11 @@ export default function Home() {
                   >
                     <h1>Soham Dasgupta</h1>
                   </Link>
-                  <h2 className="text-sm lg:text-lg font-medium text-foreground/50">
+                  <h2 className="text-sm lg:text-lg font-medium text-foreground/60">
                     Technology Leader & Enterprise Architect
                   </h2>
-                  <div className="flex flex-row justify-center lg:justify-start gap-x-2 w-full mt-4">
-                    <Button
-                      size="lg"
-                      className="w-24 rounded-xl opacity-80"
-                      asChild
-                    >
+                  <div className="flex flex-row justify-center lg:justify-start gap-x-4 mt-4">
+                    <Button size="lg" className="w-24 opacity-80" asChild>
                       <Link
                         rel="noreferrer noopener"
                         target="_self"
@@ -41,11 +38,7 @@ export default function Home() {
                         Email
                       </Link>
                     </Button>
-                    <Button
-                      size="lg"
-                      className="w-24 rounded-xl opacity-80"
-                      asChild
-                    >
+                    <Button size="lg" className="w-24 opacity-80" asChild>
                       <Link
                         rel="noreferrer noopener"
                         target="_blank"
@@ -55,29 +48,32 @@ export default function Home() {
                       </Link>
                     </Button>
                   </div>
-                  {/* {
-                SOCIALS.length && (
-                  <ul
-                    className="flex items-center justify-between lg:justify-start gap-x-7 mt-6 w-full"
-                    aria-label="Social media"
-                  >
-                    {SOCIALS.map((social) => (
-                      <li className="text-xs p-2 rounded" data-ccursor>
-                        <a
-                          className="block hover:text-slate-200"
-                          href={social.url}
-                          target={social.target}
-                          rel={social.rel}
-                          aria-label={`${social.name} (opens in a new tab)`}
-                        >
-                          <span className="sr-only">{social.name}</span>
-                          {<Component component={social.icon} />}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )
-              } */}
+                  {SOCIALS.length && (
+                    <ul
+                      className="flex items-center justify-center lg:justify-start gap-x-4 mt-4"
+                      aria-label="Social media"
+                    >
+                      {SOCIALS.map((social) => {
+                        const Icon = social.icon; // Assign the icon component to a variable
+
+                        return (
+                          <li key={social.name}>
+                            <Button variant="outline" size="icon" asChild>
+                              <Link
+                                href={social.url}
+                                target={social.target}
+                                rel={social.rel}
+                                aria-label={`${social.name} (opens in a new tab)`}
+                              >
+                                <span className="sr-only">{social.name}</span>
+                                <Icon className="size-8 text-current opacity-80" />
+                              </Link>
+                            </Button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
                 </div>
               </div>
             </header>
@@ -130,7 +126,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer className="sticky bottom-0 flex flex-col items-center w-full pb-4 text-xs">
+      <footer className="flex flex-col items-center w-full pb-4 text-xs">
         <span> {new Date().getFullYear()} All rights reserved.</span>
       </footer>
     </>
