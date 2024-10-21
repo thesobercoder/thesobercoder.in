@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { EXPERIENCE } from "@/data/experience";
 import { SOCIALS } from "@/data/socials";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -116,10 +125,55 @@ export default function Home() {
                     Experience
                   </h2>
                 </div>
-                <div>
+                <div className="grid grid-cols-1 gap-4">
                   {/* <ol className="group/list space-y-12">
                 {EXPERIENCE.map((experience) => <Experience {...experience} />)}
               </ol> */}
+                  {EXPERIENCE.map((experience) => (
+                    <Card
+                      key={experience.title}
+                      className="shadow-lg group transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10"
+                    >
+                      <CardHeader>
+                        <CardTitle className="text-foreground/80">
+                          {experience.title}
+                        </CardTitle>
+                        <CardDescription className="flex items-center">
+                          <a
+                            href={experience.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center group-hover:text-glow transition-all duration-300"
+                          >
+                            <Image
+                              src={experience.logo}
+                              alt={`${experience.company} logo`}
+                              width={24}
+                              height={24}
+                              className="mr-2"
+                            />
+                            {experience.company}
+                            <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-1" />
+                          </a>
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-md text-foreground/80">
+                          {experience.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4 text-xs">
+                          {experience.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="text-background/80 bg-foreground/80 px-2 py-1 rounded"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </section>
             </main>
