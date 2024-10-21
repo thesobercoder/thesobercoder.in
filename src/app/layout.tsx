@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen relative`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
       >
         <Particles
           className="absolute inset-0 opacity-20 z-[-9998]"
