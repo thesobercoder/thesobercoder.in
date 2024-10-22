@@ -63,8 +63,7 @@ export default function Home() {
                       aria-label="Social media"
                     >
                       {SOCIALS.map((social) => {
-                        const Icon = social.icon; // Assign the icon component to a variable
-
+                        const Icon = social.icon;
                         return (
                           <li key={social.name}>
                             <Button variant="outline" size="icon" asChild>
@@ -126,9 +125,6 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                  {/* <ol className="group/list space-y-12">
-                {EXPERIENCE.map((experience) => <Experience {...experience} />)}
-              </ol> */}
                   {EXPERIENCE.map((experience) => (
                     <Card
                       key={experience.title}
@@ -165,7 +161,7 @@ export default function Home() {
                           {experience.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="text-background/80 bg-foreground/80 px-2 py-1 rounded"
+                              className="border-foreground/20 border px-2 py-1 rounded-xl"
                             >
                               {tech}
                             </span>
