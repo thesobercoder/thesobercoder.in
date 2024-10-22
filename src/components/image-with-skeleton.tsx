@@ -21,7 +21,7 @@ export default function ImageWithSkeleton({
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className={cn("relative w-full", `h-${height}`, `w-${width}`)}>
+    <div className={cn("relative w-full")}>
       {!isLoaded && <Skeleton className="absolute inset-0 w-full h-full" />}
       <Image
         src={src}
