@@ -50,7 +50,12 @@ export default function RootLayout({
             "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]"
           )}
         />
-        <ThemeProvider disableTransitionOnChange>{children}</ThemeProvider>
+        <ThemeProvider disableTransitionOnChange>
+          {children}
+          <footer className="flex flex-col items-center w-full pb-2 text-xs">
+            <span> {new Date().getFullYear()} All rights reserved.</span>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
