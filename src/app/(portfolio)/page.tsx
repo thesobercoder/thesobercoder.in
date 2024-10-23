@@ -87,7 +87,7 @@ export default function Home() {
           <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
             <section
               id="about"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
               aria-label="About me"
             >
               <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
@@ -115,7 +115,7 @@ export default function Home() {
             </section>
             <section
               id="experience"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
               aria-label="Work experience"
             >
               <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
@@ -132,7 +132,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="group"
                   >
-                    <Card className="hover:bg-foreground/5 bg-background/5 shadow-lg transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10">
+                    <Card className="hover:bg-foreground/5 bg-background/5 shadow-lg transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-foreground/10">
                       <CardHeader>
                         <CardTitle className="text-foreground/80">
                           {experience.title}
@@ -143,7 +143,7 @@ export default function Home() {
                             alt={`${experience.company} logo`}
                             width={36}
                             height={36}
-                            className="mr-3 border border-foreground/20 p-1 rounded-md"
+                            className="mr-3 border border-foreground/10 p-1 rounded-md bg-background"
                           />
                           {experience.company}
                           <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-1" />
@@ -157,7 +157,7 @@ export default function Home() {
                           {experience.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="border-foreground/20 border px-2 py-1 rounded-xl"
+                              className="border-foreground/20 border px-2 py-1 rounded-xl text-foreground/80 bg-background"
                             >
                               {tech}
                             </span>

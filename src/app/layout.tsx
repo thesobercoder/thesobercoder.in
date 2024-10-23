@@ -52,7 +52,7 @@ export default function RootLayout({
         />
         <ThemeProvider disableTransitionOnChange>
           {children}
-          <footer className="flex flex-col items-center w-full pb-2 text-xs">
+          <footer className="flex flex-col items-center w-full mb-8 text-xs">
             <span> {new Date().getFullYear()} All rights reserved.</span>
           </footer>
         </ThemeProvider>
