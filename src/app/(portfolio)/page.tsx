@@ -127,7 +127,7 @@ export default function Home() {
                 {EXPERIENCE.map((experience) => (
                   <Card
                     key={experience.title}
-                    className="shadow-lg group transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10"
+                    className="hover:bg-foreground/5 bg-background/5 shadow-lg group transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10"
                   >
                     <CardHeader>
                       <CardTitle className="text-foreground/80">
