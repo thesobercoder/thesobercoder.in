@@ -125,49 +125,47 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {EXPERIENCE.map((experience) => (
-                  <Card
+                  <Link
                     key={experience.title}
-                    className="hover:bg-foreground/5 bg-background/5 shadow-lg group transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10"
+                    href={experience.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
                   >
-                    <CardHeader>
-                      <CardTitle className="text-foreground/80">
-                        {experience.title}
-                      </CardTitle>
-                      <CardDescription className="flex items-center">
-                        <a
-                          href={experience.companyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center group-hover:text-glow transition-all duration-300"
-                        >
+                    <Card className="hover:bg-foreground/5 bg-background/5 shadow-lg transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-white/10">
+                      <CardHeader>
+                        <CardTitle className="text-foreground/80">
+                          {experience.title}
+                        </CardTitle>
+                        <CardDescription className="flex items-center">
                           <Image
                             src={experience.logo}
                             alt={`${experience.company} logo`}
-                            width={24}
-                            height={24}
-                            className="mr-2"
+                            width={36}
+                            height={36}
+                            className="mr-3 border border-foreground/20 p-1 rounded-md"
                           />
                           {experience.company}
                           <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-1" />
-                        </a>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-md text-foreground/80">
-                        {experience.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-4 text-xs">
-                        {experience.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="border-foreground/20 border px-2 py-1 rounded-xl"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-md text-foreground/80">
+                          {experience.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4 text-xs">
+                          {experience.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="border-foreground/20 border px-2 py-1 rounded-xl"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </section>
