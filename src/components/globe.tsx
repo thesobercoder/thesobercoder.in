@@ -22,10 +22,11 @@ export default function Globe() {
       dark: 1,
       diffuse: 3,
       mapSamples: 16000,
-      mapBrightness: 1.2,
+      mapBrightness: 0.8,
       baseColor: [1, 1, 1],
+      opacity: 1,
       markerColor: [251 / 255, 100 / 255, 21 / 255],
-      glowColor: [1.2, 1.2, 1.2],
+      glowColor: [0.8, 0.8, 0.8],
       markers: [
         {
           location: [22.5726, 88.3639],
