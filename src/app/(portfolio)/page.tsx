@@ -28,61 +28,65 @@ export default function Home() {
                 className="rounded-full"
               />
               <div className="relative">
-                <Link
-                  href="/"
-                  className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1"
-                >
-                  <h1>Soham Dasgupta</h1>
-                </Link>
-                <h2 className="text-sm lg:text-lg font-medium text-foreground/60">
-                  Technology Leader & Enterprise Architect
-                </h2>
-                <div className="flex flex-row justify-center lg:justify-start gap-x-4 mt-4">
-                  <Button size="lg" className="w-24 opacity-80" asChild>
-                    <Link
-                      rel="noreferrer noopener"
-                      target="_self"
-                      href="mailto:soham@thesobercoder.in"
-                    >
-                      Email
-                    </Link>
-                  </Button>
-                  <Button size="lg" className="w-24 opacity-80" asChild>
-                    <Link
-                      rel="noreferrer noopener"
-                      target="_blank"
-                      href="/resume.pdf"
-                    >
-                      Resume
-                    </Link>
-                  </Button>
-                </div>
-                {SOCIALS.length && (
-                  <ul
-                    className="flex items-center justify-center lg:justify-start gap-x-4 mt-4"
-                    aria-label="Social media"
+                <div>
+                  <Link
+                    href="/"
+                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1"
                   >
-                    {SOCIALS.map((social) => {
-                      const Icon = social.icon;
-                      return (
-                        <li key={social.name}>
-                          <Button variant="outline" size="icon" asChild>
-                            <Link
-                              href={social.url}
-                              target={social.target}
-                              rel={social.rel}
-                              aria-label={`${social.name} (opens in a new tab)`}
-                            >
-                              <span className="sr-only">{social.name}</span>
-                              <Icon className="size-8 text-current opacity-80" />
-                            </Link>
-                          </Button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-                <Globe />
+                    <h1>Soham Dasgupta</h1>
+                  </Link>
+                  <h2 className="text-sm lg:text-lg font-medium text-foreground/60">
+                    Technology Leader & Enterprise Architect
+                  </h2>
+                  <div className="flex flex-row justify-center lg:justify-start gap-x-4 mt-4">
+                    <Button size="lg" className="w-24 opacity-80" asChild>
+                      <Link
+                        rel="noreferrer noopener"
+                        target="_self"
+                        href="mailto:soham@thesobercoder.in"
+                      >
+                        Email
+                      </Link>
+                    </Button>
+                    <Button size="lg" className="w-24 opacity-80" asChild>
+                      <Link
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        href="/resume.pdf"
+                      >
+                        Resume
+                      </Link>
+                    </Button>
+                  </div>
+                  {SOCIALS.length && (
+                    <ul
+                      className="flex items-center justify-center lg:justify-start gap-x-4 mt-4"
+                      aria-label="Social media"
+                    >
+                      {SOCIALS.map((social) => {
+                        const Icon = social.icon;
+                        return (
+                          <li key={social.name}>
+                            <Button variant="outline" size="icon" asChild>
+                              <Link
+                                href={social.url}
+                                target={social.target}
+                                rel={social.rel}
+                                aria-label={`${social.name} (opens in a new tab)`}
+                              >
+                                <span className="sr-only">{social.name}</span>
+                                <Icon className="size-8 text-current opacity-80" />
+                              </Link>
+                            </Button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+                <div className="flex justify-center mt-4 size-80 lg:size-[24rem] xl:size-[30rem] lg:absolute lg:-left-[calc(100%-16rem)] xl:-left-[calc(100%-16rem)]">
+                  <Globe />
+                </div>
               </div>
             </div>
           </header>

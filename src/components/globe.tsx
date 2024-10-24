@@ -4,16 +4,19 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
 export default function Globe() {
-  const canvasRef = useRef<HTMLCanvasElement>(undefined);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
   useEffect(() => {
-    let width = canvasRef?.current?.offsetWidth ?? 0;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let width = canvas.offsetWidth;
+
     const onResize = () => {
-      if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
-      }
+      width = canvas.offsetWidth;
     };
-    window.addEventListener("resize", onResize);
-    const globe = createGlobe(canvasRef.current as HTMLCanvasElement, {
+
+    const globe = createGlobe(canvas, {
       devicePixelRatio: 2,
       width: width * 2,
       height: width * 2,
@@ -27,31 +30,31 @@ export default function Globe() {
       opacity: 1,
       markerColor: [251 / 255, 100 / 255, 21 / 255],
       glowColor: [0.8, 0.8, 0.8],
-      markers: [
-        {
-          location: [22.5726, 88.3639],
-          size: 0.1,
-        },
-      ],
+      markers: [{ location: [22.5726, 88.3639], size: 0.1 }],
       onRender: (state) => {
         state.width = width * 2;
         state.height = width * 2;
       },
     });
+
+    window.addEventListener("resize", onResize);
+
     setTimeout(() => {
-      if (canvasRef.current) {
-        canvasRef.current.style.opacity = "1";
+      if (canvas) {
+        canvas.style.opacity = "1";
       }
-    });
+    }, 0);
+
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
   return (
     <canvas
-      ref={canvasRef as React.RefObject<HTMLCanvasElement>}
-      className="mt-4 mx-auto lg:-mx-[8rem] aspect-square size-96 lg:size-[30rem]"
+      ref={canvasRef}
+      className="aspect-square size-full"
       style={{
         contain: "layout paint size",
         opacity: 0,
