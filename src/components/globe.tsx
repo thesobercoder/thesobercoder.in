@@ -11,6 +11,7 @@ export default function Globe() {
     if (!canvas) return;
 
     let width = canvas.offsetWidth;
+    let phi = 3.5;
 
     const onResize = () => {
       width = canvas.offsetWidth;
@@ -34,6 +35,8 @@ export default function Globe() {
       onRender: (state) => {
         state.width = width * 2;
         state.height = width * 2;
+        state.phi = phi;
+        phi += 0.001;
       },
     });
 
