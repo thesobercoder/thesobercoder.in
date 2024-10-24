@@ -84,7 +84,7 @@ export default function Home() {
                     </ul>
                   )}
                 </div>
-                <div className="flex justify-center mt-4 size-80 lg:size-[24rem] xl:size-[30rem] lg:absolute lg:-left-[calc(100%-16rem)] xl:-left-[calc(100%-16rem)]">
+                <div className="flex justify-center mt-4 size-80 lg:size-[24rem] xl:size-[30rem] lg:absolute lg:-left-[calc(100%-18rem)] xl:-left-[calc(100%-16rem)]">
                   <Globe />
                 </div>
               </div>
