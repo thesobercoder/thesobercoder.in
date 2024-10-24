@@ -1,3 +1,4 @@
+import Globe from "@/components/globe";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,7 +27,7 @@ export default function Home() {
                 height={64}
                 className="rounded-full"
               />
-              <div>
+              <div className="relative">
                 <Link
                   href="/"
                   className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1"
@@ -81,6 +82,7 @@ export default function Home() {
                     })}
                   </ul>
                 )}
+                <Globe />
               </div>
             </div>
           </header>
