@@ -19,7 +19,42 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Soham's Portfolio",
-  description: "Soham Dasgupta's portfolio site",
+  description: "Soham's Portfolio",
+  keywords: [
+    "Soham Dasgupta",
+    "Soham",
+    "Soham Dasgupta's Portfolio",
+    "Soham Dasgupta's Website",
+    "Soham Dasgupta's Projects",
+    "Soham's Portfolio",
+    "Soham's Website",
+    "Soham's Projects",
+  ],
+  authors: [{ name: "Soham Dasgupta", url: "https://thesobercoder.in" }],
+  creator: "Soham Dasgupta",
+  publisher: "Soham Dasgupta",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://thesobercoder.in"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Soham's Portfolio",
+    description: "Soham's Portfolio",
+    url: "https://thesobercoder.in",
+    siteName: "Soham's Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soham's Portfolio",
+    description: "Soham's Portfolio",
+  },
 };
 
 export default function RootLayout({
