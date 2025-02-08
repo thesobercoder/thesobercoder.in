@@ -138,7 +138,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="group"
                   >
-                    <Card className="hover:bg-foreground/5 bg-background/5 shadow-lg transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:border hover:border-foreground/10">
+                    <Card className="bg-background/5 rounded-xl border border-transparent shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:border-foreground/20 hover:shadow-xl group-hover:bg-foreground/5">
                       <CardHeader>
                         <CardTitle className="text-foreground/80">
                           {experience.title}
@@ -152,7 +152,7 @@ export default function Home() {
                             className="mr-3 border border-foreground/10 p-1 rounded-md bg-background"
                           />
                           {experience.company}
-                          <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-1" />
+                          <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-2" />
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
