@@ -143,16 +143,23 @@ export default function Home() {
                         <CardTitle className="text-foreground/80">
                           {experience.title}
                         </CardTitle>
-                        <CardDescription className="flex items-center">
-                          <Image
-                            src={experience.logo}
-                            alt={`${experience.company} logo`}
-                            width={36}
-                            height={36}
-                            className="mr-3 border border-foreground/10 p-1 rounded-md bg-background"
-                          />
-                          {experience.company}
-                          <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-2" />
+                        <CardDescription>
+                          <div className="flex justify-between">
+                            <div className="flex items-center">
+                              <Image
+                                src={experience.logo}
+                                alt={`${experience.company} logo`}
+                                width={36}
+                                height={36}
+                                className="mr-3 border border-foreground/10 p-1 rounded-md bg-background"
+                              />
+                              {experience.company}
+                              <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-2" />
+                            </div>
+                            <div className="text-sm text-foreground/80">
+                              {experience.dates}
+                            </div>
+                          </div>
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
