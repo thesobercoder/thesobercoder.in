@@ -104,17 +104,17 @@ export default function Home() {
               <div>
                 <div className="mb-4 space-y-4 text-lg text-foreground/80">
                   <p>
-                    I’m a technology leader with 15 years of experience in
-                    software engineering and enterprise architecture. I am
-                    passionate about collaboration and mentorship, guiding teams
-                    to deliver innovative solutions. I thrive on driving growth
-                    and efficiency in technology initiatives and am committed to
-                    fostering a culture of creativity and problem-solving within
-                    my teams.
-                  </p>
-                  <p>
-                    Looking forward to new challenges and exciting
-                    opportunities!
+                    I'm a technologist who believes in transforming complex
+                    business challenges into elegant cloud solutions. From
+                    architecting distributed systems that power Fortune 500
+                    companies to building enterprise financial platforms that
+                    drive millions in revenue, I see every project as an
+                    opportunity to push the boundaries of what's possible.
+                    Passionate about fostering technical excellence and
+                    innovation, I create environments where teams thrive and
+                    solutions scale. When not designing cloud architectures,
+                    you'll find me mentoring the next generation of engineers
+                    and exploring the frontiers of technology.
                   </p>
                 </div>
               </div>

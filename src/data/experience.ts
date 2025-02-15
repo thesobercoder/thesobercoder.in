@@ -5,7 +5,7 @@ export const EXPERIENCE = [
     company: "insightsoftware",
     companyUrl: "https://insightsoftware.com",
     description:
-      "Spearheaded the modernization of a legacy lease accounting application and led cloud migration initiatives. Focused on mentoring and team development, which improved performance metrics and contributed to successful product launches, ensuring high customer retention rates.",
+      "Led development of cloud-native financial platforms generating $6M ARR, architecting AWS serverless solutions for Fortune 500 clients. Engineered multi-tenant systems for lessor and emission accounting, implementing comprehensive security measures and mentoring teams in cloud architecture best practices.",
     technologies: [
       "TypeScript",
       "HTML",
@@ -35,7 +35,7 @@ export const EXPERIENCE = [
     company: "Deloitte",
     companyUrl: "https://www2.deloitte.com/us",
     description:
-      "Championed the development roadmap for an enterprise lease accounting application, driving revenue growth and enhancing delivery through Agile methodologies. Refined hiring strategies and led a successful intern mentorship program, fostering a culture of innovation and collaboration.",
+      "Directed enterprise lease accounting platform serving 20+ Fortune 500 companies, achieving 20% annual growth. Led development of microservice ecosystem, implemented automated testing infrastructure, and expanded India engineering team while maintaining SOC1 compliance.",
     technologies: [
       "Scrum",
       "HTML",
@@ -62,7 +62,7 @@ export const EXPERIENCE = [
     company: "EffiaSoft",
     companyUrl: "https://effiasoft.com",
     description:
-      "Engineered robust REST APIs for enterprise applications and overhauled multi-tenant ERP architecture, achieving significant performance improvements. Developed key features for CRM systems, aligning technical solutions with business needs to enhance client productivity.",
+      "Architected REST API backend supporting 3000+ MSME customers with real-time transaction processing. Enhanced multi-tenant ERP performance by 25% and implemented robust offline-capable synchronization system for POS applications.",
     technologies: [
       "C#",
       ".NET",
@@ -82,7 +82,7 @@ export const EXPERIENCE = [
     company: "La Exactlly Software",
     companyUrl: "https://www.exactlly.com",
     description:
-      "Developed an enterprise payroll application that significantly improved processing efficiency. Worked on the payroll calculation engine and reporting capabilities, streamlining operations and enhancing user experience, contributing to overall client satisfaction.",
+      "Developed core modules for enterprise payroll system serving 5000+ employees, achieving 70% improvement in calculation performance. Implemented key accounting features and optimized database queries for reporting systems.",
     technologies: [
       "C#",
       ".NET",
