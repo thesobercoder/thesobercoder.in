@@ -38,7 +38,7 @@
     "lint": "next lint",
     "sst:build": "open-next build",
     "sst:deploy": "sst deploy --stage production",
-    "sst:dev": "sst deploy",
+    "sst:dev": "sst dev",
     "sst:remove": "sst remove --stage production",
     "start": "next start"
   }
