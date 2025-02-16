@@ -32,7 +32,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "clean": "git clean -xdf .next .open-next .turbo node_modules",
+    "clean": "git clean -xdf .sst .next .open-next .turbo node_modules",
     "dev": "next dev --turbopack",
     "fmt": "prettier '**/*' -wu && syncpack-format",
     "lint": "next lint",
