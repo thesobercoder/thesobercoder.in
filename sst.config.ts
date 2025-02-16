@@ -9,11 +9,19 @@ export default $config({
     };
   },
   async run() {
+    const stage = $app.stage ?? "dev";
+    const domain =
+      stage === "production"
+        ? {
+            name: "thesobercoder.in",
+            redirects: ["www.thesobercoder.in"],
+          }
+        : {
+            name: `${stage}.thesobercoder.in`,
+          };
+
     new sst.aws.Nextjs("thesobercoder-website", {
-      domain: {
-        name: "thesobercoder.in",
-        redirects: ["www.thesobercoder.in"],
-      },
+      domain,
     });
   },
 });
