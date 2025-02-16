@@ -55,6 +55,7 @@ export const metadata: Metadata = {
     title: "Soham's Portfolio",
     description: "Soham's Portfolio",
   },
+  other: { "og:logo": "https://thesobercoder.in/opengraph-image/square" },
 };
 
 export default function RootLayout({
