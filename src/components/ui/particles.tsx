@@ -137,7 +137,7 @@ const Particles: React.FC<ParticlesProps> = ({
         }
       }
     },
-    [dpr, rgb]
+    [dpr, rgb],
   );
 
   const clearContext = useCallback(() => {
@@ -146,7 +146,7 @@ const Particles: React.FC<ParticlesProps> = ({
         0,
         0,
         canvasSize.current.w,
-        canvasSize.current.h
+        canvasSize.current.h,
       );
     }
   }, []);
