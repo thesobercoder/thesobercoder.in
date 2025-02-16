@@ -4,7 +4,7 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 const DynamicImageWithSkeleton = dynamicImport(
-  () => import("@/components/image-with-skeleton")
+  () => import("@/components/image-with-skeleton"),
 );
 
 type Articles = Array<{

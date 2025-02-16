@@ -1,37 +1,43 @@
 {
-  "name": "newportfolio-next",
+  "name": "thesobercoder-in",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "next dev --turbopack",
-    "lint": "next lint",
-    "start": "next start"
-  },
   "dependencies": {
+    "@opennextjs/aws": "^3.4.2",
     "@radix-ui/react-slot": "1.1.2",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cobe": "0.6.3",
     "framer-motion": "11.13.1",
     "lucide-react": "0.468.0",
-    "next": "15.1.6",
+    "next": "15.1.7",
     "next-themes": "0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "sst": "3.7.15",
+    "sst": "3.9.2",
     "tailwind-merge": "2.5.5",
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
-    "@types/node": "22.13.1",
+    "@types/node": "22.13.4",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "eslint": "9.20.0",
-    "eslint-config-next": "15.1.6",
-    "postcss": "8.5.1",
+    "eslint": "9.20.1",
+    "eslint-config-next": "15.1.7",
+    "postcss": "8.5.2",
+    "prettier": "^3.5.1",
+    "syncpack": "^13.0.2",
     "tailwindcss": "3.4.16",
     "typescript": "5.7.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "next dev --turbopack",
+    "fmt": "prettier '**/*' -wu && syncpack-format",
+    "lint": "next lint",
+    "sst:build": "open-next build",
+    "sst:deploy": "sst deploy --stage=production",
+    "start": "next start"
   }
 }

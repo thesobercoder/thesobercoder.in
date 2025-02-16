@@ -30,7 +30,7 @@ export default function ImageWithSkeleton({
         width={width}
         className={cn(
           "w-full object-cover transition-transform transform group-hover:scale-105 filter brightness-75 group-hover:brightness-50",
-          { "opacity-100": isLoaded, "opacity-0": !isLoaded }
+          { "opacity-100": isLoaded, "opacity-0": !isLoaded },
         )}
         onLoadingComplete={() => setIsLoaded(true)}
       />

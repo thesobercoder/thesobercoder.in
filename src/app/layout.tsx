@@ -9,10 +9,12 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   preload: true,
+  subsets: ["latin"],
 });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   preload: true,
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -80,7 +82,7 @@ export default function RootLayout({
           className={cn(
             "z-[-9999]",
             "opacity-30",
-            "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]"
+            "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]",
           )}
         />
         <ThemeProvider disableTransitionOnChange>

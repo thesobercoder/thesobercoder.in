@@ -10,7 +10,10 @@ export default $config({
   },
   async run() {
     new sst.aws.Nextjs("thesobercoder-website", {
-      domain: "thesobercoder.in",
+      domain: {
+        name: "thesobercoder.in",
+        redirects: ["www.thesobercoder.in"],
+      },
     });
   },
 });

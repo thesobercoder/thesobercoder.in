@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 // Configuration
-export const runtime = "edge";
 export const alt = "Soham's Portfolio";
 export const size = {
   width: 1200,
@@ -55,20 +56,21 @@ const styles = {
 
 export default async function TwitterImage() {
   try {
-    const avatarImageData = await fetch(
-      new URL("../../public/avatar.png", import.meta.url)
-    ).then((res) => res.arrayBuffer());
+    const avatarImageData = await readFile(
+      join(process.cwd(), "public", "avatar.png"),
+    );
+
+    // Convert buffer to base64 data URL
+    const avatarDataUrl = `data:image/png;base64,${avatarImageData.toString(
+      "base64",
+    )}`;
 
     return new ImageResponse(
       (
         <div style={styles.container}>
           <div style={styles.wrapper}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={avatarImageData as unknown as string}
-              alt={alt}
-              style={styles.avatar}
-            />
+            <img src={avatarDataUrl} alt={alt} style={styles.avatar} />
             <div style={styles.textContainer}>
               <h1 style={styles.title}>Soham&apos;s Portfolio</h1>
               <p style={styles.subtitle}>
@@ -80,7 +82,7 @@ export default async function TwitterImage() {
       ),
       {
         ...size,
-      }
+      },
     );
   } catch (error) {
     console.error(error);
