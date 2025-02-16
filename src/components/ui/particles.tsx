@@ -20,6 +20,19 @@ interface ParticlesProps {
   vy?: number;
 }
 
+interface Circle {
+  x: number;
+  y: number;
+  translateX: number;
+  translateY: number;
+  size: number;
+  alpha: number;
+  targetAlpha: number;
+  dx: number;
+  dy: number;
+  magnetism: number;
+}
+
 function MousePosition(): MousePosition {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: 0,
@@ -184,19 +197,6 @@ const Particles: React.FC<ParticlesProps> = ({
       }
     }
   }, [mousePosition.x, mousePosition.y]);
-
-  type Circle = {
-    x: number;
-    y: number;
-    translateX: number;
-    translateY: number;
-    size: number;
-    alpha: number;
-    targetAlpha: number;
-    dx: number;
-    dy: number;
-    magnetism: number;
-  };
 
   const animate = useCallback(() => {
     clearContext();
