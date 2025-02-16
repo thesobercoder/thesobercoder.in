@@ -21,10 +21,6 @@ export default $config({
             name: `${stage}.thesobercoder.in`,
           };
 
-    const site = new sst.aws.Nextjs("thesobercoder-website", {
-      domain,
-    });
-
     // TODO: Visit this later when/if WAF is availble for other regions
     // because we are deploying to ap-south-1 and WAF is only available in us-east-1
 
@@ -81,10 +77,18 @@ export default $config({
     //   },
     // });
 
-    // $transform(aws.cloudfront.Distribution, (distribution, opts, name) => {
-    //   // Add WAF to CloudFront distribution
-    //   distribution.webAclId = $app.stage === "production" ? waf.arn : undefined;
-    // });
+    const site = new sst.aws.Nextjs("thesobercoder-website", {
+      domain,
+      transform: {
+        cdn: {
+          transform: {
+            distribution(args) {
+              args.webAclId = undefined;
+            },
+          },
+        },
+      },
+    });
 
     return {
       url: site.url,
