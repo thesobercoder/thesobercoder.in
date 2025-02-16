@@ -5,6 +5,7 @@ export default $config({
     return {
       name: "thesobercoder-stack",
       removal: input?.stage === "production" ? "retain" : "remove",
+      protect: input?.stage === "production",
       home: "aws",
     };
   },
