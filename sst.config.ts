@@ -88,6 +88,7 @@ export default $config({
           },
         },
       },
+      buildCommand: "bun run sst:build",
     });
 
     return {
