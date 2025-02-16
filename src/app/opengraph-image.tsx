@@ -57,12 +57,12 @@ const styles = {
 export default async function OGImage() {
   try {
     const avatarImageData = await readFile(
-      join(process.cwd(), "public", "avatar.png"),
+      join(process.cwd(), "public", "avatar.png")
     );
 
     // Convert buffer to base64 data URL
     const avatarDataUrl = `data:image/png;base64,${avatarImageData.toString(
-      "base64",
+      "base64"
     )}`;
 
     return new ImageResponse(
@@ -82,7 +82,7 @@ export default async function OGImage() {
       ),
       {
         ...size,
-      },
+      }
     );
   } catch (error) {
     console.error(error);
