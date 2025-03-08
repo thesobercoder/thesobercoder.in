@@ -18,17 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Soham's Portfolio",
-  description: "Soham's Portfolio",
+  title: "Soham Dasgupta | Portfolio",
+  description: "Technology Leader & Enterprise Architect",
   keywords: [
     "Soham Dasgupta",
-    "Soham",
-    "Soham Dasgupta's Portfolio",
-    "Soham Dasgupta's Website",
-    "Soham Dasgupta's Projects",
-    "Soham's Portfolio",
-    "Soham's Website",
-    "Soham's Projects",
+    "Technology Leader",
+    "Enterprise Architect",
+    "Software Engineer",
+    "Portfolio",
+    "Full Stack Developer",
+    "React",
+    "Next.js",
   ],
   authors: [{ name: "Soham Dasgupta", url: "https://thesobercoder.in" }],
   creator: "Soham Dasgupta",
