@@ -1,99 +1,82 @@
-import { readFile } from "fs/promises";
 import { ImageResponse } from "next/og";
-import { join } from "path";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 // Configuration
-export const alt = "Soham's Portfolio";
+export const alt = "Soham Dasgupta - Technology Leader & Enterprise Architect";
 export const contentType = "image/png";
+export const size = { width: 1200, height: 630 };
 
-// Styles
+// Styles optimized for Twitter display
 const styles = {
-  large: {
-    container: {
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#09090b",
-      backgroundImage:
-        "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
-      padding: "40px",
-    },
-    wrapper: {
-      display: "flex",
-      alignItems: "center",
-      gap: "40px",
-    },
-    avatar: {
-      width: "256px",
-      height: "256px",
-      borderRadius: "128px",
-    },
-    textContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-    },
-    title: {
-      fontSize: 60,
-      fontWeight: 800,
-      background:
-        "linear-gradient(to bottom right, white, rgba(255,255,255,0.4))",
-      backgroundClip: "text",
-      color: "transparent",
-      margin: 0,
-    },
-    subtitle: {
-      fontSize: 30,
-      color: "rgba(255,255,255,0.8)",
-      marginTop: 10,
-    },
+  container: {
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "flex-start" as const,
+    justifyContent: "flex-end" as const,
+    backgroundColor: "#09090b",
+    backgroundImage:
+      "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
+    padding: "40px 60px",
+    position: "relative" as const,
+    overflow: "hidden",
   },
-  square: {
-    container: {
-      position: "relative",
-      width: "400px",
-      height: "400px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#09090b",
-      backgroundImage:
-        "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
-      overflow: "hidden",
-    },
-    avatar: {
-      width: "320px",
-      height: "320px",
-      borderRadius: "160px",
-      objectFit: "cover",
-    },
+  overlay: {
+    position: "absolute" as const,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: "70%",
+    background:
+      "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)",
+    zIndex: 1,
   },
-} as const;
+  avatar: {
+    position: "absolute" as const,
+    top: "50%",
+    right: "60px",
+    transform: "translateY(-50%)",
+    width: "220px",
+    height: "220px",
+    borderRadius: "110px",
+    border: "4px solid rgba(255,255,255,0.2)",
+    objectFit: "cover" as const,
+    zIndex: 2,
+  },
+  contentWrapper: {
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "flex-start" as const,
+    width: "65%",
+    zIndex: 2,
+  },
+  title: {
+    fontSize: 72,
+    fontWeight: 800,
+    background:
+      "linear-gradient(to bottom right, white, rgba(255,255,255,0.7))",
+    backgroundClip: "text",
+    color: "transparent",
+    margin: 0,
+    lineHeight: 1.1,
+  },
+  subtitle: {
+    fontSize: 32,
+    color: "rgba(255,255,255,0.9)",
+    marginTop: 16,
+    fontWeight: 500,
+  },
+  url: {
+    fontSize: 24,
+    color: "rgba(255,255,255,0.6)",
+    marginTop: 20,
+    fontWeight: 400,
+  },
+};
 
-export function generateImageMetadata() {
-  return [
-    {
-      contentType: "image/png",
-      size: { width: 1200, height: 630 },
-      id: "large",
-    },
-    {
-      contentType: "image/png",
-      size: { width: 400, height: 400 },
-      id: "square",
-    },
-  ];
-}
-
-export default async function OGImage({
-  id,
-  size,
-}: {
-  id: string;
-  size: { width: number; height: number };
-}) {
+export default async function TwitterImage() {
   try {
     const avatarImageData = await readFile(
       join(process.cwd(), "public", "avatar.png"),
@@ -103,36 +86,23 @@ export default async function OGImage({
       "base64",
     )}`;
 
-    if (id === "square") {
-      return new ImageResponse(
-        (
-          <div style={styles.square.container}>
-            <img src={avatarDataUrl} alt={alt} style={styles.square.avatar} />
-          </div>
-        ),
-        {
-          width: 400,
-          height: 400,
-        },
-      );
-    }
-
     return new ImageResponse(
       (
-        <div style={styles.large.container}>
-          <div style={styles.large.wrapper}>
-            <img src={avatarDataUrl} alt={alt} style={styles.large.avatar} />
-            <div style={styles.large.textContainer}>
-              <h1 style={styles.large.title}>Soham&apos;s Portfolio</h1>
-              <p style={styles.large.subtitle}>
-                Technology Leader & Enterprise Architect
-              </p>
-            </div>
+        <div style={styles.container}>
+          <div style={styles.overlay} />
+          <img src={avatarDataUrl} alt={alt} style={styles.avatar} />
+          <div style={styles.contentWrapper}>
+            <h1 style={styles.title}>Soham Dasgupta</h1>
+            <p style={styles.subtitle}>
+              Technology Leader & Enterprise Architect
+            </p>
+            <p style={styles.url}>thesobercoder.in</p>
           </div>
         </div>
       ),
       {
-        ...size,
+        width: 1200,
+        height: 630,
       },
     );
   } catch (error) {

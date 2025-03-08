@@ -43,19 +43,35 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Soham's Portfolio",
-    description: "Soham's Portfolio",
-    url: "https://thesobercoder.in",
-    siteName: "Soham's Portfolio",
+    title: "Soham Dasgupta | Portfolio",
+    description: "Technology Leader & Enterprise Architect",
+    url: "/",
+    siteName: "Soham Dasgupta",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Soham Dasgupta - Technology Leader & Enterprise Architect",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soham's Portfolio",
-    description: "Soham's Portfolio",
+    title: "Soham Dasgupta | Portfolio",
+    description: "Technology Leader & Enterprise Architect",
+    creator: "@thesobercoder",
+    images: [
+      {
+        url: "/twitter-image",
+        width: 1200,
+        height: 630,
+        alt: "Soham Dasgupta - Technology Leader & Enterprise Architect",
+      },
+    ],
   },
-  other: { "og:logo": "https://thesobercoder.in/opengraph-image/square" },
 };
 
 export default function RootLayout({
