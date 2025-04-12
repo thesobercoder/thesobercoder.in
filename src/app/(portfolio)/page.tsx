@@ -23,9 +23,9 @@ export default function Home() {
               <Image
                 src="/avatar.webp"
                 alt="Soham Dasgupta"
-                width={64}
-                height={64}
-                className="rounded-full"
+                width={128}
+                height={128}
+                className="rounded-full ring-4 ring-foreground/10"
               />
               <div className="relative">
                 <div>
