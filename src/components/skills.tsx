@@ -27,7 +27,7 @@ export function Skills() {
                 ease: "easeInOut",
               },
             }}
-            className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/70 backdrop-blur-sm"
+            className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/70 backdrop-blur-xs"
           >
             <div className="flex flex-col items-center p-3 gap-2">
               <div className="p-2 rounded-lg bg-primary/5 group-hover:bg-primary/10 transition-colors">

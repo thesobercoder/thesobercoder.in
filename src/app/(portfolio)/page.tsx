@@ -16,7 +16,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="relative hero z-10">
-      <div className="mx-auto max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="mx-auto max-w-(--breakpoint-2xl) px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
             <div className="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left">
@@ -31,7 +31,7 @@ export default function Home() {
                 <div>
                   <Link
                     href="/"
-                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1 hover:bg-gradient-to-r hover:from-primary hover:to-primary/70 transition-all duration-500"
+                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1 hover:bg-linear-to-r hover:from-primary hover:to-primary/70 transition-all duration-500"
                   >
                     <h1>Soham Dasgupta</h1>
                   </Link>

@@ -33,7 +33,7 @@ export function Experience() {
                   ease: "easeInOut",
                 },
               }}
-              className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/50 backdrop-blur-sm p-4"
+              className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/50 backdrop-blur-xs p-4"
             >
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between gap-3">
