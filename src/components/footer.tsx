@@ -5,7 +5,7 @@ export function Footer({ className }: { className?: string }) {
     <footer
       className={cn(
         "flex flex-col items-center w-full mb-8 text-xs",
-        className
+        className,
       )}
     >
       <span>{new Date().getFullYear()} All rights reserved.</span>

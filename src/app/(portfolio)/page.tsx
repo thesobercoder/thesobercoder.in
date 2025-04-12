@@ -1,22 +1,15 @@
+import { Experience } from "@/components/experience";
 import Globe from "@/components/globe";
+import { Skills } from "@/components/skills";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { EXPERIENCE } from "@/data/experience";
-import { SKILLS } from "@/data/skills";
 import { SOCIALS } from "@/data/socials";
-import { ArrowUpRight, FileText, Mail } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -155,26 +148,7 @@ export default function Home() {
                   Skills
                 </h2>
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-                {SKILLS.map((skill) => {
-                  const Icon = skill.icon;
-                  return (
-                    <div
-                      key={skill.name}
-                      className="group relative overflow-hidden rounded-lg p-3 transition-all duration-300 bg-white/5 backdrop-blur-sm border border-white/5 shadow-[inset_0_1px_0.5px_rgba(255,255,255,0.05)] hover:bg-white/15 hover:backdrop-blur-md hover:border-white/15 hover:shadow-[inset_0_1px_0.5px_rgba(255,255,255,0.1)]"
-                    >
-                      <div className="flex flex-col items-center text-center gap-1">
-                        <div className="p-2 rounded-md bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300">
-                          <Icon className="size-4 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              <Skills />
             </section>
             <section
               id="experience"
@@ -186,48 +160,7 @@ export default function Home() {
                   Experience
                 </h2>
               </div>
-              <div className="grid grid-cols-1 gap-6">
-                {EXPERIENCE.map((experience) => (
-                  <Link
-                    key={experience.title}
-                    href={experience.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block"
-                  >
-                    <Card className="rounded-xl transition-all duration-300 bg-white/5 backdrop-blur-sm border border-white/5 shadow-[inset_0_1px_0.5px_rgba(255,255,255,0.05)] group-hover:bg-white/15 group-hover:backdrop-blur-md group-hover:border-white/15 group-hover:shadow-[inset_0_1px_0.5px_rgba(255,255,255,0.1)]">
-                      <CardHeader>
-                        <CardTitle className="text-foreground/80 group-hover:text-foreground">
-                          {experience.title}
-                        </CardTitle>
-                        <CardDescription>
-                          <div className="flex justify-between">
-                            <div className="flex items-center">
-                              <Image
-                                src={experience.logo}
-                                alt={`${experience.company} logo`}
-                                width={36}
-                                height={36}
-                                className="mr-3 border border-foreground/10 p-1 rounded-md bg-background"
-                              />
-                              {experience.company}
-                              <ArrowUpRight className="ml-1 transition-transform duration-300 transform group-hover:translate-x-2" />
-                            </div>
-                            <div className="text-sm text-foreground/80">
-                              {experience.dates}
-                            </div>
-                          </div>
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-md text-foreground/80 group-hover:text-foreground/90">
-                          {experience.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+              <Experience />
             </section>
             <section
               id="cta"
