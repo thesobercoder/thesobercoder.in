@@ -21,10 +21,11 @@ export default function Home() {
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
             <div className="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left">
               <Image
-                src="/avatar.webp"
+                src="/profile.jpg"
                 alt="Soham Dasgupta"
                 width={128}
                 height={128}
+                priority
                 className="rounded-full ring-4 ring-foreground/10 hover:ring-primary/50 transition-all duration-300"
               />
               <div className="relative">
