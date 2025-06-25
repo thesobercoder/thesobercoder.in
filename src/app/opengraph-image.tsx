@@ -79,7 +79,7 @@ const styles = {
 export default async function OGImage() {
   try {
     const avatarImageData = await readFile(
-      join(process.cwd(), "public", "avatar.png"),
+      join(process.cwd(), "public", "profile.jpg"),
     );
 
     const avatarDataUrl = `data:image/png;base64,${avatarImageData.toString("base64")}`;
