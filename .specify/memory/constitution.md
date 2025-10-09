@@ -154,6 +154,7 @@ This section defines the mandatory technology choices for the project. Substitut
 ### Prohibited Technologies
 
 The following are explicitly PROHIBITED without constitutional amendment:
+
 - Alternative package managers (npm, yarn, pnpm)
 - CSS-in-JS libraries (styled-components, emotion) - use Tailwind only
 - Alternative animation libraries - use Framer Motion exclusively
@@ -206,6 +207,7 @@ This section defines the mandatory file structure and organization patterns.
 ### Path Aliases
 
 TypeScript path mapping configured in `tsconfig.json`:
+
 - `@/*` → `./src/*` (if using src directory)
 - Absolute imports preferred over relative paths for cross-directory imports
 
@@ -250,14 +252,14 @@ All configuration files MUST follow these specifications.
 ```json
 {
   "compilerOptions": {
-    "strict": true,              // NON-NEGOTIABLE
+    "strict": true, // NON-NEGOTIABLE
     "target": "ES2022",
     "lib": ["ES2023", "DOM"],
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"]         // Path aliases
+      "@/*": ["./src/*"] // Path aliases
     }
   }
 }
@@ -275,7 +277,7 @@ All configuration files MUST follow these specifications.
 ```json
 {
   "style": "default",
-  "rsc": true,                   // React Server Components enabled
+  "rsc": true, // React Server Components enabled
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.ts",
@@ -302,9 +304,9 @@ All configuration files MUST follow these specifications.
 ```javascript
 export default {
   plugins: {
-    '@tailwindcss/postcss': {}
-  }
-}
+    "@tailwindcss/postcss": {},
+  },
+};
 ```
 
 ### Package Configuration (`package.json`)
@@ -319,6 +321,7 @@ export default {
 ### Project Commands
 
 Development workflow MUST use standardized commands:
+
 - **Development**: `next dev --turbopack` or `bun run sst:dev` (SST with live AWS resources)
 - **Production Server**: `next start` (local production server testing)
 - **Build**: `next build` or `bun run sst:build` (verify before deployment)
@@ -335,6 +338,7 @@ Development workflow MUST use standardized commands:
 **Strict Versioning**: All dependencies in `package.json` MUST use exact versions (e.g., `"react": "19.1.0"`). Semver range operators (`^`, `~`, `>=`, etc.) are PROHIBITED. This ensures reproducible builds and prevents unexpected breaking changes.
 
 **Version Upgrades**: Package version upgrades MUST be evaluated case-by-case with explicit justification. Mass upgrades are prohibited. Each upgrade MUST:
+
 1. Be tested in development environment
 2. Verify no breaking changes
 3. Check bundle size impact
@@ -343,6 +347,7 @@ Development workflow MUST use standardized commands:
 **Version Consistency**: Syncpack MUST be used to ensure version consistency across all package.json files. The `bun run fmt` command includes `syncpack-format` for automated formatting.
 
 **New Dependencies**: New dependencies MUST be justified with clear rationale and reviewed for:
+
 - Bundle size impact
 - Maintenance status and community support
 - TypeScript support
@@ -357,6 +362,7 @@ Commits MUST be atomic with clear messages. Feature branches MUST follow naming 
 ### Pre-Commit Gates
 
 Before any commit, the following MUST pass:
+
 1. `next lint` (no errors)
 2. `bun run fmt` (code formatted)
 3. TypeScript compilation (no type errors)
@@ -365,6 +371,7 @@ Before any commit, the following MUST pass:
 ### Pre-Deployment Gates
 
 Before any production deployment, the following MUST pass:
+
 1. All pre-commit gates
 2. `next build` succeeds
 3. Visual regression testing (manual)
@@ -375,6 +382,7 @@ Before any production deployment, the following MUST pass:
 ### Code Review Requirements
 
 All changes MUST be reviewed for:
+
 - Adherence to Core Principles I-VII
 - Component reusability and single responsibility
 - TypeScript type safety
@@ -387,6 +395,7 @@ All changes MUST be reviewed for:
 ### Amendment Process
 
 Constitution amendments require:
+
 1. Documented proposal with rationale
 2. Impact assessment on existing codebase
 3. Update to this constitution file with incremented version
@@ -396,6 +405,7 @@ Constitution amendments require:
 ### Versioning Policy
 
 Constitution version follows semantic versioning:
+
 - **MAJOR**: Principle removal, redefinition, or backward-incompatible changes
 - **MINOR**: New principle addition or material guidance expansion
 - **PATCH**: Clarifications, wording improvements, non-semantic refinements
