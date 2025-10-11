@@ -39,9 +39,9 @@
     "fmt": "prettier '**/*' -wu && syncpack-format",
     "lint": "next lint",
     "sst:build": "open-next build",
-    "sst:deploy": "sst deploy --stage production",
+    "sst:deploy": "./scripts/deploy.zsh",
     "sst:dev": "sst dev",
-    "sst:remove": "sst remove --stage production",
+    "sst:remove": "./scripts/remove.zsh",
     "start": "next start"
   }
 }

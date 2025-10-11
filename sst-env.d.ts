@@ -9,10 +9,6 @@ declare module "sst" {
       "type": "sst.aws.Nextjs"
       "url": string
     }
-    "thesobercoder-website": {
-      "type": "sst.aws.Nextjs"
-      "url": string
-    }
   }
 }
 /// <reference path="sst-env.d.ts" />
