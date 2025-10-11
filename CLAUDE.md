@@ -1,4 +1,4 @@
 # CLAUDE.md
 
-- Always follow `.specify/memory/constitution.md` as your single source of truth.
-- The following `.claude/`, `.specify/`, `.vscode/` folders are strictly READONLY.
+- Follow `.specify/memory/constitution.md` as the single source of truth.
+- The `.claude/`, `.specify/`, and `.vscode/` directories are read-only.
