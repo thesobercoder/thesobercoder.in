@@ -21,7 +21,6 @@ Given that feature description, do this:
 2. Load `.specify/templates/spec-template.md` to understand required sections.
 
 3. Follow this execution flow:
-
    1. Parse user description from Input
       If empty: ERROR "No feature description provided"
    2. Extract key concepts from description
@@ -90,12 +89,10 @@ Given that feature description, do this:
    ```
 
    b. **Run Validation Check**: Review the spec against each checklist item:
-
    - For each item, determine if it passes or fails
    - Document specific issues found (quote relevant spec sections)
 
    c. **Handle Validation Results**:
-
    - **If all items pass**: Mark checklist complete and proceed to step 6
    - **If items fail (excluding [NEEDS CLARIFICATION])**:
      1. List the failing items and specific issues
@@ -103,7 +100,6 @@ Given that feature description, do this:
      3. Re-run validation until all items pass (max 3 iterations)
      4. If still failing after 3 iterations, document remaining issues in checklist notes and warn user
    - **If [NEEDS CLARIFICATION] markers remain**:
-
      1. Extract all [NEEDS CLARIFICATION: ...] markers from the spec
      2. **LIMIT CHECK**: If more than 3 markers exist, keep only the 3 most critical (by scope/security/UX impact) and make informed guesses for the rest
      3. For each clarification needed (max 3), present options to user in this format:

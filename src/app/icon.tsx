@@ -11,10 +11,10 @@ export const contentType = "image/png";
 
 export default async function Icon() {
   try {
-    const imagePath = join(process.cwd(), "public", "profile.jpg");
+    const imagePath = join(process.cwd(), "public", "profile.png");
     const imageBuffer = readFileSync(imagePath);
     const imageBase64 = imageBuffer.toString("base64");
-    const imageSrc = `data:image/jpeg;base64,${imageBase64}`;
+    const imageSrc = `data:image/png;base64,${imageBase64}`;
 
     return new ImageResponse(
       (
