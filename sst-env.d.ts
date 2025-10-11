@@ -5,13 +5,17 @@
 
 declare module "sst" {
   export interface Resource {
+    "thesobercoder": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
     "thesobercoder-website": {
-      type: "sst.aws.Nextjs";
-      url: string;
-    };
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
   }
 }
 /// <reference path="sst-env.d.ts" />
 
-import "sst";
-export {};
+import "sst"
+export {}

@@ -16,9 +16,11 @@ export default $config({
         ? {
             name: "thesobercoder.in",
             redirects: ["www.thesobercoder.in"],
+            dns: sst.cloudflare.dns(),
           }
         : {
             name: `${stage}.thesobercoder.in`,
+            dns: sst.cloudflare.dns(),
           };
 
     // TODO: Visit this later when/if WAF is availble for other regions
@@ -77,7 +79,7 @@ export default $config({
     //   },
     // });
 
-    const site = new sst.aws.Nextjs("thesobercoder-website", {
+    const site = new sst.aws.Nextjs("thesobercoder", {
       domain,
       transform: {
         cdn: {
