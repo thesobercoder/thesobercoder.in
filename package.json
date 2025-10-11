@@ -33,6 +33,7 @@
   },
   "private": true,
   "scripts": {
+    "aws:login": "./scripts/login.zsh",
     "build": "next build",
     "clean": "git clean -xdf .sst .next .open-next .turbo node_modules",
     "dev": "next dev --turbopack",

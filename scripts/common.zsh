@@ -25,4 +25,11 @@ done
 if (( ${#missing_env_vars} > 0 )); then
   echo "Error: missing required environment variables: ${missing_env_vars[*]}" >&2
   exit 1
+else
+  echo "All required environment variables are set."
+  echo "CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:0:4}****"
+  echo "CLOUDFLARE_DEFAULT_ACCOUNT_ID: ${CLOUDFLARE_DEFAULT_ACCOUNT_ID}"
+  echo "AWS_ACCOUNT: ${AWS_ACCOUNT}"
+  echo "AWS_PROFILE: ${AWS_PROFILE}"
+  echo "AWS_REGION: ${AWS_REGION}"
 fi
