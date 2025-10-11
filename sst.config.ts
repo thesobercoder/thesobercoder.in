@@ -15,11 +15,15 @@ export default $config({
         ? {
             name: "thesobercoder.in",
             redirects: ["www.thesobercoder.in"],
-            dns: sst.cloudflare.dns(),
+            dns: sst.cloudflare.dns({
+              proxy: true,
+            }),
           }
         : {
             name: `${stage}.thesobercoder.in`,
-            dns: sst.cloudflare.dns(),
+            dns: sst.cloudflare.dns({
+              proxy: true,
+            }),
           };
 
     const site = new sst.aws.Nextjs("thesobercoder", {
