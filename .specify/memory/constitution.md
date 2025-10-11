@@ -1,24 +1,23 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version: 1.2.0 → 1.2.1 (PATCH: Clarified Syncpack usage - formatting only, not version consistency)
+  Version: 1.2.1 → 1.2.2 (PATCH: Document Cloudflare DNS management)
   Date: 2025-10-11
 
   Changes:
-  - Corrected Syncpack description in Development Tools section
-  - Changed from "Package version consistency across workspace" to "Package.json formatting"
-  - Removed misleading "Version Consistency" subsection from Dependency Management
-  - Clarified that syncpack-format is only for JSON formatting, not version management
-  - This is NOT a monorepo - only one package.json exists, no cross-file consistency needed
+  - Added Cloudflare DNS management to Infrastructure & Deployment section
+  - Clarified DNS/deployment architecture: Cloudflare manages DNS, AWS hosts application
+  - Updated SST Configuration section to document Cloudflare credentials requirement
+  - Explicitly documented environment variables in Prerequisites
 
   Modified Principles:
-  - None (principles unchanged)
+  - None (principles unchanged, only infrastructure clarification)
 
   Added Sections:
   - None
 
   Removed Sections:
-  - "Version Consistency" subsection (was misleading)
+  - None
 
   Templates Requiring Updates:
   - ✅ .specify/templates/plan-template.md (reviewed - compatible, no changes needed)
@@ -30,6 +29,13 @@
 
   ---
   Version History:
+
+  v1.2.2 (PATCH: Document Cloudflare DNS management)
+  Date: 2025-10-11
+  - Added Cloudflare to Infrastructure & Deployment section
+  - Clarified DNS managed by Cloudflare, application hosted on AWS via SST
+  - Documented Cloudflare credentials requirement for deployment
+  - Enhanced SST Configuration section with DNS management details
 
   v1.2.1 (PATCH: Clarified Syncpack usage - formatting only, not version consistency)
   Date: 2025-10-11
@@ -115,9 +121,9 @@ Portfolio content (experience, skills, social links) MUST be managed in data fil
 
 ### VII. Deployment Discipline (NON-NEGOTIABLE)
 
-Production deployments MUST use SST framework as Infrastructure-as-Code (IaC) for AWS deployment. Domain configuration for `thesobercoder.in` MUST be centralized in `sst.config.ts`. All deployments are MANUAL-ONLY and MUST be performed exclusively by the project owner. Automated deployments, CI/CD pipelines for production deployment, or agent-initiated deployments are PROHIBITED. All deployments MUST pass build, lint, and type-check gates before execution.
+Production deployments MUST use SST framework as Infrastructure-as-Code (IaC) for AWS deployment. DNS MUST be managed through Cloudflare for the `thesobercoder.in` domain. Domain configuration MUST be centralized in `sst.config.ts` with Cloudflare credentials configured in `.env`. All deployments are MANUAL-ONLY and MUST be performed exclusively by the project owner. Automated deployments, CI/CD pipelines for production deployment, or agent-initiated deployments are PROHIBITED. All deployments MUST pass build, lint, and type-check gates before execution.
 
-**Rationale**: Manual deployment control ensures deliberate releases, prevents accidental production changes, maintains deployment accountability, and allows final human verification before infrastructure changes go live.
+**Rationale**: Manual deployment control ensures deliberate releases, prevents accidental production changes, maintains deployment accountability, and allows final human verification before infrastructure changes go live. Cloudflare DNS provides reliable domain management with proper configuration centralized in code.
 
 ## Technical Stack (NON-NEGOTIABLE)
 
@@ -158,9 +164,12 @@ This section defines the mandatory technology choices for the project. Substitut
 
 ### Infrastructure & Deployment
 
-- **SST**: Infrastructure-as-Code for AWS
+- **SST**: Infrastructure-as-Code for AWS deployment
 - **@opennextjs/aws**: Next.js adapter for AWS Lambda
-- **Domain**: thesobercoder.in (configured in `sst.config.ts`)
+- **AWS**: Application hosting (Lambda, CloudFront, S3)
+- **Cloudflare**: DNS management for thesobercoder.in domain
+- **Domain**: thesobercoder.in (DNS in Cloudflare, configured in `sst.config.ts`)
+- **Environment Variables**: Required credentials in `.env` (AWS, Cloudflare, Dev.to)
 
 ### Development Tools
 
@@ -312,7 +321,9 @@ All configuration files MUST follow these specifications.
 ### SST Configuration (`sst.config.ts`)
 
 - Infrastructure-as-Code for AWS deployment
-- Domain configuration for `thesobercoder.in`
+- Domain configuration for `thesobercoder.in` (DNS managed via Cloudflare)
+- Cloudflare credentials required: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_DEFAULT_ACCOUNT_ID`
+- AWS credentials required: `AWS_ACCOUNT`, `AWS_PROFILE`, `AWS_REGION`
 - Environment variable management
 - Lambda function configuration for Next.js
 
@@ -442,4 +453,4 @@ This constitution is the SOLE source of truth for all project decisions, archite
 
 The file `CLAUDE.md` may exist as a quick-reference guide for agents but MUST NOT contain any authoritative guidance that conflicts with or extends beyond this constitution. It should only provide convenient command references and direct readers to this constitution.
 
-**Version**: 1.2.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-11
+**Version**: 1.2.2 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-11
