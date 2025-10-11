@@ -1,6 +1,6 @@
 # thesobercoder.in
 
-A modern, performant portfolio website built with Next.js 15, React 19, and TypeScript. Features an interactive globe visualization, dark mode support, and a component-driven architecture.
+A modern portfolio website built with Next.js 15, React 19, and TypeScript.
 
 ## Tech Stack
 
@@ -10,7 +10,6 @@ A modern, performant portfolio website built with Next.js 15, React 19, and Type
 - **UI Components**: shadcn/ui with Radix UI primitives
 - **Animation**: Framer Motion
 - **Icons**: lucide-react
-- **Visualization**: cobe (interactive globe)
 - **Theme**: next-themes for dark mode
 - **Infrastructure**: SST for AWS deployment
 - **Package Manager**: Bun
