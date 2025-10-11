@@ -21,7 +21,7 @@ export default function Home() {
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
             <div className="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left">
               <Image
-                src="/profile.jpg"
+                src="/profile.png"
                 alt="Soham Dasgupta"
                 width={128}
                 height={128}

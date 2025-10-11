@@ -1,10 +1,51 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version: 1.0.1 → 1.1.0 (MINOR: Constitution becomes single source of truth)
-  Date: 2025-10-09
+  Version: 1.2.0 → 1.2.1 (PATCH: Clarified Syncpack usage - formatting only, not version consistency)
+  Date: 2025-10-11
 
   Changes:
+  - Corrected Syncpack description in Development Tools section
+  - Changed from "Package version consistency across workspace" to "Package.json formatting"
+  - Removed misleading "Version Consistency" subsection from Dependency Management
+  - Clarified that syncpack-format is only for JSON formatting, not version management
+  - This is NOT a monorepo - only one package.json exists, no cross-file consistency needed
+
+  Modified Principles:
+  - None (principles unchanged)
+
+  Added Sections:
+  - None
+
+  Removed Sections:
+  - "Version Consistency" subsection (was misleading)
+
+  Templates Requiring Updates:
+  - ✅ .specify/templates/plan-template.md (reviewed - compatible, no changes needed)
+  - ✅ .specify/templates/spec-template.md (reviewed - compatible, no changes needed)
+  - ✅ .specify/templates/tasks-template.md (reviewed - compatible, no changes needed)
+
+  Follow-up TODOs:
+  - None
+
+  ---
+  Version History:
+
+  v1.2.1 (PATCH: Clarified Syncpack usage - formatting only, not version consistency)
+  Date: 2025-10-11
+  - Corrected Syncpack description to reflect actual usage (package.json formatting only)
+  - Removed misleading "Version Consistency" section
+  - Clarified this is not a monorepo (single package.json)
+
+  v1.2.0 (MINOR: Removed ephemeral package versions from constitution)
+  Date: 2025-10-11
+  - Removed all specific package version numbers from Technical Stack
+  - Constitution now governs versioning STRATEGY (exact versions, no semver operators)
+  - Package versions tracked in package.json only (can evolve without constitutional amendments)
+  - Clarified that constitution governs principles and strategies, not ephemeral implementation details
+
+  v1.1.0 (MINOR: Constitution becomes single source of truth)
+  Date: 2025-10-09
   - Added TECHNICAL STACK section with all mandatory technology choices and exact versions
   - Added PROJECT ARCHITECTURE section with complete file structure and organization patterns
   - Added CONFIGURATION STANDARDS section with specifications for all config files
@@ -15,30 +56,6 @@
   - Enhanced Project Commands with "next start" and "sst:remove"
   - Replaced "Runtime Guidance" with "Constitutional Supremacy" asserting sole authority
   - Constitution now contains ALL project decisions (architecture, tech stack, file paths)
-
-  Modified Principles:
-  - None (principles unchanged)
-
-  Added Sections (MAJOR expansion):
-  - Technical Stack (NON-NEGOTIABLE) - Complete tech stack with versions
-  - Project Architecture - File structure, naming conventions, organization patterns
-  - Configuration Standards - Specifications for tsconfig, tailwind, shadcn/ui, SST, PostCSS
-
-  Removed Sections:
-  - None
-
-  Templates Requiring Updates:
-  - ✅ .specify/templates/plan-template.md (reviewed - compatible)
-  - ✅ .specify/templates/spec-template.md (reviewed - compatible)
-  - ✅ .specify/templates/tasks-template.md (reviewed - compatible)
-
-  Follow-up TODOs:
-  - Update CLAUDE.md to become quick-reference guide that defers to constitution
-  - Consider adding accessibility standards section in future amendment
-  - Consider adding security standards section in future amendment
-
-  ---
-  Version History:
 
   v1.0.1 (PATCH: Clarifications for dependency management and deployment)
   Date: 2025-10-09
@@ -104,56 +121,57 @@ Production deployments MUST use SST framework as Infrastructure-as-Code (IaC) fo
 
 ## Technical Stack (NON-NEGOTIABLE)
 
-This section defines the mandatory technology choices for the project. Substitutions require constitutional amendment.
+This section defines the mandatory technology choices for the project. Substitutions require constitutional amendment. Specific version numbers are tracked in `package.json` and may evolve without constitutional amendment.
 
 ### Core Framework
 
-- **React**: Version 19.1.0 - Latest stable React with concurrent features
-- **Next.js**: Version 15.3.0 - App Router architecture (NOT Pages Router)
-- **TypeScript**: Version 5.8.3 - Strict mode enabled
-- **Bun**: Package manager and runtime
+- **React**: Latest stable React 19.x with concurrent features
+- **Next.js**: Latest stable Next.js 15.x - App Router architecture (NOT Pages Router)
+- **TypeScript**: Latest stable TypeScript 5.x - Strict mode enabled
+- **Bun**: Package manager and runtime - version tracked in package.json
 
 ### Styling & Theming
 
-- **Tailwind CSS**: Version 4.1.3 - Utility-first CSS framework
-- **PostCSS**: Version 8.5.3 - CSS processing with `@tailwindcss/postcss`
-- **next-themes**: Version 0.4.6 - Dark mode implementation (default: dark)
+- **Tailwind CSS**: Latest stable Tailwind 4.x - Utility-first CSS framework
+- **PostCSS**: Required for Tailwind processing with `@tailwindcss/postcss`
+- **next-themes**: Dark mode implementation (default: dark)
 - **CSS Variables**: Defined in `globals.css` for theme tokens
 - **Geist Fonts**: Sans and mono variants from `/lib/fonts.ts`
 
 ### UI & Animation
 
 - **shadcn/ui**: Component system using Radix UI primitives
-  - `@radix-ui/react-slot`: Version 1.2.0
-  - `@radix-ui/react-tooltip`: Version 1.2.0
-- **Framer Motion**: Version 12.6.5 - Animation library for transitions and interactions
-- **lucide-react**: Version 0.487.0 - Icon system
-- **cobe**: Version 0.6.3 - Interactive globe visualization
-- **tw-animate-css**: Version 1.3.4 - Additional Tailwind animations
+  - `@radix-ui/react-slot`: Composition utility
+  - `@radix-ui/react-tooltip`: Tooltip primitive
+- **Framer Motion**: Animation library for transitions and interactions
+- **lucide-react**: Icon system
+- **cobe**: Interactive globe visualization
+- **tw-animate-css**: Additional Tailwind animations
 - **Particles**: Background particle effects (implementation in components)
 - **Grid Patterns**: Geometric background patterns
 
 ### Utilities
 
-- **clsx**: Version 2.1.1 - Conditional class names
-- **tailwind-merge**: Version 3.2.0 - Class name merging via `cn()` utility
-- **class-variance-authority**: Version 0.7.1 - Component variant management
+- **clsx**: Conditional class names
+- **tailwind-merge**: Class name merging via `cn()` utility
+- **class-variance-authority**: Component variant management
 
 ### Infrastructure & Deployment
 
-- **SST**: Version 3.13.10 - Infrastructure-as-Code for AWS
-- **@opennextjs/aws**: Version 3.5.6 - Next.js adapter for AWS Lambda
+- **SST**: Infrastructure-as-Code for AWS
+- **@opennextjs/aws**: Next.js adapter for AWS Lambda
 - **Domain**: thesobercoder.in (configured in `sst.config.ts`)
 
 ### Development Tools
 
-- **ESLint**: Version 9.24.0 with `eslint-config-next` 15.3.0
-- **Prettier**: Version 3.5.3 - Code formatting
-- **Syncpack**: Version 13.0.3 - Package version consistency
+- **ESLint**: With `eslint-config-next` for Next.js rules
+- **Prettier**: Code formatting
+- **Syncpack**: Package.json formatting (used via `syncpack-format` in fmt script)
 
 ### Prohibited Technologies
 
 The following are explicitly PROHIBITED without constitutional amendment:
+
 - Alternative package managers (npm, yarn, pnpm)
 - CSS-in-JS libraries (styled-components, emotion) - use Tailwind only
 - Alternative animation libraries - use Framer Motion exclusively
@@ -206,6 +224,7 @@ This section defines the mandatory file structure and organization patterns.
 ### Path Aliases
 
 TypeScript path mapping configured in `tsconfig.json`:
+
 - `@/*` → `./src/*` (if using src directory)
 - Absolute imports preferred over relative paths for cross-directory imports
 
@@ -250,14 +269,14 @@ All configuration files MUST follow these specifications.
 ```json
 {
   "compilerOptions": {
-    "strict": true,              // NON-NEGOTIABLE
+    "strict": true, // NON-NEGOTIABLE
     "target": "ES2022",
     "lib": ["ES2023", "DOM"],
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"]         // Path aliases
+      "@/*": ["./src/*"] // Path aliases
     }
   }
 }
@@ -275,7 +294,7 @@ All configuration files MUST follow these specifications.
 ```json
 {
   "style": "default",
-  "rsc": true,                   // React Server Components enabled
+  "rsc": true, // React Server Components enabled
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.ts",
@@ -302,14 +321,14 @@ All configuration files MUST follow these specifications.
 ```javascript
 export default {
   plugins: {
-    '@tailwindcss/postcss': {}
-  }
-}
+    "@tailwindcss/postcss": {},
+  },
+};
 ```
 
 ### Package Configuration (`package.json`)
 
-- **Exact versions only**: No semver operators
+- **Exact versions only**: No semver operators (^, ~, >=, etc.)
 - **Scripts**: Must include all commands from Development Standards
 - **Private**: Must be `true` (not published to npm)
 - **Engines**: Should specify Bun version if needed
@@ -319,6 +338,7 @@ export default {
 ### Project Commands
 
 Development workflow MUST use standardized commands:
+
 - **Development**: `next dev --turbopack` or `bun run sst:dev` (SST with live AWS resources)
 - **Production Server**: `next start` (local production server testing)
 - **Build**: `next build` or `bun run sst:build` (verify before deployment)
@@ -332,21 +352,28 @@ Development workflow MUST use standardized commands:
 
 **Package Manager**: Bun MUST be used exclusively as the package manager. Use of npm, yarn, or pnpm is PROHIBITED. All package operations (install, add, remove, update) MUST use `bun` commands.
 
-**Strict Versioning**: All dependencies in `package.json` MUST use exact versions (e.g., `"react": "19.1.0"`). Semver range operators (`^`, `~`, `>=`, etc.) are PROHIBITED. This ensures reproducible builds and prevents unexpected breaking changes.
+**Strict Versioning Strategy**: All dependencies in `package.json` MUST use exact versions without semver range operators. For example:
+
+- ✅ CORRECT: `"react": "19.1.0"`
+- ❌ PROHIBITED: `"react": "^19.1.0"`, `"react": "~19.1.0"`, `"react": ">=19.0.0"`
+
+Semver range operators (`^`, `~`, `>=`, `*`, etc.) are PROHIBITED. This ensures reproducible builds and prevents unexpected breaking changes.
 
 **Version Upgrades**: Package version upgrades MUST be evaluated case-by-case with explicit justification. Mass upgrades are prohibited. Each upgrade MUST:
+
 1. Be tested in development environment
 2. Verify no breaking changes
 3. Check bundle size impact
 4. Pass all build and type-check gates
 
-**Version Consistency**: Syncpack MUST be used to ensure version consistency across all package.json files. The `bun run fmt` command includes `syncpack-format` for automated formatting.
-
 **New Dependencies**: New dependencies MUST be justified with clear rationale and reviewed for:
+
 - Bundle size impact
 - Maintenance status and community support
 - TypeScript support
 - Compatibility with existing stack
+
+**Important Note**: Specific package version numbers (e.g., "19.1.0", "15.4.7") are tracked in `package.json` and may evolve as the project matures. The constitution governs the versioning STRATEGY (exact versions, no semver operators), not the specific version numbers themselves. Version numbers are ephemeral implementation details; versioning strategy is a constitutional principle.
 
 ### Git Workflow
 
@@ -357,6 +384,7 @@ Commits MUST be atomic with clear messages. Feature branches MUST follow naming 
 ### Pre-Commit Gates
 
 Before any commit, the following MUST pass:
+
 1. `next lint` (no errors)
 2. `bun run fmt` (code formatted)
 3. TypeScript compilation (no type errors)
@@ -365,6 +393,7 @@ Before any commit, the following MUST pass:
 ### Pre-Deployment Gates
 
 Before any production deployment, the following MUST pass:
+
 1. All pre-commit gates
 2. `next build` succeeds
 3. Visual regression testing (manual)
@@ -375,6 +404,7 @@ Before any production deployment, the following MUST pass:
 ### Code Review Requirements
 
 All changes MUST be reviewed for:
+
 - Adherence to Core Principles I-VII
 - Component reusability and single responsibility
 - TypeScript type safety
@@ -387,6 +417,7 @@ All changes MUST be reviewed for:
 ### Amendment Process
 
 Constitution amendments require:
+
 1. Documented proposal with rationale
 2. Impact assessment on existing codebase
 3. Update to this constitution file with incremented version
@@ -396,6 +427,7 @@ Constitution amendments require:
 ### Versioning Policy
 
 Constitution version follows semantic versioning:
+
 - **MAJOR**: Principle removal, redefinition, or backward-incompatible changes
 - **MINOR**: New principle addition or material guidance expansion
 - **PATCH**: Clarifications, wording improvements, non-semantic refinements
@@ -410,4 +442,4 @@ This constitution is the SOLE source of truth for all project decisions, archite
 
 The file `CLAUDE.md` may exist as a quick-reference guide for agents but MUST NOT contain any authoritative guidance that conflicts with or extends beyond this constitution. It should only provide convenient command references and direct readers to this constitution.
 
-**Version**: 1.1.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-09
+**Version**: 1.2.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-11

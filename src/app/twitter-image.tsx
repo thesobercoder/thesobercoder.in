@@ -79,7 +79,7 @@ const styles = {
 export default async function TwitterImage() {
   try {
     const avatarImageData = await readFile(
-      join(process.cwd(), "public", "profile.jpg"),
+      join(process.cwd(), "public", "profile.png"),
     );
 
     const avatarDataUrl = `data:image/png;base64,${avatarImageData.toString(
