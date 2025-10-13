@@ -79,6 +79,7 @@ Date: 2025-10-09
 ### I. Component-Driven Architecture
 
 **Requirements**:
+
 - All UI as modular, reusable components in established structure
 - Shared: `/components`, primitives: `/components/ui`, page-specific: co-located in app routes
 - Single responsibility, independently testable
@@ -88,6 +89,7 @@ Date: 2025-10-09
 ### II. TypeScript-First Development
 
 **Requirements**:
+
 - TypeScript strict mode, no `any` without justification
 - Component props use `Props` suffix interfaces (e.g., `ExperienceCardProps`)
 
@@ -96,6 +98,7 @@ Date: 2025-10-09
 ### III. Styling Consistency
 
 **Requirements**:
+
 - Tailwind CSS with `cn()` utility (tailwind-merge) for class merging
 - CSS variables for theming (`globals.css`)
 - No style objects/separate CSS files except complex animations (keyframes)
@@ -105,6 +108,7 @@ Date: 2025-10-09
 ### IV. Performance & Modern Practices
 
 **Requirements**:
+
 - React 19 + Next.js 15 App Router
 - Server Components default, Client Components only for interactivity (`"use client"`)
 - Metadata API for SEO, `next/image` for optimization
@@ -114,6 +118,7 @@ Date: 2025-10-09
 ### V. Code Quality Standards
 
 **Requirements**:
+
 - Naming: PascalCase (components/types), camelCase (vars/functions), ALL_CAPS (constants)
 - Import order: React/Next → third-party → local (grouped by functionality)
 - Prettier formatting, defensive null checks, early returns
@@ -123,6 +128,7 @@ Date: 2025-10-09
 ### VI. Data-Driven Content
 
 **Requirements**:
+
 - Portfolio content in `/data` directory with TypeScript interfaces
 - Content separated from presentation
 - Content changes don't require component modifications
@@ -132,6 +138,7 @@ Date: 2025-10-09
 ### VII. Deployment Discipline (NON-NEGOTIABLE)
 
 **Requirements**:
+
 - SST (IaC) for AWS deployment, Cloudflare for DNS (`thesobercoder.in`)
 - Domain config in `sst.config.ts`, Cloudflare creds in `.env`
 - MANUAL-ONLY deployments by project owner (no CI/CD, no agent-initiated)
@@ -144,6 +151,7 @@ Date: 2025-10-09
 Substitutions require constitutional amendment. Versions tracked in `package.json`.
 
 ### Core & Styling
+
 - **React 19.x**: Concurrent features
 - **Next.js 15.x**: App Router (NOT Pages Router)
 - **TypeScript 5.x**: Strict mode
@@ -154,6 +162,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Geist Fonts**: Sans/mono from `/lib/fonts.ts`
 
 ### UI & Animation
+
 - **shadcn/ui**: Radix UI primitives (`@radix-ui/react-slot`, `@radix-ui/react-tooltip`)
 - **Framer Motion**: Animations
 - **lucide-react**: Icons
@@ -162,11 +171,13 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Particles & Grid Patterns**: Background effects
 
 ### Utilities
+
 - **clsx**: Conditional class names
 - **tailwind-merge**: Class merging via `cn()`
 - **class-variance-authority**: Component variants
 
 ### Infrastructure
+
 - **SST**: AWS IaC
 - **@opennextjs/aws**: Next.js AWS Lambda adapter
 - **AWS**: Lambda + CloudFront + S3
@@ -174,11 +185,13 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Environment**: `.env` (AWS, Cloudflare, Dev.to credentials)
 
 ### Development
+
 - **ESLint**: `eslint-config-next`
 - **Prettier**: Formatting
 - **Syncpack**: Package.json formatting (via `syncpack-format` in fmt script)
 
 ### Prohibited Technologies
+
 - Alternative package managers (npm, yarn, pnpm)
 - CSS-in-JS (styled-components, emotion)
 - Alternative animation libraries
@@ -186,6 +199,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - Alternative bundlers - use Next.js (Turbopack in dev)
 
 ### Commands
+
 - **Dev**: `next dev --turbopack` or `bun run sst:dev`
 - **Build**: `next build` or `bun run sst:build`
 - **Production Server**: `next start`
@@ -196,8 +210,9 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Clean**: `bun run clean` (removes build artifacts)
 
 ### Dependency Management (NON-NEGOTIABLE)
+
 - **Bun exclusively** - npm/yarn/pnpm PROHIBITED
-- **Exact versions only** - no semver operators (^, ~, >=, *)
+- **Exact versions only** - no semver operators (^, ~, >=, \*)
   - ✅ `"react": "19.1.0"`
   - ❌ `"react": "^19.1.0"`
 - **Version upgrades**: Case-by-case with justification
@@ -211,6 +226,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ## Project Architecture
 
 ### Repository Structure
+
 ```
 /
 ├── .specify/memory/constitution.md    # THIS FILE
@@ -244,6 +260,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ```
 
 ### File Conventions
+
 - **Components**: PascalCase (`ExperienceCard.tsx`)
 - **Utilities**: camelCase (`formatDate.ts`)
 - **Data files**: camelCase (`experience.ts`)
@@ -251,17 +268,20 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Routes**: Next.js convention (`page.tsx`, `layout.tsx`, `route.ts`)
 
 ### Component Organization
+
 - **Shared**: `/components` (reusable across routes)
 - **Primitives**: `/components/ui` (shadcn/ui only)
 - **Feature**: `/components/{feature}` (grouped by domain)
 - **Page-specific**: Co-located with route in `/app`
 
 ### Data Management
+
 - **Location**: `/data` with `.ts` or `.tsx`
 - **Types**: Interfaces alongside data
 - **Required**: `experience.ts`, `skills.ts`, `socials.tsx`
 
 ### Metadata Strategy
+
 - **Centralized**: `/lib/metadata.ts`
 - **Environment-aware**: Uses `metadataBase`
 - **Dynamic images**: `opengraph-image.tsx`, `twitter-image.tsx`
@@ -270,10 +290,11 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ## Configuration Standards
 
 ### TypeScript (`tsconfig.json`)
+
 ```json
 {
   "compilerOptions": {
-    "strict": true,           // NON-NEGOTIABLE
+    "strict": true, // NON-NEGOTIABLE
     "target": "ES2022",
     "lib": ["ES2023", "DOM"],
     "jsx": "preserve",
@@ -285,12 +306,14 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ```
 
 ### Tailwind (`tailwind.config.ts`)
+
 - Tailwind 4.x with PostCSS plugin
 - Custom theme in `globals.css`
 - Dark mode: `class` (via next-themes)
 - Extend with `tw-animate-css`
 
 ### shadcn/ui (`components.json`)
+
 ```json
 {
   "style": "default",
@@ -310,11 +333,13 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ```
 
 ### SST (`sst.config.ts`)
+
 - AWS IaC deployment
 - Domain: `thesobercoder.in` (Cloudflare DNS)
 - Required env vars: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_DEFAULT_ACCOUNT_ID`, `AWS_ACCOUNT`, `AWS_PROFILE`, `AWS_REGION`
 
 ### PostCSS (`postcss.config.mjs`)
+
 ```javascript
 export default {
   plugins: {
@@ -324,6 +349,7 @@ export default {
 ```
 
 ### Package (`package.json`)
+
 - Exact versions only (no ^, ~, >=)
 - Must include all commands from Technical Stack
 - `"private": true`
@@ -332,12 +358,14 @@ export default {
 ## Quality Assurance
 
 ### Pre-Commit Gates
+
 1. `next lint` passes
 2. `bun run fmt` executed
 3. TypeScript compiles
 4. Manual verification in dev
 
 ### Pre-Deployment Gates
+
 1. All pre-commit gates pass
 2. `next build` succeeds
 3. Visual regression testing (manual)
@@ -346,6 +374,7 @@ export default {
 6. Performance check (Lighthouse)
 
 ### Code Review
+
 - Core Principles I-VII adherence
 - Component reusability + single responsibility
 - TypeScript type safety
@@ -356,6 +385,7 @@ export default {
 ## Governance
 
 ### Amendment Process
+
 1. Document proposal with rationale
 2. Impact assessment on codebase
 3. Update constitution with incremented version
@@ -363,14 +393,17 @@ export default {
 5. Update dependent templates (plan, spec, tasks)
 
 ### Versioning Policy
+
 - **MAJOR**: Principle removal/redefinition, backward-incompatible
 - **MINOR**: New principle or material guidance expansion
 - **PATCH**: Clarifications, wording, non-semantic refinements
 
 ### Compliance Review
+
 All specs/plans/tasks MUST include Constitution Check verifying compliance. Violations justified in Complexity Tracking section.
 
 ### Constitutional Supremacy
+
 This constitution is the SOLE source of truth for all project decisions. All other docs (`CLAUDE.md`, README, comments) MUST defer to this. In conflicts, constitution takes absolute precedence.
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
