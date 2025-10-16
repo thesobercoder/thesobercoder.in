@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # Load environment variables from .env file
-if [[ -f ".env" ]]; then
-  export $(cat ".env" | grep -v '^#' | xargs)
+if [[ -f ".env.local" ]]; then
+  export $(cat ".env.local" | grep -v '^#' | xargs)
 fi
 
 # Ensure required environment variables are available before building

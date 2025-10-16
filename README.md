@@ -23,7 +23,7 @@ A modern portfolio website built with Next.js 15, React 19, and TypeScript.
 
 ### Environment Setup
 
-Copy `.env.example` to `.env` and configure:
+Copy `.env.example` to `.env.local` and configure:
 
 ```env
 # Dev.to API (username from https://dev.to/settings/account)
