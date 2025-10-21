@@ -1,37 +1,42 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 1.2.2 → 1.3.0 (MINOR: Constitution language condensed)
-Date: 2025-10-11
+Version: 1.3.0 → 1.3.1 (PATCH: Added explicit testing policy)
+Date: 2025-10-21
 
 Changes:
-- Rewrote entire constitution for conciseness without data loss
-- Converted verbose paragraphs to bullet points
-- Merged redundant sections (e.g., Development Standards into Technical Stack)
-- Compressed Core Principles from paragraphs to concise lists
-- Streamlined Project Architecture section
-- Reduced file from ~460 lines to ~260 lines (~43% reduction)
-- All rules, requirements, and constraints preserved
+- Added dedicated "Testing Policy" section clarifying NO automated tests
+- Updated Pre-Deployment Gates to reflect manual-only testing approach
+- Added testing policy verification to Code Review guidelines
+- Clarified that manual testing by project owner is the sole testing approach
 
-Modified Principles:
-- I-VII: Language condensed, content unchanged
+Modified Sections:
+- Quality Assurance: Pre-Deployment Gates updated
+- Code Review: Added testing policy verification
 
 Added Sections:
-- None
+- Testing Policy (new, NON-NEGOTIABLE)
 
 Removed Sections:
-- None (content merged into related sections)
+- None
 
 Templates Requiring Updates:
-- ✅ .specify/templates/plan-template.md (reviewed - compatible, no changes needed)
-- ✅ .specify/templates/spec-template.md (reviewed - compatible, no changes needed)
-- ✅ .specify/templates/tasks-template.md (reviewed - compatible, no changes needed)
+- ⚠ .specify/templates/tasks-template.md (pending: remove test task examples, add clarification)
+- ✅ .specify/templates/plan-template.md (reviewed - no test requirements, compatible)
+- ✅ .specify/templates/spec-template.md (reviewed - no test requirements, compatible)
 
 Follow-up TODOs:
-- None
+- Update tasks-template.md to remove optional test task examples per new policy
 
 ---
 Version History:
+
+v1.3.1 (PATCH: Added explicit testing policy)
+Date: 2025-10-21
+- Added dedicated "Testing Policy" section clarifying NO automated tests
+- Updated Pre-Deployment Gates to emphasize manual-only testing
+- Added testing policy verification to Code Review guidelines
+- Rationale: Explicitly document that this project uses manual testing only
 
 v1.3.0 (MINOR: Constitution language condensed)
 Date: 2025-10-11
@@ -355,6 +360,15 @@ export default {
 - `"private": true`
 - Specify Bun version in `engines` if needed
 
+## Testing Policy
+
+**This project uses MANUAL TESTING ONLY.**
+
+- No automated unit/integration/E2E tests
+- No test suites or test runners in codebase
+- All verification done manually by project owner
+- Rationale: Portfolio project with single developer; manual testing ensures deliberate feature validation and maintains focus on code quality over test coverage
+
 ## Quality Assurance
 
 ### Pre-Commit Gates
@@ -368,7 +382,7 @@ export default {
 
 1. All pre-commit gates pass
 2. `next build` succeeds
-3. Visual regression testing (manual)
+3. Manual smoke testing (page loads, links work, content displays)
 4. Responsive verification (mobile/tablet/desktop)
 5. Dark mode verification
 6. Performance check (Lighthouse)
@@ -381,6 +395,7 @@ export default {
 - Tailwind usage (no duplication)
 - Performance (bundle/runtime)
 - Accessibility (WCAG 2.1 AA minimum)
+- Manual verification against Testing Policy (no test code added)
 
 ## Governance
 
@@ -408,4 +423,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 1.3.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-11
+**Version**: 1.3.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-21
