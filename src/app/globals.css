@@ -153,3 +153,88 @@
       "calt" 1;
   }
 }
+
+/* Syntax highlighting for blog posts (rehype-pretty-code) */
+pre {
+  @apply rounded-lg p-4 overflow-x-auto my-4;
+  background-color: var(--shiki-light-bg);
+}
+
+.dark pre {
+  background-color: var(--shiki-dark-bg);
+}
+
+code {
+  @apply text-sm font-mono;
+}
+
+/* Prose styling for MDX blog content */
+.prose {
+  @apply max-w-none text-foreground;
+}
+
+.prose pre {
+  @apply my-4;
+}
+
+.prose code {
+  @apply before:content-none after:content-none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-foreground font-bold;
+}
+
+.prose h1 {
+  @apply text-4xl mb-4 mt-8;
+}
+
+.prose h2 {
+  @apply text-3xl mb-3 mt-6;
+}
+
+.prose h3 {
+  @apply text-2xl mb-2 mt-4;
+}
+
+.prose p {
+  @apply mb-4 leading-7;
+}
+
+.prose a {
+  @apply text-primary hover:underline;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 ml-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+
+.prose img {
+  @apply rounded-lg my-4;
+}
+
+.prose table {
+  @apply w-full my-4;
+}
+
+.prose th {
+  @apply bg-muted p-2 text-left font-bold;
+}
+
+.prose td {
+  @apply p-2 border-t border-border;
+}

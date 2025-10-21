@@ -1,0 +1,20 @@
+import { BlogPostPreview } from "@/lib/blog";
+import BlogCard from "./BlogCard";
+
+export interface BlogListProps {
+  posts: BlogPostPreview[];
+}
+
+export default function BlogList({ posts }: BlogListProps) {
+  if (posts.length === 0) {
+    return <p className="text-muted-foreground col-span-full">No posts yet.</p>;
+  }
+
+  return (
+    <>
+      {posts.map((post) => (
+        <BlogCard key={post.slug} post={post} />
+      ))}
+    </>
+  );
+}

@@ -1,15 +1,11 @@
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import GridPattern from "@/components/ui/grid-pattern";
+import Particles from "@/components/ui/particles";
 import { geistMono, geistSans } from "@/lib/fonts";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
-import dynamic from "next/dynamic";
 import "./globals.css";
-
-const Particles = dynamic(() => import("@/components/ui/particles"), {
-  loading: () => <div className="absolute inset-0 z-[-9998]" />,
-});
 
 export const metadata = metadataConfig;
 export const viewport = viewportConfig;
@@ -20,9 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
+        suppressHydrationWarning
       >
         <Particles
           className="absolute inset-0 opacity-20 z-[-9998]"
@@ -42,7 +39,13 @@ export default function RootLayout({
             "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]",
           )}
         />
-        <ThemeProvider disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          storageKey="theme"
+          disableTransitionOnChange
+        >
           {children}
           <Footer />
         </ThemeProvider>

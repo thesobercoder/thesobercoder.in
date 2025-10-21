@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { getPublishedPosts } from "@/lib/blog";
+import BlogList from "@/components/blog/BlogList";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -14,15 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Blog() {
-  return (
-    <div className="col-span-full flex items-center justify-center min-h-96">
-      <div className="text-center">
-        <h2 className="text-xl font-semibold mb-2">Coming Soon</h2>
-        <p className="text-muted-foreground">
-          Migrating to markdown-based blogging. Check back soon!
-        </p>
-      </div>
-    </div>
-  );
+export default async function Blog() {
+  const posts = await getPublishedPosts();
+
+  return <BlogList posts={posts} />;
 }
