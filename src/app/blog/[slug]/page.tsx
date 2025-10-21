@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import { getPostBySlug, getPublishedPosts, formatDate } from "@/lib/blog";
+import CodeBlock from "@/components/blog/CodeBlock";
 
 export async function generateStaticParams() {
   const posts = await getPublishedPosts();
@@ -84,6 +85,9 @@ export default async function BlogPostPage({
       <div className="prose dark:prose-invert max-w-none">
         <MDXRemote
           source={post.content}
+          components={{
+            pre: CodeBlock,
+          }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
@@ -110,7 +114,7 @@ export default async function BlogPostPage({
                       light: "github-light",
                       dark: "github-dark",
                     },
-                    keepBackground: false,
+                    keepBackground: true,
                     defaultLang: "plaintext",
                   },
                 ],

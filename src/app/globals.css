@@ -156,16 +156,20 @@
 
 /* Syntax highlighting for blog posts (rehype-pretty-code) */
 pre {
-  @apply rounded-lg p-4 overflow-x-auto my-4;
-  background-color: var(--shiki-light-bg);
-}
-
-.dark pre {
-  background-color: var(--shiki-dark-bg);
+  @apply rounded-lg p-4 overflow-x-auto my-4 bg-transparent;
 }
 
 code {
   @apply text-sm font-mono;
+}
+
+/* Apply syntax highlighting colors from shiki */
+code span {
+  color: var(--shiki-light);
+}
+
+.dark code span {
+  color: var(--shiki-dark);
 }
 
 /* Prose styling for MDX blog content */
