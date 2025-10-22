@@ -1,5 +1,5 @@
 import { Experience } from "@/components/experience";
-import Globe from "@/components/globe";
+import { Globe } from "@/components/globe";
 import { Skills } from "@/components/skills";
 import { Button } from "@/components/ui/button";
 import {

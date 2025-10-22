@@ -1,6 +1,10 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/client";
 
-export function Footer({ className }: { className?: string }) {
+export interface FooterProps {
+  className?: string;
+}
+
+export const Footer = ({ className }: FooterProps) => {
   return (
     <footer
       className={cn(
@@ -11,4 +15,4 @@ export function Footer({ className }: { className?: string }) {
       <span>{new Date().getFullYear()} All rights reserved.</span>
     </footer>
   );
-}
+};

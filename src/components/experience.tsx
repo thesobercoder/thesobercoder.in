@@ -4,8 +4,9 @@ import { EXPERIENCE } from "@/data/experience";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { animatedCardVariants } from "@/lib/animation-variants";
 
-export function Experience() {
+export const Experience = () => {
   return (
     <div className="relative">
       <div className="grid gap-4 relative z-10">
@@ -17,22 +18,7 @@ export function Experience() {
             key={exp.company}
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.2,
-                ease: "easeOut",
-              }}
-              whileHover={{
-                y: -4,
-                backgroundColor: "rgba(255, 255, 255, 0.03)",
-                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                transition: {
-                  duration: 0.1,
-                  ease: "easeInOut",
-                },
-              }}
+              {...animatedCardVariants(index)}
               className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/50 backdrop-blur-xs p-4"
             >
               <div className="flex flex-col gap-2">
@@ -68,4 +54,4 @@ export function Experience() {
       </div>
     </div>
   );
-}
+};

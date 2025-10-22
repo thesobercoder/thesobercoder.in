@@ -2,8 +2,9 @@
 
 import { SKILLS } from "@/data/skills";
 import { motion } from "framer-motion";
+import { skillsVariants } from "@/lib/animation-variants";
 
-export function Skills() {
+export const Skills = () => {
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 relative z-10">
       {SKILLS.map((skill, index) => {
@@ -11,22 +12,7 @@ export function Skills() {
         return (
           <motion.div
             key={skill.name}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: index * 0.02,
-              duration: 0.2,
-              ease: "easeOut",
-            }}
-            whileHover={{
-              y: -4,
-              backgroundColor: "rgba(255, 255, 255, 0.03)",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-              transition: {
-                duration: 0.1,
-                ease: "easeInOut",
-              },
-            }}
+            {...skillsVariants(index)}
             className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/70 backdrop-blur-xs"
           >
             <div className="flex flex-col items-center p-3 gap-2">
@@ -42,4 +28,4 @@ export function Skills() {
       })}
     </div>
   );
-}
+};
