@@ -7,8 +7,10 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
-import { getPostBySlug, getPublishedPosts, formatDate } from "@/lib/blog";
+import { getPostBySlug, getPublishedPosts } from "@/lib/blog";
+import { formatDate } from "@/lib/utils";
 import { CodeBlock } from "@/components/blog/CodeBlock";
+import { BlogPostContent } from "@/components/blog/BlogPostContent";
 
 export async function generateStaticParams() {
   const posts = await getPublishedPosts();
@@ -61,68 +63,67 @@ export default async function BlogPostPage({
   }
 
   return (
-    <article className="max-w-3xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+    <BlogPostContent
+      title={post.title}
+      metadata={
+        <>
           <time dateTime={post.date.toISOString()}>
             {formatDate(post.date)}
           </time>
           <span>{post.readingTime}</span>
-        </div>
-      </header>
-
-      {post.coverImage && (
-        <Image
-          src={post.coverImage}
-          alt={post.title}
-          width={800}
-          height={400}
-          className="rounded-lg mb-8"
-        />
-      )}
-
-      <div className="prose dark:prose-invert max-w-none">
-        <MDXRemote
-          source={post.content}
-          components={{
-            pre: CodeBlock,
-          }}
-          options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm],
-              rehypePlugins: [
-                rehypeSlug,
-                [
-                  rehypeAutolinkHeadings,
-                  {
-                    behavior: "wrap",
-                    properties: { className: ["anchor"] },
-                  },
-                ],
-                [
-                  rehypeExternalLinks,
-                  {
-                    target: "_blank",
-                    rel: ["noopener", "noreferrer"],
-                  },
-                ],
-                [
-                  rehypePrettyCode,
-                  {
-                    theme: {
-                      light: "github-light",
-                      dark: "github-dark",
-                    },
-                    keepBackground: true,
-                    defaultLang: "plaintext",
-                  },
-                ],
+        </>
+      }
+      coverImage={
+        post.coverImage ? (
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            width={800}
+            height={400}
+            className="rounded-lg"
+          />
+        ) : undefined
+      }
+    >
+      <MDXRemote
+        source={post.content}
+        components={{
+          pre: CodeBlock,
+        }}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [
+              rehypeSlug,
+              [
+                rehypeAutolinkHeadings,
+                {
+                  behavior: "wrap",
+                  properties: { className: ["anchor"] },
+                },
               ],
-            },
-          }}
-        />
-      </div>
-    </article>
+              [
+                rehypeExternalLinks,
+                {
+                  target: "_blank",
+                  rel: ["noopener", "noreferrer"],
+                },
+              ],
+              [
+                rehypePrettyCode,
+                {
+                  theme: {
+                    light: "github-light",
+                    dark: "github-dark",
+                  },
+                  keepBackground: true,
+                  defaultLang: "plaintext",
+                },
+              ],
+            ],
+          },
+        }}
+      />
+    </BlogPostContent>
   );
 }

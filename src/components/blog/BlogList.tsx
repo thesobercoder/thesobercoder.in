@@ -12,8 +12,8 @@ export const BlogList = ({ posts }: BlogListProps) => {
 
   return (
     <>
-      {posts.map((post) => (
-        <BlogCard key={post.slug} post={post} />
+      {posts.map((post, index) => (
+        <BlogCard key={post.slug} post={post} index={index} />
       ))}
     </>
   );
