@@ -1,10 +1,7 @@
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import GridPattern from "@/components/ui/grid-pattern";
-import Particles from "@/components/ui/particles";
 import { geistMono, geistSans } from "@/lib/fonts";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
-import { cn } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata = metadataConfig;
@@ -21,24 +18,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
         suppressHydrationWarning
       >
-        <Particles
-          className="absolute inset-0 opacity-20 z-[-9998]"
-          quantity={500}
-          ease={80}
-          refresh
+        {/* Pure CSS Grid Background - Small grid that fades halfway */}
+        <div
+          className="fixed inset-0 z-[-9999] opacity-10 pointer-events-none"
+          style={{
+            backgroundSize: "40px 40px",
+            backgroundImage: `
+              linear-gradient(to right, #555555 1px, transparent 1px),
+              linear-gradient(to bottom, #555555 1px, transparent 1px)
+            `,
+            maskImage:
+              "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
+            WebkitMaskImage:
+              "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
+          }}
         />
-        <GridPattern
-          width={50}
-          height={50}
-          x={-1}
-          y={-1}
-          strokeDasharray="4 2"
-          className={cn(
-            "z-[-9999]",
-            "opacity-30",
-            "[mask-image:radial-gradient(circle_at_top,white,transparent_60%)]",
-          )}
-        />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
