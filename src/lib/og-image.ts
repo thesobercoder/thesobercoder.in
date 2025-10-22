@@ -87,5 +87,3 @@ export const DEFAULT_TITLE = "Soham Dasgupta";
 export const DEFAULT_SUBTITLE = "Technology Leader & Enterprise Architect";
 export const DEFAULT_URL = "thesobercoder.in";
 export const DEFAULT_ALT = `${DEFAULT_TITLE} - ${DEFAULT_SUBTITLE}`;
-export const OG_IMAGE_WIDTH = 1200;
-export const OG_IMAGE_HEIGHT = 630;

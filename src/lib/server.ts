@@ -4,7 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 
 // Blog Types
-export const frontmatterSchema = z.object({
+const frontmatterSchema = z.object({
   title: z.string().min(1, "Title is required"),
   slug: z.string().min(1, "Slug is required"),
   date: z
@@ -19,9 +19,9 @@ export const frontmatterSchema = z.object({
   coverImage: z.string().optional(),
 });
 
-export type BlogFrontmatter = z.infer<typeof frontmatterSchema>;
+type BlogFrontmatter = z.infer<typeof frontmatterSchema>;
 
-export interface BlogPost extends BlogFrontmatter {
+interface BlogPost extends BlogFrontmatter {
   content: string;
   readingTime: string;
 }
@@ -29,7 +29,7 @@ export interface BlogPost extends BlogFrontmatter {
 export type BlogPostPreview = Omit<BlogPost, "content">;
 
 // Reading Time Calculation
-export const calculateReadingTime = (content: string): string => {
+const calculateReadingTime = (content: string): string => {
   const WPM = 250;
   const CODE_WPM = 125;
 
@@ -59,7 +59,7 @@ export const calculateReadingTime = (content: string): string => {
 // Blog Post Functions
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
 
-export const getAllPosts = async (): Promise<BlogPostPreview[]> => {
+const getAllPosts = async (): Promise<BlogPostPreview[]> => {
   if (!fs.existsSync(CONTENT_DIR)) {
     return [];
   }
