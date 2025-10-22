@@ -3,7 +3,7 @@
 import { SKILLS } from "@/data/skills";
 import { motion } from "framer-motion";
 
-export function Skills() {
+export const Skills = () => {
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 relative z-10">
       {SKILLS.map((skill, index) => {
@@ -42,4 +42,4 @@ export function Skills() {
       })}
     </div>
   );
-}
+};

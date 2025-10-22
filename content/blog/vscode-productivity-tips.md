@@ -35,6 +35,7 @@ alert(userProfile);
 Access the command palette with `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux). This is your gateway to every VS Code command, setting, and extension action.
 
 Some frequently used commands:
+
 - `Format Document` - Auto-format your code
 - `Change Language Mode` - Switch syntax highlighting
 - `Toggle Terminal` - Show/hide integrated terminal
@@ -95,6 +96,7 @@ div.container>ul.list>li.item*3
 VS Code has excellent Git integration built-in. View changes, stage files, commit, and even resolve merge conflicts—all without leaving the editor.
 
 Key shortcuts:
+
 - `Cmd+Shift+G` - Open Source Control panel
 - `Cmd+Enter` - Commit staged changes
 - Click the branch name in the status bar to switch branches
@@ -112,6 +114,7 @@ This is invaluable when working on multiple computers or setting up a new develo
 ## 10. Extension Recommendations
 
 Install these essential extensions:
+
 - **Prettier** - Code formatter
 - **ESLint** - JavaScript linter
 - **GitLens** - Supercharged Git integration
@@ -124,6 +127,7 @@ Install these essential extensions:
 Don't like the default shortcuts? Customize them! Open `Preferences: Open Keyboard Shortcuts` and create your own workflow.
 
 My custom keybindings:
+
 ```json
 {
   "key": "cmd+shift+f",

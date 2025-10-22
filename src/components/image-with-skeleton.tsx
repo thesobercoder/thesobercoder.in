@@ -12,12 +12,12 @@ interface ImageWithSkeletonProps {
   width: number;
 }
 
-export default function ImageWithSkeleton({
+export const ImageWithSkeleton = ({
   src,
   alt,
   height,
   width,
-}: ImageWithSkeletonProps) {
+}: ImageWithSkeletonProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -36,4 +36,4 @@ export default function ImageWithSkeleton({
       />
     </div>
   );
-}
+};

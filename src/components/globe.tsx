@@ -3,7 +3,7 @@
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
-export default function Globe() {
+export const Globe = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -65,4 +65,4 @@ export default function Globe() {
       }}
     />
   );
-}
+};

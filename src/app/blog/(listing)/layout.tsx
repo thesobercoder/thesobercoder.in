@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-export default function BlogListingLayout({ children }: { children: ReactNode }) {
+export default function BlogListingLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <div className="mx-auto min-h-screen max-w-(--breakpoint-2xl) px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
       <div className="flex items-center justify-between lg:pt-24">

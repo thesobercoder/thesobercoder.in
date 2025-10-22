@@ -8,7 +8,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import { getPostBySlug, getPublishedPosts, formatDate } from "@/lib/blog";
-import CodeBlock from "@/components/blog/CodeBlock";
+import { CodeBlock } from "@/components/blog/CodeBlock";
 
 export async function generateStaticParams() {
   const posts = await getPublishedPosts();

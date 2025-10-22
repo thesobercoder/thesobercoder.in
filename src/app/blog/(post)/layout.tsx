@@ -15,9 +15,7 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
           Back
         </Link>
       </div>
-      <div className="pt-16">
-        {children}
-      </div>
+      <div className="pt-16">{children}</div>
     </div>
   );
 }

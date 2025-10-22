@@ -58,7 +58,7 @@ function generateParticles(): Particle[] {
   return particles;
 }
 
-export function Particles() {
+export const Particles = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
@@ -85,4 +85,4 @@ export function Particles() {
       ))}
     </div>
   );
-}
+};

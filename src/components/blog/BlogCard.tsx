@@ -7,12 +7,12 @@ export interface BlogCardProps {
   post: BlogPostPreview;
 }
 
-export default function BlogCard({ post }: BlogCardProps) {
+export const BlogCard = ({ post }: BlogCardProps) => {
   return (
     <article
       className={cn(
         "border rounded-lg p-6 hover:shadow-lg transition-shadow",
-        "h-full flex flex-col"
+        "h-full flex flex-col",
       )}
     >
       <Link href={`/blog/${post.slug}`}>
@@ -50,4 +50,4 @@ export default function BlogCard({ post }: BlogCardProps) {
       )}
     </article>
   );
-}
+};

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Experience() {
+export const Experience = () => {
   return (
     <div className="relative">
       <div className="grid gap-4 relative z-10">
@@ -68,4 +68,4 @@ export function Experience() {
       </div>
     </div>
   );
-}
+};

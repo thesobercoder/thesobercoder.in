@@ -1,11 +1,11 @@
 import { BlogPostPreview } from "@/lib/blog";
-import BlogCard from "./BlogCard";
+import { BlogCard } from "./BlogCard";
 
 export interface BlogListProps {
   posts: BlogPostPreview[];
 }
 
-export default function BlogList({ posts }: BlogListProps) {
+export const BlogList = ({ posts }: BlogListProps) => {
   if (posts.length === 0) {
     return <p className="text-muted-foreground col-span-full">No posts yet.</p>;
   }
@@ -17,4 +17,4 @@ export default function BlogList({ posts }: BlogListProps) {
       ))}
     </>
   );
-}
+};

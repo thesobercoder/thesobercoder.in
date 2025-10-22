@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getPublishedPosts } from "@/lib/blog";
-import BlogList from "@/components/blog/BlogList";
+import { BlogList } from "@/components/blog/BlogList";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

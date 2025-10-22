@@ -3,12 +3,11 @@
 import { useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
 
-export default function CodeBlock({
-  children,
-  ...props
-}: {
+export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children: React.ReactNode;
-} & React.HTMLAttributes<HTMLPreElement>) {
+}
+
+export const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
   const preRef = useRef<HTMLPreElement>(null);
 
@@ -50,4 +49,4 @@ export default function CodeBlock({
       </button>
     </div>
   );
-}
+};

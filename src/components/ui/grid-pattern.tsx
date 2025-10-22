@@ -13,7 +13,7 @@ interface GridPatternProps {
   [key: string]: unknown;
 }
 
-export function GridPattern({
+export const GridPattern = ({
   width = 40,
   height = 40,
   x = -1,
@@ -22,7 +22,7 @@ export function GridPattern({
   squares,
   className,
   ...props
-}: GridPatternProps) {
+}: GridPatternProps) => {
   const id = useId();
 
   return (
@@ -67,6 +67,4 @@ export function GridPattern({
       )}
     </svg>
   );
-}
-
-export default GridPattern;
+};
