@@ -2,6 +2,7 @@
 
 import { SKILLS } from "@/data/skills";
 import { motion } from "framer-motion";
+import { skillsVariants } from "@/lib/animation-variants";
 
 export const Skills = () => {
   return (
@@ -11,22 +12,7 @@ export const Skills = () => {
         return (
           <motion.div
             key={skill.name}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: index * 0.02,
-              duration: 0.2,
-              ease: "easeOut",
-            }}
-            whileHover={{
-              y: -4,
-              backgroundColor: "rgba(255, 255, 255, 0.03)",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-              transition: {
-                duration: 0.1,
-                ease: "easeInOut",
-              },
-            }}
+            {...skillsVariants(index)}
             className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/70 backdrop-blur-xs"
           >
             <div className="flex flex-col items-center p-3 gap-2">

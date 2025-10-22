@@ -28,19 +28,8 @@ export interface BlogPost extends BlogFrontmatter {
 
 export type BlogPostPreview = Omit<BlogPost, "content">;
 
-// Date Formatting
-export function formatDate(date: Date): string {
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  };
-  return new Intl.DateTimeFormat("en-US", options).format(date);
-}
-
 // Reading Time Calculation
-export function calculateReadingTime(content: string): string {
+export const calculateReadingTime = (content: string): string => {
   const WPM = 250;
   const CODE_WPM = 125;
 
@@ -65,12 +54,12 @@ export function calculateReadingTime(content: string): string {
   const totalMinutes = Math.ceil(textMinutes + codeMinutes + imageMinutes);
 
   return `${totalMinutes} min read`;
-}
+};
 
 // Blog Post Functions
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
 
-export async function getAllPosts(): Promise<BlogPostPreview[]> {
+export const getAllPosts = async (): Promise<BlogPostPreview[]> => {
   if (!fs.existsSync(CONTENT_DIR)) {
     return [];
   }
@@ -99,14 +88,14 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
   }
 
   return posts.sort((a, b) => b.date.getTime() - a.date.getTime());
-}
+};
 
-export async function getPublishedPosts(): Promise<BlogPostPreview[]> {
+export const getPublishedPosts = async (): Promise<BlogPostPreview[]> => {
   const allPosts = await getAllPosts();
   return allPosts.filter((post) => post.published);
-}
+};
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   const mdPath = path.join(CONTENT_DIR, `${slug}.md`);
   const mdxPath = path.join(CONTENT_DIR, `${slug}.mdx`);
 
@@ -132,4 +121,4 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     console.error(`Error parsing ${slug}:`, error);
     return null;
   }
-}
+};

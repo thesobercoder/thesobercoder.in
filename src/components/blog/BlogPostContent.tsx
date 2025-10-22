@@ -1,7 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/lib/animation-variants";
 
 export interface BlogPostContentProps {
   title: ReactNode;
@@ -16,40 +17,21 @@ export const BlogPostContent = ({
   coverImage,
   children,
 }: BlogPostContentProps) => {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-      },
-    },
-  };
-
   return (
     <article className="max-w-3xl mx-auto">
       <motion.header
         className="mb-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          staggerChildren: 0.1,
+          delayChildren: 0.1,
+        }}
       >
-        <motion.h1 className="text-4xl font-bold mb-4" variants={itemVariants}>
+        <motion.h1 className="text-4xl font-bold mb-4" {...fadeInUp(0)}>
           {title}
         </motion.h1>
-        <motion.div className="flex items-center gap-4 text-sm text-muted-foreground" variants={itemVariants}>
+        <motion.div className="flex items-center gap-4 text-sm text-muted-foreground" {...fadeInUp(0.1)}>
           {metadata}
         </motion.div>
       </motion.header>

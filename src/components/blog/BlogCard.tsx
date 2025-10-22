@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BlogPostPreview } from "@/lib/blog";
-import { cn, formatDate } from "@/lib/utils";
+import { BlogPostPreview } from "@/lib/server";
+import { cn, formatDate } from "@/lib/client";
+import { animatedCardVariants } from "@/lib/animation-variants";
 
 export interface BlogCardProps {
   post: BlogPostPreview;
@@ -14,22 +15,7 @@ export interface BlogCardProps {
 export const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: index * 0.1,
-        duration: 0.2,
-        ease: "easeOut",
-      }}
-      whileHover={{
-        y: -4,
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        transition: {
-          duration: 0.1,
-          ease: "easeInOut",
-        },
-      }}
+      {...animatedCardVariants(index)}
       className={cn(
         "border rounded-lg p-6 hover:shadow-lg transition-shadow",
         "h-full flex flex-col",

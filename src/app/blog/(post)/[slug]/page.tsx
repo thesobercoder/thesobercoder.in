@@ -7,23 +7,23 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
-import { getPostBySlug, getPublishedPosts } from "@/lib/blog";
-import { formatDate } from "@/lib/utils";
+import { getPostBySlug, getPublishedPosts } from "@/lib/server";
+import { formatDate } from "@/lib/client";
 import { CodeBlock } from "@/components/blog/CodeBlock";
 import { BlogPostContent } from "@/components/blog/BlogPostContent";
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const posts = await getPublishedPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
-}
+};
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}): Promise<Metadata> => {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -48,13 +48,13 @@ export async function generateMetadata({
       images: post.coverImage ? [post.coverImage] : [],
     },
   };
+};
+
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export const BlogPostPage = async ({ params }: BlogPostPageProps) => {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -126,4 +126,6 @@ export default async function BlogPostPage({
       />
     </BlogPostContent>
   );
-}
+};
+
+export default BlogPostPage;

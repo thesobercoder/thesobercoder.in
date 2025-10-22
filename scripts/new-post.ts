@@ -10,21 +10,21 @@ import {
 import fs from "fs";
 import path from "path";
 
-function generateSlug(title: string): string {
+const generateSlug = (title: string): string => {
   return title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-}
+};
 
-function slugExists(slug: string): boolean {
+const slugExists = (slug: string): boolean => {
   const contentDir = path.join(process.cwd(), "content/blog");
   const mdxPath = path.join(contentDir, `${slug}.mdx`);
   const mdPath = path.join(contentDir, `${slug}.md`);
   return fs.existsSync(mdxPath) || fs.existsSync(mdPath);
-}
+};
 
-async function createPostInteractive() {
+const createPostInteractive = async () => {
   intro("Create new blog post");
 
   const title = await text({
@@ -114,9 +114,9 @@ Wrap up your thoughts...
   s.stop("Post created!");
 
   outro(`Created: ${filePath}\nSlug: ${slug}`);
-}
+};
 
-async function createPostFromTitle(title: string) {
+const createPostFromTitle = async (title: string) => {
   const slug = generateSlug(title);
 
   if (slugExists(slug)) {
@@ -153,9 +153,9 @@ Wrap up your thoughts...
   fs.writeFileSync(filePath, frontmatter);
   console.log(`Post created: ${filePath}`);
   console.log(`Slug: ${slug}`);
-}
+};
 
-async function main() {
+const main = async () => {
   const args = process.argv.slice(2);
 
   if (args.length > 0) {
@@ -164,6 +164,6 @@ async function main() {
   } else {
     await createPostInteractive();
   }
-}
+};
 
 main().catch(console.error);

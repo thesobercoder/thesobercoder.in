@@ -1,11 +1,11 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export function cn(...inputs: ClassValue[]) {
+export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
-}
+};
 
-export function formatDate(date: Date): string {
+export const formatDate = (date: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "long",
@@ -13,4 +13,4 @@ export function formatDate(date: Date): string {
     timeZone: "UTC",
   };
   return new Intl.DateTimeFormat("en-US", options).format(date);
-}
+};

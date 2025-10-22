@@ -38,7 +38,7 @@ interface Particle {
   opacity: number; // 0-1
 }
 
-function generateParticles(): Particle[] {
+const generateParticles = (): Particle[] => {
   const particles: Particle[] = [];
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -56,7 +56,7 @@ function generateParticles(): Particle[] {
   }
 
   return particles;
-}
+};
 
 export const Particles = () => {
   const [particles, setParticles] = useState<Particle[]>([]);

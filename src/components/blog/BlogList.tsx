@@ -1,4 +1,4 @@
-import { BlogPostPreview } from "@/lib/blog";
+import { BlogPostPreview } from "@/lib/server";
 import { BlogCard } from "./BlogCard";
 
 export interface BlogListProps {

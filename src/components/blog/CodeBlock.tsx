@@ -1,14 +1,15 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Check, Copy } from "lucide-react";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children: React.ReactNode;
 }
 
 export const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
-  const [copied, setCopied] = useState(false);
+  const { copied, copy } = useCopyToClipboard();
   const preRef = useRef<HTMLPreElement>(null);
 
   const getCodeText = (): string => {
@@ -20,14 +21,7 @@ export const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
   const handleCopy = async () => {
     const code = getCodeText();
     if (!code) return;
-
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
+    await copy(code);
   };
 
   return (
