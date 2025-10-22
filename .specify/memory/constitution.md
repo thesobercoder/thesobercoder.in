@@ -1,40 +1,42 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 1.3.1 → 1.4.0 (MINOR: Added MDX blog system documentation)
+Version: 1.4.0 → 1.4.1 (PATCH: Codified component export patterns)
 Date: 2025-10-22
 
 Changes:
-- Added VIII. Content-Driven Blog System principle (NEW)
-- Updated Technical Stack with MDX, syntax highlighting, and content management dependencies
-- Added new `/content/blog` directory to project architecture
-- Updated blog-specific routes and components documentation
-- Added `blog:new` command for post generation
-- Corrected repository structure to reflect actual layout (`src/` prefix)
-- Added Blog Content Management section under Project Architecture
+- Added component export pattern requirements to Principle V (Code Quality Standards)
+- Expanded Component Organization section with explicit export/props patterns
+- Updated Code Review guidelines to include export pattern verification
 
 Modified Sections:
-- Technical Stack: UI & Animation, added Content Management subsection
-- Project Architecture: Repository Structure updated with actual layout and `/content/blog`
-- Technical Stack: Commands added `blog:new`
+- Principle V. Code Quality Standards: Added 3 new requirements (export const, Props interfaces, no defaults)
+- Project Architecture: Component Organization subsection expanded with export patterns
+- Quality Assurance: Code Review section updated with export pattern verification
 
 Added Sections:
-- VIII. Content-Driven Blog System (new principle)
-- Project Architecture: Blog Content Management (new subsection)
+- None (amendments to existing sections)
 
 Removed Sections:
 - None
 
 Templates Requiring Updates:
-- ✅ .specify/templates/plan-template.md (reviewed - compatible with new principle)
-- ✅ .specify/templates/spec-template.md (reviewed - compatible with new principle)
-- ✅ .specify/templates/tasks-template.md (reviewed - no test requirements, compatible)
+- ✅ .specify/templates/plan-template.md (no changes needed - component patterns don't affect planning)
+- ✅ .specify/templates/spec-template.md (no changes needed - patterns are implementation detail)
+- ✅ .specify/templates/tasks-template.md (no changes needed - patterns enforced at code review)
 
 Follow-up TODOs:
-- None
+- None (all 11 project components already standardized to new pattern)
 
 ---
 Version History:
+
+v1.4.1 (PATCH: Codified component export patterns)
+Date: 2025-10-22
+- Added component export pattern requirements to Principle V
+- Expanded Component Organization with explicit export/props patterns
+- Updated Code Review guidelines to include export pattern verification
+- Rationale: Enforce the modern `export const Component = ()` pattern adopted across all project components for consistency and type safety
 
 v1.4.0 (MINOR: Added MDX blog system documentation)
 Date: 2025-10-22
@@ -141,8 +143,11 @@ Date: 2025-10-09
 - Naming: PascalCase (components/types), camelCase (vars/functions), ALL_CAPS (constants)
 - Import order: React/Next → third-party → local (grouped by functionality)
 - Prettier formatting, defensive null checks, early returns
+- Component exports: Use `export const Component = () => {}` (arrow functions, named exports)
+- Component props: All components with props MUST have explicit `ComponentProps` interface
+- No default exports for project components (shadcn/ui exceptions permitted)
 
-**Rationale**: Reduces cognitive load, prevents bugs, ensures maintainability.
+**Rationale**: Reduces cognitive load, prevents bugs, ensures maintainability. Named exports + explicit Props interfaces provide clarity, enable better tooling/refactoring, and enforce type safety across components.
 
 ### VI. Data-Driven Content
 
@@ -337,9 +342,11 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ### Component Organization
 
 - **Shared**: `/components` (reusable across routes)
-- **Primitives**: `/components/ui` (shadcn/ui only)
+- **Primitives**: `/components/ui` (shadcn/ui only - may use `const` or `export default` per shadcn pattern)
 - **Feature**: `/components/{feature}` (grouped by domain)
 - **Page-specific**: Co-located with route in `/app`
+- **Export pattern**: All components use `export const Component = (props: ComponentProps) => {}`
+- **Props pattern**: Explicit `ComponentProps` interface required (even if empty, for future extensibility)
 
 ### Data Management
 
@@ -464,7 +471,8 @@ export default {
 
 - Core Principles I-VIII adherence
 - Component reusability + single responsibility
-- TypeScript type safety
+- TypeScript type safety + explicit Props interfaces
+- Component export patterns (named exports, no defaults for project components)
 - Tailwind usage (no duplication)
 - Performance (bundle/runtime)
 - Accessibility (WCAG 2.1 AA minimum)
@@ -497,4 +505,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 1.4.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-22
+**Version**: 1.4.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-22
