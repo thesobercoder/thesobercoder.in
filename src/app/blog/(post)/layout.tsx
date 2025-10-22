@@ -1,13 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { ReactNode } from "react";
-import { usePathname } from "next/navigation";
 
-export default function BlogLayout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const isPostPage = pathname !== "/blog";
-
+export default function BlogPostLayout({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto min-h-screen max-w-(--breakpoint-2xl) px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
       <div className="flex items-center justify-between lg:pt-24">
@@ -15,15 +9,15 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
           <h1>Blog</h1>
         </span>
         <Link
-          href={isPostPage ? "/blog" : "/"}
+          href="/blog"
           className="text-sm font-bold uppercase text-foreground/80 hover:underline"
         >
           Back
         </Link>
       </div>
-      <section className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 pt-16 auto-rows-fr">
+      <div className="pt-16">
         {children}
-      </section>
+      </div>
     </div>
   );
 }

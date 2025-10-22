@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer";
+import { Particles } from "@/components/particles";
 import { ThemeProvider } from "@/components/theme-provider";
-import { PureCSSParticles } from "@/components/page-backgrounds";
 import { geistMono, geistSans } from "@/lib/fonts";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
 import "./globals.css";
@@ -19,7 +19,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
         suppressHydrationWarning
       >
-        {/* Pure CSS Grid Background - Small grid that fades halfway */}
         <div
           className="fixed inset-0 z-[-9999] opacity-10 pointer-events-none"
           style={{
@@ -34,10 +33,7 @@ export default function RootLayout({
               "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
           }}
         />
-
-        {/* Pure CSS Particle Animation - Drifting particles overlay */}
-        <PureCSSParticles />
-
+        <Particles />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

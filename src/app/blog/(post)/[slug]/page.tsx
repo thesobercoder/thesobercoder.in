@@ -61,7 +61,7 @@ export default async function BlogPostPage({
   }
 
   return (
-    <article className="col-span-full max-w-3xl mx-auto">
+    <article className="max-w-3xl mx-auto">
       <header className="mb-8">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <div className="flex items-center gap-4 text-sm text-muted-foreground">

@@ -5,21 +5,27 @@ import { useEffect, useState } from "react";
 /**
  * Pure CSS Particle Animation Component
  *
- * Generates 80 pseudo-randomly positioned particles that drift across the screen
+ * Generates 120 pseudo-randomly positioned particles that drift across the screen
  * using pure CSS keyframe animations. No JavaScript animation loops after render.
  *
  * Randomization (at mount time only, after hydration):
  * - Position: left/top percentages
- * - Size: 2px, 3px, or 4px
+ * - Size: 2-4px continuous range
  * - Animation: 6 different drift patterns
  * - Duration: 20-40 seconds
  * - Delay: 0-15 seconds stagger
  * - Opacity: 0.4-0.7
  */
 
-const PARTICLE_COUNT = 80;
-const DRIFT_ANIMATIONS = ["drift-1", "drift-2", "drift-3", "drift-4", "drift-5", "drift-6"];
-const PARTICLE_SIZES = [2, 3, 4]; // pixels
+const PARTICLE_COUNT = 120;
+const DRIFT_ANIMATIONS = [
+  "drift-1",
+  "drift-2",
+  "drift-3",
+  "drift-4",
+  "drift-5",
+  "drift-6",
+];
 
 interface Particle {
   id: number;
@@ -40,8 +46,9 @@ function generateParticles(): Particle[] {
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: PARTICLE_SIZES[Math.floor(Math.random() * PARTICLE_SIZES.length)],
-      animation: DRIFT_ANIMATIONS[Math.floor(Math.random() * DRIFT_ANIMATIONS.length)],
+      size: 2 + Math.random() * 2, // 2-4 pixels
+      animation:
+        DRIFT_ANIMATIONS[Math.floor(Math.random() * DRIFT_ANIMATIONS.length)],
       duration: 20 + Math.random() * 20, // 20-40 seconds
       delay: Math.random() * 15, // 0-15 seconds
       opacity: 0.4 + Math.random() * 0.3, // 0.4-0.7
@@ -51,7 +58,7 @@ function generateParticles(): Particle[] {
   return particles;
 }
 
-export function PureCSSParticles() {
+export function Particles() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
