@@ -1,35 +1,49 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 1.3.0 → 1.3.1 (PATCH: Added explicit testing policy)
-Date: 2025-10-21
+Version: 1.3.1 → 1.4.0 (MINOR: Added MDX blog system documentation)
+Date: 2025-10-22
 
 Changes:
-- Added dedicated "Testing Policy" section clarifying NO automated tests
-- Updated Pre-Deployment Gates to reflect manual-only testing approach
-- Added testing policy verification to Code Review guidelines
-- Clarified that manual testing by project owner is the sole testing approach
+- Added VIII. Content-Driven Blog System principle (NEW)
+- Updated Technical Stack with MDX, syntax highlighting, and content management dependencies
+- Added new `/content/blog` directory to project architecture
+- Updated blog-specific routes and components documentation
+- Added `blog:new` command for post generation
+- Corrected repository structure to reflect actual layout (`src/` prefix)
+- Added Blog Content Management section under Project Architecture
 
 Modified Sections:
-- Quality Assurance: Pre-Deployment Gates updated
-- Code Review: Added testing policy verification
+- Technical Stack: UI & Animation, added Content Management subsection
+- Project Architecture: Repository Structure updated with actual layout and `/content/blog`
+- Technical Stack: Commands added `blog:new`
 
 Added Sections:
-- Testing Policy (new, NON-NEGOTIABLE)
+- VIII. Content-Driven Blog System (new principle)
+- Project Architecture: Blog Content Management (new subsection)
 
 Removed Sections:
 - None
 
 Templates Requiring Updates:
-- ⚠ .specify/templates/tasks-template.md (pending: remove test task examples, add clarification)
-- ✅ .specify/templates/plan-template.md (reviewed - no test requirements, compatible)
-- ✅ .specify/templates/spec-template.md (reviewed - no test requirements, compatible)
+- ✅ .specify/templates/plan-template.md (reviewed - compatible with new principle)
+- ✅ .specify/templates/spec-template.md (reviewed - compatible with new principle)
+- ✅ .specify/templates/tasks-template.md (reviewed - no test requirements, compatible)
 
 Follow-up TODOs:
-- Update tasks-template.md to remove optional test task examples per new policy
+- None
 
 ---
 Version History:
+
+v1.4.0 (MINOR: Added MDX blog system documentation)
+Date: 2025-10-22
+- Added VIII. Content-Driven Blog System principle
+- Updated Technical Stack with MDX dependencies and syntax highlighting
+- Added `/content/blog` directory and blog content management guidance
+- Added `blog:new` command for post generation
+- Corrected repository structure to reflect actual `src/` layout
+- Rationale: Document new MDX-based blog platform with content management system
 
 v1.3.1 (PATCH: Added explicit testing policy)
 Date: 2025-10-21
@@ -151,6 +165,20 @@ Date: 2025-10-09
 
 **Rationale**: Deliberate releases, prevents accidental changes, deployment accountability, final human verification.
 
+### VIII. Content-Driven Blog System
+
+**Requirements**:
+
+- Blog posts in `/content/blog/*.md` with YAML frontmatter (title, date, description, etc.)
+- MDX support for interactive content in blog posts
+- Syntax highlighting for code blocks via Shiki
+- Blog utilities centralized in `/src/lib/blog.ts`
+- Blog components in `/src/components/blog/` for reusability
+- Use `blog:new` command for generating new posts with frontmatter scaffold
+- Dynamic routes via `/src/app/blog/[slug]/page.tsx`
+
+**Rationale**: Separates content from code, enables rapid post creation, supports future CMS integration, maintains type safety with frontmatter parsing.
+
 ## Technical Stack (NON-NEGOTIABLE)
 
 Substitutions require constitutional amendment. Versions tracked in `package.json`.
@@ -174,6 +202,21 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **cobe**: Interactive globe
 - **tw-animate-css**: Additional animations
 - **Particles & Grid Patterns**: Background effects
+
+### Content & Blog Management
+
+- **@mdx-js/react & @mdx-js/loader**: MDX support for interactive content
+- **@next/mdx**: Next.js MDX integration
+- **next-mdx-remote**: Remote MDX rendering (dynamic content)
+- **gray-matter**: YAML frontmatter parsing from markdown
+- **shiki**: Syntax highlighting engine
+- **rehype-pretty-code**: Code block formatting
+- **rehype-slug**: Auto-generate heading anchors
+- **rehype-autolink-headings**: Add anchor links to headings
+- **rehype-external-links**: Open external links in new tabs
+- **remark-gfm**: GitHub Flavored Markdown support
+- **zod**: Schema validation for post metadata
+- **@clack/prompts**: CLI prompts for `blog:new` command
 
 ### Utilities
 
@@ -213,6 +256,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Deploy**: `bun run sst:deploy` (MANUAL-ONLY by owner)
 - **Remove**: `bun run sst:remove` (destroy AWS resources)
 - **Clean**: `bun run clean` (removes build artifacts)
+- **New Blog Post**: `bun run blog:new` (generates blog post with frontmatter scaffold)
 
 ### Dependency Management (NON-NEGOTIABLE)
 
@@ -235,27 +279,45 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ```
 /
 ├── .specify/memory/constitution.md    # THIS FILE
-├── app/                               # Next.js App Router
-│   ├── (portfolio)/page.tsx          # Portfolio landing
-│   ├── blog/                         # Blog section
-│   ├── opengraph-image.tsx           # OG image gen
-│   ├── twitter-image.tsx             # Twitter card gen
-│   ├── globals.css                   # Global styles + CSS vars
-│   └── layout.tsx                    # Root layout
-├── components/                        # Shared components
-│   ├── ui/                           # shadcn/ui primitives
-│   ├── experience/                   # Experience components
-│   ├── skills/                       # Skills components
-│   └── globe/                        # Globe component
-├── data/                             # Content data files
-│   ├── experience.ts                 # Work experience
-│   ├── skills.ts                     # Technical skills
-│   └── socials.tsx                   # Social links
-├── lib/                              # Utilities
-│   ├── fonts.ts                      # Geist fonts
-│   ├── metadata.ts                   # Centralized metadata
-│   └── utils.ts                      # cn(), etc.
-├── public/                           # Static assets
+├── src/
+│   ├── app/                           # Next.js App Router
+│   │   ├── (portfolio)/page.tsx      # Portfolio landing
+│   │   ├── blog/
+│   │   │   ├── page.tsx              # Blog listing
+│   │   │   ├── [slug]/page.tsx       # Dynamic blog post
+│   │   │   └── layout.tsx            # Blog layout wrapper
+│   │   ├── opengraph-image.tsx       # OG image gen
+│   │   ├── twitter-image.tsx         # Twitter card gen
+│   │   ├── globals.css               # Global styles + CSS vars
+│   │   └── layout.tsx                # Root layout
+│   ├── components/                    # Shared components
+│   │   ├── ui/                       # shadcn/ui primitives
+│   │   ├── experience/               # Experience components
+│   │   ├── skills/                   # Skills components
+│   │   ├── globe/                    # Globe component
+│   │   └── blog/                     # Blog components
+│   │       ├── BlogCard.tsx          # Post card component
+│   │       ├── BlogList.tsx          # Posts list
+│   │       └── CodeBlock.tsx         # Syntax highlighted code
+│   ├── data/                          # Content data files
+│   │   ├── experience.ts             # Work experience
+│   │   ├── skills.ts                 # Technical skills
+│   │   └── socials.tsx               # Social links
+│   └── lib/                           # Utilities
+│       ├── fonts.ts                  # Geist fonts
+│       ├── metadata.ts               # Centralized metadata
+│       ├── utils.ts                  # cn(), etc.
+│       └── blog.ts                   # Blog parsing & utilities
+├── content/
+│   └── blog/                          # Blog posts (markdown + frontmatter)
+│       ├── example-post.md
+│       └── *.md                       # Additional blog posts
+├── scripts/
+│   ├── new-post.ts                   # Blog post generator
+│   ├── deploy.zsh                    # Deployment script
+│   ├── remove.zsh                    # AWS resource removal
+│   └── login.zsh                     # AWS login utility
+├── public/                            # Static assets
 ├── sst.config.ts                     # SST infrastructure
 ├── components.json                   # shadcn/ui config
 ├── postcss.config.mjs                # PostCSS config
@@ -291,6 +353,17 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Environment-aware**: Uses `metadataBase`
 - **Dynamic images**: `opengraph-image.tsx`, `twitter-image.tsx`
 - **Per-route**: Export `metadata` object or `generateMetadata()`
+
+### Blog Content Management
+
+- **Storage**: Markdown files in `/content/blog/*.md`
+- **Frontmatter**: YAML frontmatter with `title`, `date`, `description`, and `author`
+- **Parsing**: `gray-matter` extracts frontmatter, `zod` validates schema
+- **Utilities**: `/src/lib/blog.ts` handles post fetching, sorting, slugification
+- **Dynamic Routing**: `/src/app/blog/[slug]/page.tsx` renders individual posts
+- **Syntax Highlighting**: `shiki` engine for code blocks with copy button
+- **Markdown Extensions**: GitHub Flavored Markdown + auto heading anchors + external link handling
+- **Post Generation**: `bun run blog:new` scaffolds new posts with frontmatter template
 
 ## Configuration Standards
 
@@ -389,13 +462,14 @@ export default {
 
 ### Code Review
 
-- Core Principles I-VII adherence
+- Core Principles I-VIII adherence
 - Component reusability + single responsibility
 - TypeScript type safety
 - Tailwind usage (no duplication)
 - Performance (bundle/runtime)
 - Accessibility (WCAG 2.1 AA minimum)
 - Manual verification against Testing Policy (no test code added)
+- Blog content structure (if applicable): proper frontmatter, markdown conventions
 
 ## Governance
 
@@ -423,4 +497,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 1.3.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-21
+**Version**: 1.4.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-22
