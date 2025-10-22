@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PureCSSParticles } from "@/components/page-backgrounds";
 import { geistMono, geistSans } from "@/lib/fonts";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
 import "./globals.css";
@@ -33,6 +34,9 @@ export default function RootLayout({
               "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
           }}
         />
+
+        {/* Pure CSS Particle Animation - Drifting particles overlay */}
+        <PureCSSParticles />
 
         <ThemeProvider
           attribute="class"
