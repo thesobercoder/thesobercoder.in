@@ -1,35 +1,57 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 1.4.0 → 1.4.1 (PATCH: Codified component export patterns)
-Date: 2025-10-22
+Version: 1.4.1 → 2.0.0 (MAJOR: Removed blog system, simplified architecture)
+Date: 2025-11-14
 
 Changes:
-- Added component export pattern requirements to Principle V (Code Quality Standards)
-- Expanded Component Organization section with explicit export/props patterns
-- Updated Code Review guidelines to include export pattern verification
+- REMOVED Principle VIII (Content-Driven Blog System) entirely
+- Updated Technical Stack: Removed all MDX/blog dependencies, updated Next.js 15.x → 16.x
+- Updated Commands: Removed `blog:new` command
+- Simplified Repository Structure: Flattened component organization, removed blog routes
+- Simplified Component Organization: Single-level component structure
+- Updated Quality Assurance: Removed blog content structure verification
 
 Modified Sections:
-- Principle V. Code Quality Standards: Added 3 new requirements (export const, Props interfaces, no defaults)
-- Project Architecture: Component Organization subsection expanded with export patterns
-- Quality Assurance: Code Review section updated with export pattern verification
-
-Added Sections:
-- None (amendments to existing sections)
+- Core Principles: Removed Principle VIII
+- Technical Stack: Removed "Content & Blog Management" subsection, updated Core & Styling (Next.js 16.x)
+- Commands: Removed blog:new
+- Project Architecture: Simplified repository structure (removed /content/blog, /scripts/new-post.ts, blog routes, blog components)
+- Component Organization: Updated to reflect flattened structure
+- Code Review: Removed blog content structure verification
 
 Removed Sections:
+- Principle VIII. Content-Driven Blog System
+- Blog Content Management subsection (Project Architecture)
+- Content & Blog Management subsection (Technical Stack)
+
+Added Sections:
 - None
 
 Templates Requiring Updates:
-- ✅ .specify/templates/plan-template.md (no changes needed - component patterns don't affect planning)
-- ✅ .specify/templates/spec-template.md (no changes needed - patterns are implementation detail)
-- ✅ .specify/templates/tasks-template.md (no changes needed - patterns enforced at code review)
+- ✅ .specify/templates/plan-template.md (review for blog references)
+- ✅ .specify/templates/spec-template.md (review for blog references)
+- ✅ .specify/templates/tasks-template.md (review for blog-related task types)
 
 Follow-up TODOs:
-- None (all 11 project components already standardized to new pattern)
+- Review and update any template files that reference blog functionality
+- Verify all blog-related files have been removed from repository
+
+Rationale:
+MAJOR version bump due to removal of entire principle (Principle VIII) and fundamental architectural simplification. This represents a backward-incompatible change removing a major feature area.
 
 ---
 Version History:
+
+v2.0.0 (MAJOR: Removed blog system, simplified architecture)
+Date: 2025-11-14
+- Removed Principle VIII (Content-Driven Blog System)
+- Removed all MDX and blog-related dependencies from Technical Stack
+- Updated Next.js from 15.x to 16.x
+- Simplified repository structure (flattened components, removed blog routes/content)
+- Removed blog:new command
+- Removed blog content verification from Code Review guidelines
+- Rationale: Complete removal of blog system represents fundamental architectural change requiring MAJOR version bump
 
 v1.4.1 (PATCH: Codified component export patterns)
 Date: 2025-10-22
@@ -112,7 +134,7 @@ Date: 2025-10-09
 **Requirements**:
 
 - TypeScript strict mode, no `any` without justification
-- Component props use `Props` suffix interfaces (e.g., `ExperienceCardProps`)
+- Component props use `Props` suffix interfaces (e.g., `ExperienceProps`)
 
 **Rationale**: Prevents runtime errors, provides IDE support, documents interfaces, ensures data contract integrity.
 
@@ -130,7 +152,7 @@ Date: 2025-10-09
 
 **Requirements**:
 
-- React 19 + Next.js 15 App Router
+- React 19 + Next.js 16 App Router
 - Server Components default, Client Components only for interactivity (`"use client"`)
 - Metadata API for SEO, `next/image` for optimization
 
@@ -170,20 +192,6 @@ Date: 2025-10-09
 
 **Rationale**: Deliberate releases, prevents accidental changes, deployment accountability, final human verification.
 
-### VIII. Content-Driven Blog System
-
-**Requirements**:
-
-- Blog posts in `/content/blog/*.md` with YAML frontmatter (title, date, description, etc.)
-- MDX support for interactive content in blog posts
-- Syntax highlighting for code blocks via Shiki
-- Blog utilities centralized in `/src/lib/blog.ts`
-- Blog components in `/src/components/blog/` for reusability
-- Use `blog:new` command for generating new posts with frontmatter scaffold
-- Dynamic routes via `/src/app/blog/[slug]/page.tsx`
-
-**Rationale**: Separates content from code, enables rapid post creation, supports future CMS integration, maintains type safety with frontmatter parsing.
-
 ## Technical Stack (NON-NEGOTIABLE)
 
 Substitutions require constitutional amendment. Versions tracked in `package.json`.
@@ -191,7 +199,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ### Core & Styling
 
 - **React 19.x**: Concurrent features
-- **Next.js 15.x**: App Router (NOT Pages Router)
+- **Next.js 16.x**: App Router (NOT Pages Router)
 - **TypeScript 5.x**: Strict mode
 - **Bun**: Package manager/runtime
 - **Tailwind CSS 4.x**: Utility-first, PostCSS (`@tailwindcss/postcss`)
@@ -208,26 +216,12 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **tw-animate-css**: Additional animations
 - **Particles & Grid Patterns**: Background effects
 
-### Content & Blog Management
-
-- **@mdx-js/react & @mdx-js/loader**: MDX support for interactive content
-- **@next/mdx**: Next.js MDX integration
-- **next-mdx-remote**: Remote MDX rendering (dynamic content)
-- **gray-matter**: YAML frontmatter parsing from markdown
-- **shiki**: Syntax highlighting engine
-- **rehype-pretty-code**: Code block formatting
-- **rehype-slug**: Auto-generate heading anchors
-- **rehype-autolink-headings**: Add anchor links to headings
-- **rehype-external-links**: Open external links in new tabs
-- **remark-gfm**: GitHub Flavored Markdown support
-- **zod**: Schema validation for post metadata
-- **@clack/prompts**: CLI prompts for `blog:new` command
-
 ### Utilities
 
 - **clsx**: Conditional class names
 - **tailwind-merge**: Class merging via `cn()`
 - **class-variance-authority**: Component variants
+- **zod**: Schema validation
 
 ### Infrastructure
 
@@ -235,7 +229,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **@opennextjs/aws**: Next.js AWS Lambda adapter
 - **AWS**: Lambda + CloudFront + S3
 - **Cloudflare**: DNS for thesobercoder.in
-- **Environment**: `.env` (AWS, Cloudflare, Dev.to credentials)
+- **Environment**: `.env` (AWS, Cloudflare credentials)
 
 ### Development
 
@@ -261,7 +255,6 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Deploy**: `bun run sst:deploy` (MANUAL-ONLY by owner)
 - **Remove**: `bun run sst:remove` (destroy AWS resources)
 - **Clean**: `bun run clean` (removes build artifacts)
-- **New Blog Post**: `bun run blog:new` (generates blog post with frontmatter scaffold)
 
 ### Dependency Management (NON-NEGOTIABLE)
 
@@ -286,54 +279,50 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ├── .specify/memory/constitution.md    # THIS FILE
 ├── src/
 │   ├── app/                           # Next.js App Router
-│   │   ├── (portfolio)/page.tsx      # Portfolio landing
-│   │   ├── blog/
-│   │   │   ├── page.tsx              # Blog listing
-│   │   │   ├── [slug]/page.tsx       # Dynamic blog post
-│   │   │   └── layout.tsx            # Blog layout wrapper
-│   │   ├── opengraph-image.tsx       # OG image gen
-│   │   ├── twitter-image.tsx         # Twitter card gen
-│   │   ├── globals.css               # Global styles + CSS vars
-│   │   └── layout.tsx                # Root layout
+│   │   ├── page.tsx                   # Portfolio landing
+│   │   ├── opengraph-image.tsx        # OG image gen
+│   │   ├── twitter-image.tsx          # Twitter card gen
+│   │   ├── apple-icon.tsx             # Apple icon gen
+│   │   ├── icon.tsx                   # Favicon gen
+│   │   ├── globals.css                # Global styles + CSS vars
+│   │   └── layout.tsx                 # Root layout
 │   ├── components/                    # Shared components
-│   │   ├── ui/                       # shadcn/ui primitives
-│   │   ├── experience/               # Experience components
-│   │   ├── skills/                   # Skills components
-│   │   ├── globe/                    # Globe component
-│   │   └── blog/                     # Blog components
-│   │       ├── BlogCard.tsx          # Post card component
-│   │       ├── BlogList.tsx          # Posts list
-│   │       └── CodeBlock.tsx         # Syntax highlighted code
+│   │   ├── ui/                        # shadcn/ui primitives
+│   │   │   ├── button.tsx
+│   │   │   ├── skeleton.tsx
+│   │   │   └── tooltip.tsx
+│   │   ├── experience.tsx             # Experience section
+│   │   ├── skills.tsx                 # Skills section
+│   │   ├── globe.tsx                  # Interactive globe
+│   │   ├── particles.tsx              # Particle effects
+│   │   ├── footer.tsx                 # Footer component
+│   │   └── theme-provider.tsx         # Theme context
 │   ├── data/                          # Content data files
-│   │   ├── experience.ts             # Work experience
-│   │   ├── skills.ts                 # Technical skills
-│   │   └── socials.tsx               # Social links
+│   │   ├── experience.ts              # Work experience
+│   │   ├── skills.ts                  # Technical skills
+│   │   └── socials.tsx                # Social links
 │   └── lib/                           # Utilities
-│       ├── fonts.ts                  # Geist fonts
-│       ├── metadata.ts               # Centralized metadata
-│       ├── utils.ts                  # cn(), etc.
-│       └── blog.ts                   # Blog parsing & utilities
-├── content/
-│   └── blog/                          # Blog posts (markdown + frontmatter)
-│       ├── example-post.md
-│       └── *.md                       # Additional blog posts
+│       ├── fonts.ts                   # Geist fonts
+│       ├── metadata.ts                # Centralized metadata
+│       ├── client.ts                  # Client utilities
+│       ├── animation-variants.ts      # Framer Motion variants
+│       └── og-image.ts                # OG image utilities
 ├── scripts/
-│   ├── new-post.ts                   # Blog post generator
-│   ├── deploy.zsh                    # Deployment script
-│   ├── remove.zsh                    # AWS resource removal
-│   └── login.zsh                     # AWS login utility
+│   ├── deploy.zsh                     # Deployment script
+│   ├── remove.zsh                     # AWS resource removal
+│   └── login.zsh                      # AWS login utility
 ├── public/                            # Static assets
-├── sst.config.ts                     # SST infrastructure
-├── components.json                   # shadcn/ui config
-├── postcss.config.mjs                # PostCSS config
-├── tailwind.config.ts                # Tailwind config
-├── tsconfig.json                     # TypeScript config
-└── package.json                      # Dependencies (exact versions)
+├── sst.config.ts                      # SST infrastructure
+├── components.json                    # shadcn/ui config
+├── postcss.config.mjs                 # PostCSS config
+├── tailwind.config.ts                 # Tailwind config
+├── tsconfig.json                      # TypeScript config
+└── package.json                       # Dependencies (exact versions)
 ```
 
 ### File Conventions
 
-- **Components**: PascalCase (`ExperienceCard.tsx`)
+- **Components**: PascalCase (`experience.tsx`) or kebab-case (`theme-provider.tsx`)
 - **Utilities**: camelCase (`formatDate.ts`)
 - **Data files**: camelCase (`experience.ts`)
 - **Config**: kebab-case or framework convention (`sst.config.ts`)
@@ -341,9 +330,8 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 ### Component Organization
 
-- **Shared**: `/components` (reusable across routes)
+- **Shared**: `/components` (reusable across routes, single-level structure)
 - **Primitives**: `/components/ui` (shadcn/ui only - may use `const` or `export default` per shadcn pattern)
-- **Feature**: `/components/{feature}` (grouped by domain)
 - **Page-specific**: Co-located with route in `/app`
 - **Export pattern**: All components use `export const Component = (props: ComponentProps) => {}`
 - **Props pattern**: Explicit `ComponentProps` interface required (even if empty, for future extensibility)
@@ -358,19 +346,8 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 - **Centralized**: `/lib/metadata.ts`
 - **Environment-aware**: Uses `metadataBase`
-- **Dynamic images**: `opengraph-image.tsx`, `twitter-image.tsx`
+- **Dynamic images**: `opengraph-image.tsx`, `twitter-image.tsx`, `apple-icon.tsx`, `icon.tsx`
 - **Per-route**: Export `metadata` object or `generateMetadata()`
-
-### Blog Content Management
-
-- **Storage**: Markdown files in `/content/blog/*.md`
-- **Frontmatter**: YAML frontmatter with `title`, `date`, `description`, and `author`
-- **Parsing**: `gray-matter` extracts frontmatter, `zod` validates schema
-- **Utilities**: `/src/lib/blog.ts` handles post fetching, sorting, slugification
-- **Dynamic Routing**: `/src/app/blog/[slug]/page.tsx` renders individual posts
-- **Syntax Highlighting**: `shiki` engine for code blocks with copy button
-- **Markdown Extensions**: GitHub Flavored Markdown + auto heading anchors + external link handling
-- **Post Generation**: `bun run blog:new` scaffolds new posts with frontmatter template
 
 ## Configuration Standards
 
@@ -469,7 +446,7 @@ export default {
 
 ### Code Review
 
-- Core Principles I-VIII adherence
+- Core Principles I-VII adherence
 - Component reusability + single responsibility
 - TypeScript type safety + explicit Props interfaces
 - Component export patterns (named exports, no defaults for project components)
@@ -477,7 +454,6 @@ export default {
 - Performance (bundle/runtime)
 - Accessibility (WCAG 2.1 AA minimum)
 - Manual verification against Testing Policy (no test code added)
-- Blog content structure (if applicable): proper frontmatter, markdown conventions
 
 ## Governance
 
@@ -505,4 +481,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 1.4.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-10-22
+**Version**: 2.0.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-11-14

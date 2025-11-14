@@ -42,67 +42,74 @@ export default function Home() {
                   <p className="text-sm text-foreground/50 mb-4">
                     Building scalable cloud solutions for enterprise challenges
                   </p>
-                  <div className="flex flex-row justify-center lg:justify-start gap-x-4 mt-4">
-                    <Button size="lg" className="w-24 gap-1" asChild>
-                      <Link
-                        rel="noreferrer noopener"
-                        target="_self"
-                        href="mailto:soham@thesobercoder.in"
-                      >
-                        <Mail className="size-4" /> Email
-                      </Link>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-24 gap-1"
-                      asChild
-                    >
-                      <Link
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        href="/resume.pdf"
-                      >
-                        <FileText className="size-4" /> Resume
-                      </Link>
-                    </Button>
-                  </div>
-                  {SOCIALS.length && (
-                    <TooltipProvider>
-                      <ul
-                        className="flex items-center justify-center lg:justify-start gap-x-4 mt-4"
-                        aria-label="Social media"
-                      >
-                        {SOCIALS.map((social) => {
-                          const Icon = social.icon;
-                          return (
-                            <li key={social.name}>
-                              <Tooltip>
-                                <TooltipTrigger asChild>
-                                  <Button variant="outline" size="icon" asChild>
-                                    <Link
-                                      href={social.url}
-                                      target={social.target}
-                                      rel={social.rel}
-                                      aria-label={`${social.name} (opens in a new tab)`}
+                  <div className="mt-4 p-4 rounded-lg bg-background/50 backdrop-blur-sm max-w-md mx-auto lg:mx-0">
+                    <div className="flex flex-col gap-3">
+                      {/* Buttons */}
+                      <div className="flex gap-3">
+                        <Button size="lg" className="flex-1 gap-1" asChild>
+                          <Link
+                            rel="noreferrer noopener"
+                            target="_self"
+                            href="mailto:soham@thesobercoder.in"
+                          >
+                            <Mail className="size-4" /> Email
+                          </Link>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="flex-1 gap-1"
+                          asChild
+                        >
+                          <Link
+                            rel="noreferrer noopener"
+                            target="_blank"
+                            href="/resume.pdf"
+                          >
+                            <FileText className="size-4" /> Resume
+                          </Link>
+                        </Button>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+
+                      {/* Social Icons - Centered */}
+                      {SOCIALS.length && (
+                        <TooltipProvider>
+                          <div className="flex justify-center gap-3">
+                            {SOCIALS.map((social) => {
+                              const Icon = social.icon;
+                              return (
+                                <Tooltip key={social.name}>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-10"
+                                      asChild
                                     >
-                                      <span className="sr-only">
-                                        {social.name}
-                                      </span>
-                                      <Icon className="size-8 text-current opacity-80 hover:opacity-100 transition-opacity" />
-                                    </Link>
-                                  </Button>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>{social.name}</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </TooltipProvider>
-                  )}
+                                      <Link
+                                        href={social.url}
+                                        target={social.target}
+                                        rel={social.rel}
+                                        aria-label={`${social.name} (opens in a new tab)`}
+                                      >
+                                        <Icon className="size-5 opacity-70 hover:opacity-100 transition-opacity" />
+                                      </Link>
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>{social.name}</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              );
+                            })}
+                          </div>
+                        </TooltipProvider>
+                      )}
+                    </div>
+                  </div>
                 </div>
                 <div className="flex justify-center mt-4 size-80 lg:size-[24rem] xl:size-[30rem] lg:absolute lg:-left-[calc(100%-18rem)] xl:-left-[calc(100%-16rem)]">
                   <Globe />
