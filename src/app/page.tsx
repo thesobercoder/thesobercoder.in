@@ -16,7 +16,9 @@ export default function Home() {
             <div className="relative z-10 order-2 md:order-1">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-medium tracking-tighter text-foreground mb-6 leading-[0.9]">
                 Soham <br />
-                <span className="text-muted-foreground/60 italic">Dasgupta</span>
+                <span className="text-muted-foreground/60 italic">
+                  Dasgupta
+                </span>
               </h1>
               <div className="h-1 w-32 bg-primary mb-8" />
               <p className="text-xl md:text-2xl text-foreground/80 font-light tracking-wide max-w-2xl leading-relaxed">
@@ -24,12 +26,21 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-4 pt-8">
-                <Button size="lg" className="rounded-full w-48 px-8 text-lg h-14 bg-foreground text-background hover:bg-foreground/90 transition-colors" asChild>
+                <Button
+                  size="lg"
+                  className="rounded-full w-48 px-8 text-lg h-14 bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                  asChild
+                >
                   <Link href="mailto:soham@thesobercoder.in">
                     <Mail className="mr-2 size-5" /> Get in Touch
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="rounded-full w-48 px-8 text-lg h-14 border-foreground/20 hover:bg-foreground/5 transition-colors" asChild>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full w-48 px-8 text-lg h-14 border-foreground/20 hover:bg-foreground/5 transition-colors"
+                  asChild
+                >
                   <Link href="/resume.pdf" target="_blank">
                     <FileText className="mr-2 size-5" /> Resume
                   </Link>
@@ -74,13 +85,21 @@ export default function Home() {
           </h2>
           <div className="prose prose-lg dark:prose-invert prose-neutral max-w-none leading-loose text-foreground/90">
             <p>
-              I transform complex business challenges into elegant cloud solutions.
+              I transform complex business challenges into elegant cloud
+              solutions.
             </p>
             <p>
-              From architecting distributed systems that power Fortune 500 companies to building enterprise financial platforms that drive millions in revenue, I see every project as an opportunity to push the boundaries of what is possible.
+              From architecting distributed systems that power Fortune 500
+              companies to building enterprise financial platforms that drive
+              millions in revenue, I see every project as an opportunity to push
+              the boundaries of what is possible.
             </p>
             <p>
-              Passionate about fostering technical excellence and innovation, I create environments where teams thrive and solutions scale. When not designing cloud architectures, you will find me mentoring the next generation of engineers and exploring the frontiers of technology.
+              Passionate about fostering technical excellence and innovation, I
+              create environments where teams thrive and solutions scale. When
+              not designing cloud architectures, you will find me mentoring the
+              next generation of engineers and exploring the frontiers of
+              technology.
             </p>
           </div>
         </section>
@@ -104,11 +123,18 @@ export default function Home() {
         {/* Contact Section */}
         <section className="py-24 border-t border-border/40">
           <div className="max-w-2xl">
-            <h2 className="text-5xl md:text-6xl font-serif font-medium mb-8 tracking-tight">Ready to collaborate?</h2>
+            <h2 className="text-5xl md:text-6xl font-serif font-medium mb-8 tracking-tight">
+              Ready to collaborate?
+            </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              Let's discuss how we can build scalable, future-proof solutions together.
+              Let's discuss how we can build scalable, future-proof solutions
+              together.
             </p>
-            <Button size="lg" className="rounded-full px-10 py-8 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20" asChild>
+            <Button
+              size="lg"
+              className="rounded-full px-10 py-8 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20"
+              asChild
+            >
               <Link href="mailto:soham@thesobercoder.in">
                 Start a Conversation
               </Link>
