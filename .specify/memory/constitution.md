@@ -1,47 +1,51 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 1.4.1 → 2.0.0 (MAJOR: Removed blog system, simplified architecture)
-Date: 2025-11-14
+Version: 2.0.0 → 2.0.1 (PATCH: Align constitution with actual codebase state)
+Date: 2025-12-04
 
 Changes:
-- REMOVED Principle VIII (Content-Driven Blog System) entirely
-- Updated Technical Stack: Removed all MDX/blog dependencies, updated Next.js 15.x → 16.x
-- Updated Commands: Removed `blog:new` command
-- Simplified Repository Structure: Flattened component organization, removed blog routes
-- Simplified Component Organization: Single-level component structure
-- Updated Quality Assurance: Removed blog content structure verification
+- Updated Repository Structure to reflect actual files (removed globe, skeleton, tooltip; added spotlight)
+- Removed stale dependencies from Technical Stack (cobe, @radix-ui/react-tooltip, zod)
+- Corrected TypeScript config (target: ES2017, jsx: react-jsx)
+- Corrected components.json config (baseColor: neutral, config: postcss.config.mjs)
+- Updated lib/ files (removed animation-variants.ts, corrected client.ts as cn() utility)
+- Removed template references from Governance (templates no longer exist)
 
 Modified Sections:
-- Core Principles: Removed Principle VIII
-- Technical Stack: Removed "Content & Blog Management" subsection, updated Core & Styling (Next.js 16.x)
-- Commands: Removed blog:new
-- Project Architecture: Simplified repository structure (removed /content/blog, /scripts/new-post.ts, blog routes, blog components)
-- Component Organization: Updated to reflect flattened structure
-- Code Review: Removed blog content structure verification
+- Technical Stack → UI & Animation: Removed cobe, @radix-ui/react-tooltip
+- Technical Stack → Utilities: Removed zod
+- Project Architecture → Repository Structure: Updated to match actual files
+- Configuration Standards → TypeScript: Corrected to match actual tsconfig.json
+- Configuration Standards → shadcn/ui: Corrected to match actual components.json
+- Governance → Amendment Process: Removed template update step (templates removed)
 
 Removed Sections:
-- Principle VIII. Content-Driven Blog System
-- Blog Content Management subsection (Project Architecture)
-- Content & Blog Management subsection (Technical Stack)
+- None
 
 Added Sections:
 - None
 
 Templates Requiring Updates:
-- ✅ .specify/templates/plan-template.md (review for blog references)
-- ✅ .specify/templates/spec-template.md (review for blog references)
-- ✅ .specify/templates/tasks-template.md (review for blog-related task types)
+- N/A (templates no longer exist in repository)
 
 Follow-up TODOs:
-- Review and update any template files that reference blog functionality
-- Verify all blog-related files have been removed from repository
+- None
 
 Rationale:
-MAJOR version bump due to removal of entire principle (Principle VIII) and fundamental architectural simplification. This represents a backward-incompatible change removing a major feature area.
+PATCH version bump to align documentation with actual codebase state post-refactor. No principle changes, only documentation accuracy corrections.
 
 ---
 Version History:
+
+v2.0.1 (PATCH: Align constitution with actual codebase state)
+Date: 2025-12-04
+- Updated Repository Structure (removed globe, skeleton, tooltip; added spotlight)
+- Removed stale dependencies (cobe, @radix-ui/react-tooltip, zod)
+- Corrected TypeScript config values
+- Corrected components.json config values
+- Removed template references from Governance
+- Rationale: Documentation alignment with actual codebase, no principle changes
 
 v2.0.0 (MAJOR: Removed blog system, simplified architecture)
 Date: 2025-11-14
@@ -209,19 +213,17 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 ### UI & Animation
 
-- **shadcn/ui**: Radix UI primitives (`@radix-ui/react-slot`, `@radix-ui/react-tooltip`)
+- **shadcn/ui**: Radix UI primitives (`@radix-ui/react-slot`)
 - **Framer Motion**: Animations
 - **lucide-react**: Icons
-- **cobe**: Interactive globe
 - **tw-animate-css**: Additional animations
-- **Particles & Grid Patterns**: Background effects
+- **Particles & Spotlight**: Background effects
 
 ### Utilities
 
 - **clsx**: Conditional class names
 - **tailwind-merge**: Class merging via `cn()`
 - **class-variance-authority**: Component variants
-- **zod**: Schema validation
 
 ### Infrastructure
 
@@ -276,6 +278,8 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 ```
 /
+├── .github/
+│   └── copilot-instructions.md        # Symlink to constitution
 ├── .specify/memory/constitution.md    # THIS FILE
 ├── src/
 │   ├── app/                           # Next.js App Router
@@ -288,12 +292,10 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 │   │   └── layout.tsx                 # Root layout
 │   ├── components/                    # Shared components
 │   │   ├── ui/                        # shadcn/ui primitives
-│   │   │   ├── button.tsx
-│   │   │   ├── skeleton.tsx
-│   │   │   └── tooltip.tsx
+│   │   │   └── button.tsx
 │   │   ├── experience.tsx             # Experience section
 │   │   ├── skills.tsx                 # Skills section
-│   │   ├── globe.tsx                  # Interactive globe
+│   │   ├── spotlight.tsx              # Cursor spotlight effect
 │   │   ├── particles.tsx              # Particle effects
 │   │   ├── footer.tsx                 # Footer component
 │   │   └── theme-provider.tsx         # Theme context
@@ -304,8 +306,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 │   └── lib/                           # Utilities
 │       ├── fonts.ts                   # Geist fonts
 │       ├── metadata.ts                # Centralized metadata
-│       ├── client.ts                  # Client utilities
-│       ├── animation-variants.ts      # Framer Motion variants
+│       ├── client.ts                  # cn() utility (clsx + tailwind-merge)
 │       └── og-image.ts                # OG image utilities
 ├── scripts/
 │   ├── deploy.zsh                     # Deployment script
@@ -314,10 +315,11 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ├── public/                            # Static assets
 ├── sst.config.ts                      # SST infrastructure
 ├── components.json                    # shadcn/ui config
-├── postcss.config.mjs                 # PostCSS config
-├── tailwind.config.ts                 # Tailwind config
+├── postcss.config.mjs                 # PostCSS + Tailwind 4 config
 ├── tsconfig.json                      # TypeScript config
 └── package.json                       # Dependencies (exact versions)
+
+Note: Tailwind 4 uses CSS-based config in globals.css, no tailwind.config.ts
 ```
 
 ### File Conventions
@@ -357,22 +359,22 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 {
   "compilerOptions": {
     "strict": true, // NON-NEGOTIABLE
-    "target": "ES2022",
-    "lib": ["ES2023", "DOM"],
-    "jsx": "preserve",
-    "module": "ESNext",
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "paths": { "@/*": ["./src/*"] }
   }
 }
 ```
 
-### Tailwind (`tailwind.config.ts`)
+### Tailwind (CSS-based config in `globals.css`)
 
-- Tailwind 4.x with PostCSS plugin
-- Custom theme in `globals.css`
+- Tailwind 4.x with PostCSS plugin (no separate config file)
+- Custom theme defined via CSS variables in `globals.css`
 - Dark mode: `class` (via next-themes)
-- Extend with `tw-animate-css`
+- Extended with `tw-animate-css`
 
 ### shadcn/ui (`components.json`)
 
@@ -382,14 +384,17 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "app/globals.css",
-    "baseColor": "slate",
+    "config": "postcss.config.mjs",
+    "css": "src/app/globals.css",
+    "baseColor": "neutral",
     "cssVariables": true
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   }
 }
 ```
@@ -463,7 +468,6 @@ export default {
 2. Impact assessment on codebase
 3. Update constitution with incremented version
 4. Migration plan (if applicable)
-5. Update dependent templates (plan, spec, tasks)
 
 ### Versioning Policy
 
@@ -481,4 +485,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 2.0.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-11-14
+**Version**: 2.0.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-12-04
