@@ -26,11 +26,11 @@ export const Globe = () => {
       dark: 1,
       diffuse: 3,
       mapSamples: 16000,
-      mapBrightness: 0.8,
-      baseColor: [1, 1, 1],
+      mapBrightness: 1.2,
+      baseColor: [0.8, 0.7, 0.6], // Warm beige/brown base
       opacity: 1,
-      markerColor: [251 / 255, 100 / 255, 21 / 255],
-      glowColor: [0.8, 0.8, 0.8],
+      markerColor: [0.9, 0.6, 0.2], // Amber marker
+      glowColor: [0.9, 0.7, 0.4], // Warm glow
       markers: [{ location: [22.5726, 88.3639], size: 0.1 }],
       onRender: (state) => {
         state.width = width * 2;

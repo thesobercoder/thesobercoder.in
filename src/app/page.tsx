@@ -1,13 +1,6 @@
 import { Experience } from "@/components/experience";
-import { Globe } from "@/components/globe";
 import { Skills } from "@/components/skills";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { SOCIALS } from "@/data/socials";
 import { FileText, Mail } from "lucide-react";
 import Image from "next/image";
@@ -15,186 +8,114 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative hero z-10">
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
-            <div className="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left">
-              <Image
-                src="/profile.png"
-                alt="Soham Dasgupta"
-                width={128}
-                height={128}
-                priority
-                className="rounded-full ring-4 ring-foreground/10 hover:ring-primary/50 transition-all duration-300"
-              />
-              <div className="relative">
-                <div>
-                  <Link
-                    href="/"
-                    className="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/20 bg-opacity-50 pb-1 hover:bg-linear-to-r hover:from-primary hover:to-primary/70 transition-all duration-500"
-                  >
-                    <h1>Soham Dasgupta</h1>
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
+      <main className="mx-auto max-w-4xl px-6 py-24 md:py-32">
+        {/* Header Section */}
+        <header className="mb-32 relative">
+          <div className="grid md:grid-cols-[1.5fr_1fr] gap-12 items-center">
+            <div className="relative z-10 order-2 md:order-1">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-medium tracking-tighter text-foreground mb-6 leading-[0.9]">
+                Soham <br />
+                <span className="text-muted-foreground/60 italic">Dasgupta</span>
+              </h1>
+              <div className="h-1 w-32 bg-primary mb-8" />
+              <p className="text-xl md:text-2xl text-foreground/80 font-light tracking-wide max-w-2xl leading-relaxed">
+                Technology Leader & Enterprise Architect
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-8">
+                <Button size="lg" className="rounded-full w-48 px-8 text-lg h-14 bg-foreground text-background hover:bg-foreground/90 transition-colors" asChild>
+                  <Link href="mailto:soham@thesobercoder.in">
+                    <Mail className="mr-2 size-5" /> Get in Touch
                   </Link>
-                  <h2 className="text-sm lg:text-lg font-medium text-foreground/60 mb-2">
-                    Technology Leader & Enterprise Architect
-                  </h2>
-                  <p className="text-sm text-foreground/50 mb-4">
-                    Building scalable cloud solutions for enterprise challenges
-                  </p>
-                  <div className="mt-4 p-4 rounded-lg bg-background/50 backdrop-blur-sm max-w-md mx-auto lg:mx-0">
-                    <div className="flex flex-col gap-3">
-                      {/* Buttons */}
-                      <div className="flex gap-3">
-                        <Button size="lg" className="flex-1 gap-1" asChild>
-                          <Link
-                            rel="noreferrer noopener"
-                            target="_self"
-                            href="mailto:soham@thesobercoder.in"
-                          >
-                            <Mail className="size-4" /> Email
-                          </Link>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="lg"
-                          className="flex-1 gap-1"
-                          asChild
-                        >
-                          <Link
-                            rel="noreferrer noopener"
-                            target="_blank"
-                            href="/resume.pdf"
-                          >
-                            <FileText className="size-4" /> Resume
-                          </Link>
-                        </Button>
-                      </div>
-
-                      {/* Divider */}
-                      <div className="h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
-
-                      {/* Social Icons - Centered */}
-                      {SOCIALS.length && (
-                        <TooltipProvider>
-                          <div className="flex justify-center gap-3">
-                            {SOCIALS.map((social) => {
-                              const Icon = social.icon;
-                              return (
-                                <Tooltip key={social.name}>
-                                  <TooltipTrigger asChild>
-                                    <Button
-                                      variant="ghost"
-                                      size="icon"
-                                      className="size-10"
-                                      asChild
-                                    >
-                                      <Link
-                                        href={social.url}
-                                        target={social.target}
-                                        rel={social.rel}
-                                        aria-label={`${social.name} (opens in a new tab)`}
-                                      >
-                                        <Icon className="size-5 opacity-70 hover:opacity-100 transition-opacity" />
-                                      </Link>
-                                    </Button>
-                                  </TooltipTrigger>
-                                  <TooltipContent>
-                                    <p>{social.name}</p>
-                                  </TooltipContent>
-                                </Tooltip>
-                              );
-                            })}
-                          </div>
-                        </TooltipProvider>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center mt-4 size-80 lg:size-[24rem] xl:size-[30rem] lg:absolute lg:-left-[calc(100%-18rem)] xl:-left-[calc(100%-16rem)]">
-                  <Globe />
-                </div>
-              </div>
-            </div>
-          </header>
-          <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
-            <section
-              id="about"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
-              aria-label="About me"
-            >
-              <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
-                  About
-                </h2>
-              </div>
-              <div>
-                <div className="mb-4 space-y-4 text-lg text-foreground/80">
-                  <p>
-                    I&apos;m a technologist who believes in transforming complex
-                    business challenges into elegant cloud solutions. From
-                    architecting distributed systems that power Fortune 500
-                    companies to building enterprise financial platforms that
-                    drive millions in revenue, I see every project as an
-                    opportunity to push the boundaries of what&apos;s possible.
-                    Passionate about fostering technical excellence and
-                    innovation, I create environments where teams thrive and
-                    solutions scale. When not designing cloud architectures,
-                    you&apos;ll find me mentoring the next generation of
-                    engineers and exploring the frontiers of technology.
-                  </p>
-                </div>
-              </div>
-            </section>
-            <section
-              id="skills"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
-              aria-label="Technical skills"
-            >
-              <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
-                  Skills
-                </h2>
-              </div>
-              <Skills />
-            </section>
-            <section
-              id="experience"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
-              aria-label="Work experience"
-            >
-              <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
-                  Experience
-                </h2>
-              </div>
-              <Experience />
-            </section>
-            <section
-              id="cta"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:scroll-mt-24"
-              aria-label="Get in touch"
-            >
-              <div className="sticky top-0 z-20 -mx-6 mb-4 px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/80 lg:sr-only">
-                  Get in Touch
-                </h2>
-              </div>
-              <div className="bg-background/5 rounded-xl border border-foreground/10 p-8 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Let&apos;s Build Something Amazing
-                </h3>
-                <p className="text-foreground/80 mb-6">
-                  Interested in collaborating or learning more about my work?
-                </p>
-                <Button size="lg" className="mx-auto" asChild>
-                  <Link href="mailto:soham@thesobercoder.in">Contact Me</Link>
+                </Button>
+                <Button variant="outline" size="lg" className="rounded-full w-48 px-8 text-lg h-14 border-foreground/20 hover:bg-foreground/5 transition-colors" asChild>
+                  <Link href="/resume.pdf" target="_blank">
+                    <FileText className="mr-2 size-5" /> Resume
+                  </Link>
                 </Button>
               </div>
-            </section>
-          </main>
-        </div>
-      </div>
+
+              <div className="flex items-center gap-4 mt-8">
+                {SOCIALS.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <Link
+                      key={social.name}
+                      href={social.url}
+                      target={social.target}
+                      className="text-muted-foreground hover:text-primary transition-colors p-3 border border-border/50 rounded-full hover:border-primary/50 hover:bg-primary/5"
+                    >
+                      <Icon className="size-6" />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+              <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
+                <Image
+                  src="/profile.png"
+                  alt="Soham Dasgupta"
+                  fill
+                  priority
+                  className="rounded-full object-cover sepia-[.5] contrast-110 brightness-110 border border-border/50 shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* About Section */}
+        <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+            About
+          </h2>
+          <div className="prose prose-lg dark:prose-invert prose-neutral max-w-none leading-loose text-foreground/90">
+            <p>
+              I transform complex business challenges into elegant cloud solutions.
+            </p>
+            <p>
+              From architecting distributed systems that power Fortune 500 companies to building enterprise financial platforms that drive millions in revenue, I see every project as an opportunity to push the boundaries of what is possible.
+            </p>
+            <p>
+              Passionate about fostering technical excellence and innovation, I create environments where teams thrive and solutions scale. When not designing cloud architectures, you will find me mentoring the next generation of engineers and exploring the frontiers of technology.
+            </p>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+            Experience
+          </h2>
+          <Experience />
+        </section>
+
+        {/* Skills Section */}
+        <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+            Expertise
+          </h2>
+          <Skills />
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-24 border-t border-border/40">
+          <div className="max-w-2xl">
+            <h2 className="text-5xl md:text-6xl font-serif font-medium mb-8 tracking-tight">Ready to collaborate?</h2>
+            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
+              Let's discuss how we can build scalable, future-proof solutions together.
+            </p>
+            <Button size="lg" className="rounded-full px-10 py-8 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20" asChild>
+              <Link href="mailto:soham@thesobercoder.in">
+                Start a Conversation
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

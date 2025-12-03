@@ -77,7 +77,7 @@ export const Particles = () => {
             width: `${particle.size}px`,
             height: `${particle.size}px`,
             borderRadius: "50%",
-            backgroundColor: "#555555",
+            backgroundColor: "var(--muted-foreground)",
             opacity: particle.opacity,
             animation: `${particle.animation} ${particle.duration.toFixed(1)}s ease-in-out ${particle.delay.toFixed(1)}s infinite`,
           }}

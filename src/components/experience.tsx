@@ -4,54 +4,60 @@ import { EXPERIENCE } from "@/data/experience";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { animatedCardVariants } from "@/lib/animation-variants";
 
 export const Experience = () => {
   return (
-    <div className="relative">
-      <div className="grid gap-4 relative z-10">
-        {EXPERIENCE.map((exp, index) => (
+    <div className="relative space-y-12">
+      {EXPERIENCE.map((exp, index) => (
+        <motion.div
+          key={exp.company}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="group relative pl-8 border-l border-border/40 hover:border-primary/50 transition-colors"
+        >
+          <div className="absolute -left-[5px] top-0 size-2.5 rounded-full bg-border group-hover:bg-primary transition-colors" />
+
           <Link
             href={exp.companyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            key={exp.company}
+            className="block"
           >
-            <motion.div
-              {...animatedCardVariants(index)}
-              className="group relative overflow-hidden rounded-xl bg-background/5 border border-border/50 backdrop-blur-xs p-4"
-            >
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-1 rounded-md bg-primary/5 group-hover:bg-primary/10 transition-colors">
-                      <Image
-                        src={exp.logo}
-                        alt={exp.company}
-                        width={36}
-                        height={36}
-                        className="size-8 object-contain rounded-sm"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">
-                        {exp.company}
-                      </h3>
-                      <p className="text-base text-foreground/80">
-                        {exp.title}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-foreground/60">{exp.dates}</p>
+            <div className="flex gap-4 items-start">
+              {exp.logo && (
+                <div className="relative size-12 shrink-0 overflow-hidden rounded-lg border border-border/50 bg-background mt-1">
+                  <Image
+                    src={exp.logo}
+                    alt={exp.company}
+                    fill
+                    className="object-cover transition-all duration-300"
+                  />
                 </div>
-                <p className="text-base text-foreground/80 mt-2">
+              )}
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-1">
+                  <h3 className="text-xl font-serif font-medium text-foreground group-hover:text-primary transition-colors">
+                    {exp.company}
+                  </h3>
+                  <span className="text-sm font-mono text-muted-foreground/80">
+                    {exp.dates}
+                  </span>
+                </div>
+
+                <p className="text-base font-medium text-muted-foreground mb-3">
+                  {exp.title}
+                </p>
+
+                <p className="text-base text-muted-foreground/80 leading-relaxed max-w-2xl">
                   {exp.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           </Link>
-        ))}
-      </div>
+        </motion.div>
+      ))}
     </div>
   );
 };

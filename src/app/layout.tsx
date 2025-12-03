@@ -1,7 +1,8 @@
 import { Footer } from "@/components/footer";
 import { Particles } from "@/components/particles";
+import { Spotlight } from "@/components/spotlight";
 import { ThemeProvider } from "@/components/theme-provider";
-import { geistMono, geistSans } from "@/lib/fonts";
+import { geistMono, geistSans, newsreader } from "@/lib/fonts";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
 import "./globals.css";
 
@@ -16,23 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} font-sans antialiased min-h-screen bg-background text-foreground relative overflow-x-hidden`}
         suppressHydrationWarning
       >
-        <div
-          className="fixed inset-0 z-[-9999] opacity-10 pointer-events-none"
-          style={{
-            backgroundSize: "40px 40px",
-            backgroundImage: `
-              linear-gradient(to right, #555555 1px, transparent 1px),
-              linear-gradient(to bottom, #555555 1px, transparent 1px)
-            `,
-            maskImage:
-              "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
-            WebkitMaskImage:
-              "radial-gradient(circle 65vw at center -10%, white 0%, transparent 75%)",
-          }}
-        />
+        <div className="fixed inset-0 z-[-1] bg-background transition-colors duration-500" />
+        <div className="fixed inset-0 z-[1] bg-noise pointer-events-none opacity-20 mix-blend-soft-light" />
+        <Spotlight />
         <Particles />
         <ThemeProvider
           attribute="class"
