@@ -28,7 +28,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 pt-8">
                 <Button
                   size="lg"
-                  className="rounded-full w-48 px-8 text-lg h-14 bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                  className="rounded-full flex-1 sm:flex-none sm:w-48 px-4 sm:px-8 text-base sm:text-lg h-14 bg-foreground text-background hover:bg-foreground/90 transition-colors"
                   asChild
                 >
                   <Link href="mailto:soham@thesobercoder.in">
@@ -38,7 +38,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-full w-48 px-8 text-lg h-14 border-foreground/20 hover:bg-foreground/5 transition-colors"
+                  className="rounded-full flex-1 sm:flex-none sm:w-48 px-4 sm:px-8 text-base sm:text-lg h-14 border-foreground/20 hover:bg-foreground/5 transition-colors"
                   asChild
                 >
                   <Link href="/resume.pdf" target="_blank">
@@ -80,7 +80,7 @@ export default function Home() {
 
         {/* About Section */}
         <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary">
             About
           </h2>
           <div className="prose prose-lg dark:prose-invert prose-neutral max-w-none leading-loose text-foreground/90">
@@ -106,7 +106,7 @@ export default function Home() {
 
         {/* Experience Section */}
         <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary">
             Experience
           </h2>
           <Experience />
@@ -114,7 +114,7 @@ export default function Home() {
 
         {/* Skills Section */}
         <section className="mb-32 grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary sticky top-24">
+          <h2 className="text-sm font-sans font-bold uppercase tracking-widest text-primary">
             Expertise
           </h2>
           <Skills />
