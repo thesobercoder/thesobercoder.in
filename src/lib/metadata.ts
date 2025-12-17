@@ -60,6 +60,4 @@ export const metadataConfig: Metadata = {
 export const viewportConfig = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };

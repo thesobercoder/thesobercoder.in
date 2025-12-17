@@ -55,6 +55,7 @@ export default function Home() {
                       key={social.name}
                       href={social.url}
                       target={social.target}
+                      aria-label={social.name}
                       className="text-muted-foreground hover:text-primary transition-colors p-3 border border-border/50 rounded-full hover:border-primary/50 hover:bg-primary/5"
                     >
                       <Icon className="size-6" />
@@ -67,7 +68,7 @@ export default function Home() {
             <div className="order-1 md:order-2 flex justify-center md:justify-end">
               <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
                 <Image
-                  src="/profile.png"
+                  src="/profile.webp"
                   alt="Soham Dasgupta"
                   fill
                   priority

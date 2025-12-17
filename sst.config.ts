@@ -29,6 +29,25 @@ export default $config({
     const site = new sst.aws.Nextjs("thesobercoder", {
       domain,
       buildCommand: "bun run sst:build",
+      assets: {
+        fileOptions: [
+          {
+            files: [
+              "**/*.webp",
+              "**/*.png",
+              "**/*.jpg",
+              "**/*.jpeg",
+              "**/*.svg",
+              "**/*.ico",
+            ],
+            cacheControl: "public,max-age=31536000,immutable",
+          },
+          {
+            files: ["**/*.js", "**/*.css"],
+            cacheControl: "public,max-age=31536000,immutable",
+          },
+        ],
+      },
     });
     return {
       url: site.url,
