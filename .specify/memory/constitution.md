@@ -1,27 +1,31 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 2.0.0 → 2.0.1 (PATCH: Align constitution with actual codebase state)
-Date: 2025-12-04
+Version: 2.0.1 → 3.0.0 (MAJOR: Migrate from SST/AWS to Railway automated deployment)
+Date: 2025-12-18
 
 Changes:
-- Updated Repository Structure to reflect actual files (removed globe, skeleton, tooltip; added spotlight)
-- Removed stale dependencies from Technical Stack (cobe, @radix-ui/react-tooltip, zod)
-- Corrected TypeScript config (target: ES2017, jsx: react-jsx)
-- Corrected components.json config (baseColor: neutral, config: postcss.config.mjs)
-- Updated lib/ files (removed animation-variants.ts, corrected client.ts as cn() utility)
-- Removed template references from Governance (templates no longer exist)
+- Redefined Principle VII from MANUAL-ONLY SST/AWS deployment to automated Railway CI/CD
+- Removed SST and @opennextjs/aws from Technical Stack
+- Removed AWS infrastructure references (Lambda, CloudFront, S3)
+- Added Railway as hosting platform
+- Removed Cloudflare DNS management (Railway handles domain)
+- Removed sst:dev, sst:build, sst:deploy, sst:remove commands
+- Removed scripts/ directory from Repository Structure
+- Removed sst.config.ts from Repository Structure
+- Removed .env.example from Repository Structure
+- Removed SST Configuration Standards section
+- Updated Environment section to remove AWS/Cloudflare credentials
 
 Modified Sections:
-- Technical Stack → UI & Animation: Removed cobe, @radix-ui/react-tooltip
-- Technical Stack → Utilities: Removed zod
-- Project Architecture → Repository Structure: Updated to match actual files
-- Configuration Standards → TypeScript: Corrected to match actual tsconfig.json
-- Configuration Standards → shadcn/ui: Corrected to match actual components.json
-- Governance → Amendment Process: Removed template update step (templates removed)
+- Core Principles → VII. Deployment Discipline: Completely rewritten for Railway CI/CD
+- Technical Stack → Infrastructure: SST/AWS → Railway
+- Technical Stack → Commands: Removed SST-related commands
+- Project Architecture → Repository Structure: Removed deleted files
+- Configuration Standards: Removed SST section
 
 Removed Sections:
-- None
+- Configuration Standards → SST (`sst.config.ts`)
 
 Added Sections:
 - None
@@ -33,10 +37,22 @@ Follow-up TODOs:
 - None
 
 Rationale:
-PATCH version bump to align documentation with actual codebase state post-refactor. No principle changes, only documentation accuracy corrections.
+MAJOR version bump required. Principle VII was marked NON-NEGOTIABLE with MANUAL-ONLY
+deployments as a core governance decision. Migration to automated CI/CD via Railway
+fundamentally redefines deployment philosophy from deliberate manual control to
+continuous delivery, representing a backward-incompatible governance change.
 
 ---
 Version History:
+
+v3.0.0 (MAJOR: Migrate from SST/AWS to Railway automated deployment)
+Date: 2025-12-18
+- Redefined Principle VII for Railway automated CI/CD (push to main triggers deploy)
+- Removed SST, @opennextjs/aws, AWS infrastructure from Technical Stack
+- Added Railway as hosting platform
+- Removed scripts/, sst.config.ts, .env.example from Repository Structure
+- Removed SST Configuration Standards section
+- Rationale: Fundamental change from manual-only deployment to automated CI/CD
 
 v2.0.1 (PATCH: Align constitution with actual codebase state)
 Date: 2025-12-04
@@ -189,12 +205,12 @@ Date: 2025-10-09
 
 **Requirements**:
 
-- SST (IaC) for AWS deployment, Cloudflare for DNS (`thesobercoder.in`)
-- Domain config in `sst.config.ts`, Cloudflare creds in `.env`
-- MANUAL-ONLY deployments by project owner (no CI/CD, no agent-initiated)
-- Pass build/lint/type-check gates before deployment
+- Railway for hosting with automated CI/CD
+- Push to `main` branch triggers automatic deployment
+- Pass build/lint/type-check gates in CI before deployment proceeds
+- Domain: `thesobercoder.in` (configured in Railway)
 
-**Rationale**: Deliberate releases, prevents accidental changes, deployment accountability, final human verification.
+**Rationale**: Continuous delivery with quality gates ensures rapid, reliable releases. Automated pipeline removes manual deployment friction while CI checks maintain code quality.
 
 ## Technical Stack (NON-NEGOTIABLE)
 
@@ -227,11 +243,8 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 ### Infrastructure
 
-- **SST**: AWS IaC
-- **@opennextjs/aws**: Next.js AWS Lambda adapter
-- **AWS**: Lambda + CloudFront + S3
-- **Cloudflare**: DNS for thesobercoder.in
-- **Environment**: `.env` (AWS, Cloudflare credentials)
+- **Railway**: Hosting platform with automated CI/CD
+- **Domain**: `thesobercoder.in` (configured via Railway)
 
 ### Development
 
@@ -249,13 +262,11 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 
 ### Commands
 
-- **Dev**: `next dev --turbopack` or `bun run sst:dev`
-- **Build**: `next build` or `bun run sst:build`
+- **Dev**: `next dev --turbopack`
+- **Build**: `next build`
 - **Production Server**: `next start`
 - **Lint**: `next lint` (MUST pass before commits)
 - **Format**: `bun run fmt` (MUST run before commits - Prettier + Syncpack)
-- **Deploy**: `bun run sst:deploy` (MANUAL-ONLY by owner)
-- **Remove**: `bun run sst:remove` (destroy AWS resources)
 - **Clean**: `bun run clean` (removes build artifacts)
 
 ### Dependency Management (NON-NEGOTIABLE)
@@ -308,12 +319,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 │       ├── metadata.ts                # Centralized metadata
 │       ├── client.ts                  # cn() utility (clsx + tailwind-merge)
 │       └── og-image.ts                # OG image utilities
-├── scripts/
-│   ├── deploy.zsh                     # Deployment script
-│   ├── remove.zsh                     # AWS resource removal
-│   └── login.zsh                      # AWS login utility
 ├── public/                            # Static assets
-├── sst.config.ts                      # SST infrastructure
 ├── components.json                    # shadcn/ui config
 ├── postcss.config.mjs                 # PostCSS + Tailwind 4 config
 ├── tsconfig.json                      # TypeScript config
@@ -327,7 +333,7 @@ Note: Tailwind 4 uses CSS-based config in globals.css, no tailwind.config.ts
 - **Components**: PascalCase (`experience.tsx`) or kebab-case (`theme-provider.tsx`)
 - **Utilities**: camelCase (`formatDate.ts`)
 - **Data files**: camelCase (`experience.ts`)
-- **Config**: kebab-case or framework convention (`sst.config.ts`)
+- **Config**: kebab-case or framework convention
 - **Routes**: Next.js convention (`page.tsx`, `layout.tsx`, `route.ts`)
 
 ### Component Organization
@@ -399,12 +405,6 @@ Note: Tailwind 4 uses CSS-based config in globals.css, no tailwind.config.ts
 }
 ```
 
-### SST (`sst.config.ts`)
-
-- AWS IaC deployment
-- Domain: `thesobercoder.in` (Cloudflare DNS)
-- Required env vars: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_DEFAULT_ACCOUNT_ID`, `AWS_ACCOUNT`, `AWS_PROFILE`, `AWS_REGION`
-
 ### PostCSS (`postcss.config.mjs`)
 
 ```javascript
@@ -444,10 +444,11 @@ export default {
 
 1. All pre-commit gates pass
 2. `next build` succeeds
-3. Manual smoke testing (page loads, links work, content displays)
-4. Responsive verification (mobile/tablet/desktop)
-5. Dark mode verification
-6. Performance check (Lighthouse)
+3. Railway CI validates build before deploy
+4. Manual smoke testing post-deploy (page loads, links work, content displays)
+5. Responsive verification (mobile/tablet/desktop)
+6. Dark mode verification
+7. Performance check (Lighthouse)
 
 ### Code Review
 
@@ -485,4 +486,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 2.0.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-12-04
+**Version**: 3.0.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-12-18
