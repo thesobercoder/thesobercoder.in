@@ -17,31 +17,29 @@ export default async function Icon() {
     const imageSrc = `data:image/png;base64,${imageBase64}`;
 
     return new ImageResponse(
-      (
-        <div
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "50%",
+          overflow: "hidden",
+          background: "transparent",
+        }}
+      >
+        <img
+          src={imageSrc}
+          alt="Soham Dasgupta"
+          width="32"
+          height="32"
           style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
             borderRadius: "50%",
-            overflow: "hidden",
-            background: "transparent",
+            objectFit: "cover",
           }}
-        >
-          <img
-            src={imageSrc}
-            alt="Soham Dasgupta"
-            width="32"
-            height="32"
-            style={{
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
-          />
-        </div>
-      ),
+        />
+      </div>,
       {
         ...size,
       },
@@ -50,24 +48,22 @@ export default async function Icon() {
     console.error("Error generating favicon:", error);
 
     return new ImageResponse(
-      (
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "#1f2937",
-            borderRadius: "50%",
-            color: "#ffffff",
-            fontSize: "16px",
-            fontWeight: "bold",
-          }}
-        >
-          S
-        </div>
-      ),
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#1f2937",
+          borderRadius: "50%",
+          color: "#ffffff",
+          fontSize: "16px",
+          fontWeight: "bold",
+        }}
+      >
+        S
+      </div>,
       {
         ...size,
       },

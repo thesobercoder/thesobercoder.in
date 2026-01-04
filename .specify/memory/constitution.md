@@ -382,6 +382,7 @@ export default nextConfig;
 ```
 
 **Requirements**:
+
 - Empty configuration (Railway handles Next.js optimization automatically)
 - TypeScript config with `NextConfig` type safety
 - Default Next.js server mode for simplified deployment
@@ -403,6 +404,7 @@ export default nextConfig;
 ```
 
 **Requirements**:
+
 - Health check endpoint at `/api/health` (returns JSON `{"status":"ok","timestamp":"..."}`)
 - Nixpacks builder for Bun + Next.js detection
 - Auto-restart on deployment failures
