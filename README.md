@@ -1,17 +1,17 @@
 # thesobercoder.in
 
-A modern portfolio website built with Next.js 15, React 19, and TypeScript.
+A modern portfolio website built with Next.js 16, React 19, and TypeScript.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 (App Router) with React 19
+- **Framework**: Next.js 16 (App Router) with React 19
 - **Language**: TypeScript (strict mode)
 - **Styling**: Tailwind CSS 4 with CSS variables for theming
 - **UI Components**: shadcn/ui with Radix UI primitives
 - **Animation**: Framer Motion
 - **Icons**: lucide-react
 - **Theme**: next-themes for dark mode
-- **Infrastructure**: SST for AWS deployment
+- **Infrastructure**: Railway (automated CI/CD)
 - **Package Manager**: Bun
 
 ## Getting Started
@@ -19,31 +19,11 @@ A modern portfolio website built with Next.js 15, React 19, and TypeScript.
 ### Prerequisites
 
 - Bun and Node.js 22.x+
-- AWS and Cloudflare credentials (for deployment)
-
-### Environment Setup
-
-Copy `.env.example` to `.env.local` and configure:
-
-```env
-# Dev.to API (username from https://dev.to/settings/account)
-DEV_TO_API_URL="https://dev.to/api/articles?username=your_username"
-
-# Cloudflare (from https://dash.cloudflare.com/)
-CLOUDFLARE_API_TOKEN="your_token"
-CLOUDFLARE_DEFAULT_ACCOUNT_ID="your_account_id"
-
-# AWS (from https://aws.amazon.com/console/)
-AWS_ACCOUNT="your_account_id"
-AWS_PROFILE="your_profile"
-AWS_REGION="your_region"
-```
 
 ### Development
 
 ```bash
 bun run dev              # Start dev server with Turbopack
-bun run sst:dev          # Start with live AWS resources
 ```
 
 Visit [http://localhost:3000](http://localhost:3000)
@@ -78,21 +58,14 @@ Visit [http://localhost:3000](http://localhost:3000)
 ```bash
 # Development
 bun run dev              # Dev server with Turbopack
-bun run sst:dev          # Dev with live AWS resources
 
 # Build & Test
 bun run build            # Production build
-bun run sst:build        # Build with OpenNext adapter
 bun run start            # Test production build locally
 
 # Code Quality
 bun run lint             # Run ESLint
 bun run fmt              # Format with Prettier & Syncpack
-
-# Deployment
-bun run sst:deploy       # Deploy to AWS (manual only)
-bun run sst:remove       # Remove AWS resources
-bun run aws:login        # Login to AWS
 
 # Utilities
 bun run clean            # Remove build artifacts
@@ -113,21 +86,14 @@ Follows strict architectural principles in `.specify/memory/constitution.md`:
 
 **Pre-Deployment**: All pre-commit checks → `bun run build` succeeds → visual/responsive/dark mode/performance verified
 
-## Infrastructure
+## Infrastructure & Deployment
 
-- **DNS**: Cloudflare manages `thesobercoder.in` DNS records
-- **Hosting**: AWS (Lambda + CloudFront + S3) via SST Infrastructure-as-Code
-- **Why**: Cloudflare DDoS protection, AWS serverless scaling, SST simplified deployment
+- **Hosting**: Railway with automated CI/CD
+- **Domain**: `thesobercoder.in` (configured via Railway)
+- **Deployment**: Push to `main` branch triggers automatic deployment
+- **Build Validation**: Railway CI runs `next build` before deploying
 
-## Deployment
-
-Manual deployments only (no automation/CI/CD per constitution):
-
-```bash
-bun run sst:deploy
-```
-
-**Requirements**: Cloudflare + AWS credentials in `.env`, all pre-deployment checks passed
+**Why Railway**: Automated deployments, simplified infrastructure, built-in CI/CD, optimized for Next.js standalone builds
 
 ## Governance
 
