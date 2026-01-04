@@ -101,9 +101,8 @@ Follows strict architectural principles in `.specify/memory/constitution.md`:
 - **Deployment**: Push to `main` branch triggers automatic deployment
 - **Build Validation**: Railway CI runs `next build` before deploying
 - **Health Checks**: `/api/health` endpoint monitored every 30s
-- **Build Optimization**: Standalone output mode (~65% size reduction)
 
-**Why Railway**: Automated deployments, simplified infrastructure, built-in CI/CD, optimized for Next.js standalone builds
+**Why Railway**: Automated deployments, simplified infrastructure, built-in CI/CD, optimized for Next.js deployments
 
 ## Governance
 

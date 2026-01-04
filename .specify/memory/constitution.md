@@ -1,44 +1,46 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 3.0.0 → 3.0.1 (PATCH: Document Railway health check endpoint and configuration)
+Version: 3.0.1 → 3.0.2 (PATCH: Remove standalone output configuration)
 Date: 2026-01-04
 
 Changes:
-- Added /api/health endpoint to Repository Structure
-- Added railway.json to Repository Structure and Configuration Standards
-- Added type-check command to Technical Stack commands
-- Updated Next.js configuration documentation (standalone output mode)
-- Updated README.md Scripts section with type-check command
-- Updated README.md Infrastructure section with health check mention
+- Removed standalone output mode from next.config.ts documentation
+- Updated Next.js configuration to empty object (Railway default)
+- Removed standalone optimization claims from README.md Infrastructure section
+- Updated Repository Structure comment for next.config.ts
 
 Modified Sections:
-- Project Architecture → Repository Structure: Added src/app/api/health/route.ts
-- Project Architecture → Repository Structure: Added railway.json
-- Technical Stack → Commands: Added type-check command
-- Configuration Standards: Added Next.js section (next.config.ts)
-- Configuration Standards: Added Railway section (railway.json)
+- Configuration Standards → Next.js: Removed standalone output requirements
+- Project Architecture → Repository Structure: Updated next.config.ts comment
+- README.md: Removed standalone build optimization mention
 
 Removed Sections:
 - None
 
 Added Sections:
-- Configuration Standards → Next.js (`next.config.ts`)
-- Configuration Standards → Railway (`railway.json`)
+- None
 
 Templates Requiring Updates:
-- ✅ README.md (updated Scripts section)
+- ✅ README.md (removed standalone references)
 
 Follow-up TODOs:
 - None
 
 Rationale:
-PATCH version bump. Added documentation for Railway optimization implementation
-(standalone builds, health check endpoint, deployment configuration). No principle
-changes or governance modifications—purely documenting existing implementation details.
+PATCH version bump. Removed standalone output configuration after Railway deployment
+issues. Standard Next.js build mode works better with Railway's infrastructure.
+No principle changes—purely documentation alignment with working implementation.
 
 ---
 Version History:
+
+v3.0.2 (PATCH: Remove standalone output configuration)
+Date: 2026-01-04
+- Removed standalone output from next.config.ts documentation
+- Updated Next.js configuration standards to use empty config
+- Removed standalone optimization claims from README.md
+- Rationale: Standard Next.js build mode works better with Railway
 
 v3.0.1 (PATCH: Document Railway health check endpoint and configuration)
 Date: 2026-01-04
@@ -330,7 +332,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ├── public/                            # Static assets
 ├── railway.json                       # Railway deployment config
 ├── components.json                    # shadcn/ui config
-├── next.config.ts                     # Next.js config (standalone output)
+├── next.config.ts                     # Next.js config
 ├── postcss.config.mjs                 # PostCSS + Tailwind 4 config
 ├── tsconfig.json                      # TypeScript config
 └── package.json                       # Dependencies (exact versions)
@@ -374,17 +376,15 @@ Note: Tailwind 4 uses CSS-based config in globals.css, no tailwind.config.ts
 ```typescript
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  output: "standalone", // Required for Railway optimization
-} satisfies NextConfig;
+const nextConfig = {} satisfies NextConfig;
 
 export default nextConfig;
 ```
 
 **Requirements**:
-- `output: "standalone"` enables optimized Railway builds (reduces deploy size ~65%)
-- Standalone mode bundles only required dependencies and server files
+- Empty configuration (Railway handles Next.js optimization automatically)
 - TypeScript config with `NextConfig` type safety
+- Default Next.js server mode for simplified deployment
 
 ### Railway (`railway.json`)
 
@@ -535,4 +535,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 3.0.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2026-01-04
+**Version**: 3.0.2 | **Ratified**: 2025-10-09 | **Last Amended**: 2026-01-04
