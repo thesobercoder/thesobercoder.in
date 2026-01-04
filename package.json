@@ -38,7 +38,7 @@
     "dev": "next dev --turbopack",
     "fmt": "prettier '**/*' -wu && syncpack-format",
     "lint": "next lint",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "type-check": "tsc --noEmit"
   }
 }
