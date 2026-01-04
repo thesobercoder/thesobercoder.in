@@ -32,25 +32,32 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ```
 /
-├── app/                    # Next.js App Router
-│   ├── (portfolio)/       # Portfolio landing page
-│   ├── blog/             # Blog section
-│   ├── globals.css       # Global styles & CSS variables
-│   └── layout.tsx        # Root layout
-├── components/            # Shared React components
-│   ├── ui/              # shadcn/ui primitives
-│   ├── experience/      # Experience showcase
-│   ├── skills/          # Skills display
-│   └── globe/           # Interactive globe
-├── data/                 # Content data files
-│   ├── experience.ts    # Work experience
-│   ├── skills.ts        # Technical skills
-│   └── socials.tsx      # Social links
-├── lib/                  # Utilities
-│   ├── fonts.ts         # Geist fonts
-│   ├── metadata.ts      # SEO metadata
-│   └── utils.ts         # Helpers (cn, etc.)
-└── public/              # Static assets
+├── src/
+│   ├── app/                  # Next.js App Router
+│   │   ├── api/             # API routes
+│   │   │   └── health/      # Health check endpoint
+│   │   ├── page.tsx         # Portfolio landing
+│   │   ├── layout.tsx       # Root layout
+│   │   └── globals.css      # Global styles & CSS variables
+│   ├── components/          # Shared React components
+│   │   ├── ui/             # shadcn/ui primitives
+│   │   ├── experience.tsx  # Experience section
+│   │   ├── skills.tsx      # Skills section
+│   │   ├── particles.tsx   # Particle effects
+│   │   ├── spotlight.tsx   # Spotlight effect
+│   │   ├── footer.tsx      # Footer
+│   │   └── theme-provider.tsx
+│   ├── data/               # Content data files
+│   │   ├── experience.ts   # Work experience
+│   │   ├── skills.ts       # Technical skills
+│   │   └── socials.tsx     # Social links
+│   └── lib/                # Utilities
+│       ├── fonts.ts        # Geist fonts
+│       ├── metadata.ts     # SEO metadata
+│       ├── client.ts       # cn() utility
+│       └── og-image.ts     # OG image utilities
+├── public/                 # Static assets
+└── railway.json            # Railway deployment config
 ```
 
 ## Scripts
@@ -66,6 +73,7 @@ bun run start            # Test production build locally
 # Code Quality
 bun run lint             # Run ESLint
 bun run fmt              # Format with Prettier & Syncpack
+bun run type-check       # TypeScript validation
 
 # Utilities
 bun run clean            # Remove build artifacts
@@ -92,6 +100,8 @@ Follows strict architectural principles in `.specify/memory/constitution.md`:
 - **Domain**: `thesobercoder.in` (configured via Railway)
 - **Deployment**: Push to `main` branch triggers automatic deployment
 - **Build Validation**: Railway CI runs `next build` before deploying
+- **Health Checks**: `/api/health` endpoint monitored every 30s
+- **Build Optimization**: Standalone output mode (~65% size reduction)
 
 **Why Railway**: Automated deployments, simplified infrastructure, built-in CI/CD, optimized for Next.js standalone builds
 

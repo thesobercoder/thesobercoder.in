@@ -1,49 +1,53 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version: 2.0.1 → 3.0.0 (MAJOR: Migrate from SST/AWS to Railway automated deployment)
-Date: 2025-12-18
+Version: 3.0.0 → 3.0.1 (PATCH: Document Railway health check endpoint and configuration)
+Date: 2026-01-04
 
 Changes:
-- Redefined Principle VII from MANUAL-ONLY SST/AWS deployment to automated Railway CI/CD
-- Removed SST and @opennextjs/aws from Technical Stack
-- Removed AWS infrastructure references (Lambda, CloudFront, S3)
-- Added Railway as hosting platform
-- Removed Cloudflare DNS management (Railway handles domain)
-- Removed sst:dev, sst:build, sst:deploy, sst:remove commands
-- Removed scripts/ directory from Repository Structure
-- Removed sst.config.ts from Repository Structure
-- Removed .env.example from Repository Structure
-- Removed SST Configuration Standards section
-- Updated Environment section to remove AWS/Cloudflare credentials
+- Added /api/health endpoint to Repository Structure
+- Added railway.json to Repository Structure and Configuration Standards
+- Added type-check command to Technical Stack commands
+- Updated Next.js configuration documentation (standalone output mode)
+- Updated README.md Scripts section with type-check command
+- Updated README.md Infrastructure section with health check mention
 
 Modified Sections:
-- Core Principles → VII. Deployment Discipline: Completely rewritten for Railway CI/CD
-- Technical Stack → Infrastructure: SST/AWS → Railway
-- Technical Stack → Commands: Removed SST-related commands
-- Project Architecture → Repository Structure: Removed deleted files
-- Configuration Standards: Removed SST section
+- Project Architecture → Repository Structure: Added src/app/api/health/route.ts
+- Project Architecture → Repository Structure: Added railway.json
+- Technical Stack → Commands: Added type-check command
+- Configuration Standards: Added Next.js section (next.config.ts)
+- Configuration Standards: Added Railway section (railway.json)
 
 Removed Sections:
-- Configuration Standards → SST (`sst.config.ts`)
-
-Added Sections:
 - None
 
+Added Sections:
+- Configuration Standards → Next.js (`next.config.ts`)
+- Configuration Standards → Railway (`railway.json`)
+
 Templates Requiring Updates:
-- N/A (templates no longer exist in repository)
+- ✅ README.md (updated Scripts section)
 
 Follow-up TODOs:
 - None
 
 Rationale:
-MAJOR version bump required. Principle VII was marked NON-NEGOTIABLE with MANUAL-ONLY
-deployments as a core governance decision. Migration to automated CI/CD via Railway
-fundamentally redefines deployment philosophy from deliberate manual control to
-continuous delivery, representing a backward-incompatible governance change.
+PATCH version bump. Added documentation for Railway optimization implementation
+(standalone builds, health check endpoint, deployment configuration). No principle
+changes or governance modifications—purely documenting existing implementation details.
 
 ---
 Version History:
+
+v3.0.1 (PATCH: Document Railway health check endpoint and configuration)
+Date: 2026-01-04
+- Added /api/health endpoint documentation
+- Added railway.json configuration standards
+- Added type-check command to Technical Stack
+- Documented Next.js standalone output configuration
+- Updated README.md with type-check script
+- Rationale: Documentation update for Railway optimization implementation
 
 v3.0.0 (MAJOR: Migrate from SST/AWS to Railway automated deployment)
 Date: 2025-12-18
@@ -267,6 +271,7 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 - **Production Server**: `next start`
 - **Lint**: `next lint` (MUST pass before commits)
 - **Format**: `bun run fmt` (MUST run before commits - Prettier + Syncpack)
+- **Type Check**: `bun run type-check` (TypeScript validation without emitting files)
 - **Clean**: `bun run clean` (removes build artifacts)
 
 ### Dependency Management (NON-NEGOTIABLE)
@@ -294,6 +299,9 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 ├── .specify/memory/constitution.md    # THIS FILE
 ├── src/
 │   ├── app/                           # Next.js App Router
+│   │   ├── api/                       # API routes
+│   │   │   └── health/
+│   │   │       └── route.ts           # Railway health check endpoint
 │   │   ├── page.tsx                   # Portfolio landing
 │   │   ├── opengraph-image.tsx        # OG image gen
 │   │   ├── twitter-image.tsx          # Twitter card gen
@@ -320,7 +328,9 @@ Substitutions require constitutional amendment. Versions tracked in `package.jso
 │       ├── client.ts                  # cn() utility (clsx + tailwind-merge)
 │       └── og-image.ts                # OG image utilities
 ├── public/                            # Static assets
+├── railway.json                       # Railway deployment config
 ├── components.json                    # shadcn/ui config
+├── next.config.ts                     # Next.js config (standalone output)
 ├── postcss.config.mjs                 # PostCSS + Tailwind 4 config
 ├── tsconfig.json                      # TypeScript config
 └── package.json                       # Dependencies (exact versions)
@@ -358,6 +368,45 @@ Note: Tailwind 4 uses CSS-based config in globals.css, no tailwind.config.ts
 - **Per-route**: Export `metadata` object or `generateMetadata()`
 
 ## Configuration Standards
+
+### Next.js (`next.config.ts`)
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig = {
+  output: "standalone", // Required for Railway optimization
+} satisfies NextConfig;
+
+export default nextConfig;
+```
+
+**Requirements**:
+- `output: "standalone"` enables optimized Railway builds (reduces deploy size ~65%)
+- Standalone mode bundles only required dependencies and server files
+- TypeScript config with `NextConfig` type safety
+
+### Railway (`railway.json`)
+
+```json
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "healthcheckPath": "/api/health",
+    "healthcheckTimeout": 100,
+    "restartPolicyType": "ON_FAILURE"
+  }
+}
+```
+
+**Requirements**:
+- Health check endpoint at `/api/health` (returns JSON `{"status":"ok","timestamp":"..."}`)
+- Nixpacks builder for Bun + Next.js detection
+- Auto-restart on deployment failures
+- Health check timeout: 100 seconds
 
 ### TypeScript (`tsconfig.json`)
 
@@ -486,4 +535,4 @@ This constitution is the SOLE source of truth for all project decisions. All oth
 
 `CLAUDE.md` may exist as quick-reference but MUST NOT contain authoritative guidance conflicting with or extending this constitution. It should only provide command references and direct to constitution.
 
-**Version**: 3.0.0 | **Ratified**: 2025-10-09 | **Last Amended**: 2025-12-18
+**Version**: 3.0.1 | **Ratified**: 2025-10-09 | **Last Amended**: 2026-01-04
