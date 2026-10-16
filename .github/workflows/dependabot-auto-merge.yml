@@ -1,0 +1,59 @@
+# Merges dependabot PRs once the bumped version has been public for at least
+# 7 days, mirroring the `minimumReleaseAge` guard in ~/.bunfig.toml.
+# Conflicted PRs get a "@dependabot rebase" comment; the next run merges them.
+name: Dependabot age-gated auto-merge
+
+on:
+  schedule:
+    - cron: "23 * * * *" # hourly, off the top of the hour
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  contents: read
+
+env:
+  MIN_RELEASE_AGE_SECONDS: "604800" # 7 days
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge aged dependabot PRs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          prs=$(gh pr list --state open --json number,title,author \
+            --jq '.[] | select(.author.login == "app/dependabot") | "\(.number)\t\(.title)"')
+          [ -z "$prs" ] && { echo "No open dependabot PRs"; exit 0; }
+
+          now=$(date +%s)
+          while IFS=$'\t' read -r number title; do
+            pkg=$(echo "$title" | sed -n 's/.*bump \(.*\) from .*/\1/p')
+            to=$(echo "$title" | awk '{print $NF}')
+            [ -n "$pkg" ] && [ -n "$to" ] || { echo "PR #$number: could not parse '$title', skipping"; continue; }
+
+            published=$(npm view "$pkg" time --json 2>/dev/null \
+              | jq -r --arg v "$to" '.[$v] // empty') || true
+            [ -n "$published" ] || { echo "PR #$number: $pkg@$to not on npm yet, skipping"; continue; }
+
+            pub_ts=$(date -d "$published" +%s)
+            age=$(( now - pub_ts ))
+            echo "PR #$number: $pkg@$to published $published (age ${age}s)"
+
+            if [ "$age" -lt "$MIN_RELEASE_AGE_SECONDS" ]; then
+              remaining=$(( MIN_RELEASE_AGE_SECONDS - age ))
+              echo "  too young, ${remaining}s left on the 7-day guard — skipping"
+              continue
+            fi
+
+            if gh pr merge "$number" --merge; then
+              echo "  merged PR #$number"
+            else
+              echo "  merge failed (likely bun.lock conflict) — asking dependabot to rebase"
+              gh pr comment "$number" --body "@dependabot rebase" || true
+            fi
+          done <<< "$prs"
