@@ -1,5 +1,9 @@
-# Merges dependabot PRs once the bumped version has been public for at least
-# 7 days, mirroring the `minimumReleaseAge` guard in ~/.bunfig.toml.
+# Merges dependabot PRs once every bumped version has been public for at
+# least 7 days, mirroring the `minimumReleaseAge` guard in ~/.bunfig.toml.
+#
+# The changed dependencies are read from the PR's package.json diff (added
+# lines), so grouped updates and title rewording don't matter. The PR title
+# is only a fallback for lockfile-only bumps that leave package.json alone.
 # Conflicted PRs get a "@dependabot rebase" comment; the next run merges them.
 name: Dependabot age-gated auto-merge
 
@@ -30,25 +34,56 @@ jobs:
 
           prs=$(gh pr list --state open --json number,title,author \
             --jq '.[] | select(.author.login == "app/dependabot") | "\(.number)\t\(.title)"')
-          [ -z "$prs" ] && { echo "No open dependabot PRs"; exit 0; }
+          if [ -z "$prs" ]; then
+            echo "No open dependabot PRs"
+            exit 0
+          fi
 
           now=$(date +%s)
           while IFS=$'\t' read -r number title; do
-            pkg=$(echo "$title" | sed -n 's/.*bump \(.*\) from .*/\1/p')
-            to=$(echo "$title" | awk '{print $NF}')
-            [ -n "$pkg" ] && [ -n "$to" ] || { echo "PR #$number: could not parse '$title', skipping"; continue; }
+            echo "PR #$number: $title"
 
-            published=$(npm view "$pkg" time --json 2>/dev/null \
-              | jq -r --arg v "$to" '.[$v] // empty') || true
-            [ -n "$published" ] || { echo "PR #$number: $pkg@$to not on npm yet, skipping"; continue; }
+            # New dependency versions: added lines in the package.json diff.
+            # (gh pr diff has no path filter, so keep only the package.json hunks.)
+            deps=$(gh pr diff "$number" \
+              | awk '/^diff --git/{inpkg=index($0,"a/package.json ")>0} inpkg' \
+              | grep '^+' | grep -v '^+++' \
+              | sed -n 's/^[+][[:space:]]*"\([^"]*\)": "\([^"]*\)".*/\1 \2/p' \
+              | sort -u) || true
 
-            pub_ts=$(date -d "$published" +%s)
-            age=$(( now - pub_ts ))
-            echo "PR #$number: $pkg@$to published $published (age ${age}s)"
+            # Fallback: lockfile-only bumps have no package.json change.
+            if [ -z "$deps" ]; then
+              pkg=$(echo "$title" | sed -n 's/.*bump \(.*\) from .*/\1/p')
+              ver=$(echo "$title" | awk '{print $NF}')
+              if [ -n "$pkg" ] && [ -n "$ver" ]; then
+                deps="$pkg $ver"
+              else
+                echo "  no package.json change and unparseable title — skipping"
+                continue
+              fi
+            fi
 
-            if [ "$age" -lt "$MIN_RELEASE_AGE_SECONDS" ]; then
-              remaining=$(( MIN_RELEASE_AGE_SECONDS - age ))
-              echo "  too young, ${remaining}s left on the 7-day guard — skipping"
+            # Merge only when the youngest bumped version passes the guard.
+            min_age=999999999
+            all_known=1
+            while read -r pkg ver; do
+              case "$ver" in [0-9]*) ;; *) echo "  $pkg: '$ver' is not a pinned version — skipping PR"; all_known=0; break ;; esac
+              published=$(npm view "$pkg" time --json 2>/dev/null \
+                | jq -r --arg v "$ver" '.[$v] // empty') || true
+              if [ -z "$published" ]; then
+                echo "  $pkg@$ver: not on npm yet — skipping PR"
+                all_known=0
+                break
+              fi
+              pub_ts=$(date -d "$published" +%s)
+              age=$(( now - pub_ts ))
+              echo "  $pkg@$ver published $published (age ${age}s)"
+              [ "$age" -lt "$min_age" ] && min_age=$age
+            done <<< "$deps"
+            [ "$all_known" -eq 1 ] || continue
+
+            if [ "$min_age" -lt "$MIN_RELEASE_AGE_SECONDS" ]; then
+              echo "  too young, $(( MIN_RELEASE_AGE_SECONDS - min_age ))s left on the 7-day guard — skipping"
               continue
             fi
 
