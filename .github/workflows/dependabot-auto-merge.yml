@@ -4,7 +4,9 @@
 name: Dependabot age-gated auto-merge
 
 on:
-  schedule:
+  pull_request: # fires the moment dependabot opens or updates a PR
+    types: [opened, synchronize, reopened]
+  schedule: # picks up PRs whose version aged past the guard after the PR was raised
     - cron: "23 * * * *" # hourly, off the top of the hour
   workflow_dispatch:
 
