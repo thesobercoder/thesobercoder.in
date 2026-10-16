@@ -78,7 +78,7 @@ jobs:
               pub_ts=$(date -d "$published" +%s)
               age=$(( now - pub_ts ))
               echo "  $pkg@$ver published $published (age ${age}s)"
-              [ "$age" -lt "$min_age" ] && min_age=$age
+              if [ "$age" -lt "$min_age" ]; then min_age=$age; fi
             done <<< "$deps"
             [ "$all_known" -eq 1 ] || continue
 
