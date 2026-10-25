@@ -16,7 +16,7 @@ on:
 
 permissions:
   pull-requests: write
-  contents: read
+  contents: write
 
 env:
   MIN_RELEASE_AGE_SECONDS: "604800" # 7 days
@@ -40,6 +40,7 @@ jobs:
           fi
 
           now=$(date +%s)
+          failed=0
           while IFS=$'\t' read -r number title; do
             echo "PR #$number: $title"
 
@@ -90,7 +91,25 @@ jobs:
             if gh pr merge "$number" --merge; then
               echo "  merged PR #$number"
             else
-              echo "  merge failed (likely bun.lock conflict) — asking dependabot to rebase"
-              gh pr comment "$number" --body "@dependabot rebase" || true
+              # Only request a rebase for a confirmed conflict. Permission and
+              # API errors must make the run fail, not masquerade as conflicts.
+              if pr_state=$(gh pr view "$number" --json state,mergeable); then
+                if [ "$(jq -r '.state' <<< "$pr_state")" = "MERGED" ]; then
+                  echo "  PR #$number was merged by another run"
+                elif [ "$(jq -r '.mergeable' <<< "$pr_state")" = "CONFLICTING" ]; then
+                  echo "  confirmed merge conflict — asking dependabot to rebase"
+                  if ! gh pr comment "$number" --body "@dependabot rebase"; then
+                    echo "::error::Failed to request a rebase for PR #$number"
+                    failed=1
+                  fi
+                else
+                  echo "::error::Failed to merge PR #$number without a confirmed conflict; see gh error above"
+                  failed=1
+                fi
+              else
+                echo "::error::Failed to inspect PR #$number after merge failure"
+                failed=1
+              fi
             fi
           done <<< "$prs"
+          exit "$failed"
