@@ -43,7 +43,7 @@ Open [localhost:3000](http://localhost:3000). The application currently requires
 
 Linting uses the ESLint CLI with flat configuration in [`eslint.config.mjs`](eslint.config.mjs). The Next.js presets exclude generated output (`.next/`, `out/`, `build/`) and `next-env.d.ts`.
 
-Type-checking uses stable **TypeScript 7.0.2**, installed under the `@typescript/native` alias and exposed as `tsc`. ESLint’s TypeScript parser does not yet support TypeScript 7, so the `typescript` dependency points to the official TypeScript 6 compatibility package. This follows the [side-by-side setup recommended by TypeScript](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0); it does not downgrade `bun run type-check`.
+TypeScript is pinned to **6.0.2** for compatibility with the ESLint TypeScript tooling. Dependencies use exact versions without `npm:` aliases; keep TypeScript on a supported version when reviewing updates.
 
 ## Editing content
 
