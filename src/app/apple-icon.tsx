@@ -32,8 +32,8 @@ export default async function AppleIcon() {
         <img
           src={imageSrc}
           alt="Soham Dasgupta"
-          width="180"
-          height="180"
+          width={size.width}
+          height={size.height}
           style={{
             borderRadius: "20%",
             objectFit: "cover",

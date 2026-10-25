@@ -32,8 +32,8 @@ export default async function Icon() {
         <img
           src={imageSrc}
           alt="Soham Dasgupta"
-          width="32"
-          height="32"
+          width={size.width}
+          height={size.height}
           style={{
             borderRadius: "50%",
             objectFit: "cover",
