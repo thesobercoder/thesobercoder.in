@@ -5,6 +5,7 @@ import { SOCIALS } from "@/data/socials";
 import { FileText, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import profileImage from "../../public/profile.webp";
 
 export default function Home() {
   return (
@@ -68,7 +69,7 @@ export default function Home() {
             <div className="order-1 md:order-2 flex justify-center md:justify-end">
               <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
                 <Image
-                  src="/profile.webp"
+                  src={profileImage}
                   alt="Soham Dasgupta"
                   fill
                   priority
