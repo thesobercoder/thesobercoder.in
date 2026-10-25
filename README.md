@@ -34,13 +34,16 @@ Open [localhost:3000](http://localhost:3000). The application currently requires
 | Command              | Purpose                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------- |
 | `bun run dev`        | Start the development server with Turbopack                                           |
+| `bun run lint`       | Run ESLint with Next.js Core Web Vitals and TypeScript rules                          |
 | `bun run type-check` | Check TypeScript without emitting files                                               |
 | `bun run build`      | Create a production build                                                             |
 | `bun run start`      | Serve a production build locally, after building                                      |
 | `bun run fmt`        | Format files with Prettier and normalize `package.json` with Syncpack; modifies files |
 | `bun run clean`      | Delete dependency and build directories, including ignored files within those paths   |
 
-**Linting:** the existing `bun run lint` script still invokes `next lint`, which was removed in Next.js 16. It needs migration to the ESLint CLI before it can be used as a validation step.
+Linting uses the ESLint CLI with flat configuration in [`eslint.config.mjs`](eslint.config.mjs). The Next.js presets exclude generated output (`.next/`, `out/`, `build/`) and `next-env.d.ts`.
+
+Type-checking uses stable **TypeScript 7.0.2**, installed under the `@typescript/native` alias and exposed as `tsc`. ESLint’s TypeScript parser does not yet support TypeScript 7, so the `typescript` dependency points to the official TypeScript 6 compatibility package. This follows the [side-by-side setup recommended by TypeScript](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0); it does not downgrade `bun run type-check`.
 
 ## Editing content
 
@@ -83,6 +86,7 @@ Before merging updates, review the dependency and lockfile changes, then validat
 
 ```bash
 bun install --frozen-lockfile
+bun run lint
 bun run type-check
 bun run build
 ```

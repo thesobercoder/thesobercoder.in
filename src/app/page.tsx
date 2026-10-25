@@ -128,7 +128,7 @@ export default function Home() {
               Ready to collaborate?
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              Let's discuss how we can build scalable, future-proof solutions
+              Let&apos;s discuss how we can build scalable, future-proof solutions
               together.
             </p>
             <Button

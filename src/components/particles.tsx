@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 /**
  * Pure CSS Particle Animation Component
  *
  * Generates 120 pseudo-randomly positioned particles that drift across the screen
  * using pure CSS keyframe animations. No JavaScript animation loops after render.
  *
- * Randomization (at mount time only, after hydration):
+ * Seeded positions are identical on the server and client, avoiding a
+ * post-hydration state update and hydration mismatches.
+ *
+ * Particle properties:
  * - Position: left/top percentages
  * - Size: 2-4px continuous range
  * - Animation: 6 different drift patterns
@@ -40,31 +41,32 @@ interface Particle {
 
 const generateParticles = (): Particle[] => {
   const particles: Particle[] = [];
+  let seed = 42;
+  const random = () => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 2 ** 32;
+  };
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: 2 + Math.random() * 2, // 2-4 pixels
+      left: random() * 100,
+      top: random() * 100,
+      size: 2 + random() * 2, // 2-4 pixels
       animation:
-        DRIFT_ANIMATIONS[Math.floor(Math.random() * DRIFT_ANIMATIONS.length)],
-      duration: 20 + Math.random() * 20, // 20-40 seconds
-      delay: Math.random() * 15, // 0-15 seconds
-      opacity: 0.4 + Math.random() * 0.3, // 0.4-0.7
+        DRIFT_ANIMATIONS[Math.floor(random() * DRIFT_ANIMATIONS.length)],
+      duration: 20 + random() * 20, // 20-40 seconds
+      delay: random() * 15, // 0-15 seconds
+      opacity: 0.4 + random() * 0.3, // 0.4-0.7
     });
   }
 
   return particles;
 };
 
+const particles = generateParticles();
+
 export const Particles = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    setParticles(generateParticles());
-  }, []);
-
   return (
     <div className="fixed inset-0 z-[-9999] pointer-events-none">
       {particles.map((particle) => (
