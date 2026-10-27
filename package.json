@@ -20,7 +20,7 @@
     "@types/react-dom": "19.3.0",
     "eslint": "10.13.0",
     "eslint-config-next": "16.4.3",
-    "postcss": "8.5.30",
+    "postcss": "8.5.31",
     "prettier": "3.9.10",
     "syncpack": "15.3.3",
     "tailwindcss": "4.3.3",
